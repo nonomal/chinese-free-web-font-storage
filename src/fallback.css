@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "PingFangSC-Semibold fallback";
+  src: local("PingFangSC-Semibold");
+  size-adjust: 86.5979%;
+  ascent-override: 120.4417%;
+  descent-override: 30.7167%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "PingFangSC-Regular fallback";
+  src: local("PingFangSC-Regular");
+  size-adjust: 88.9831%;
+  ascent-override: 117.2133%;
+  descent-override: 29.8933%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Microsoft YaHei fallback";
+  src: local("Microsoft YaHei");
+  size-adjust: 86.9727%;
+  ascent-override: 119.9227%;
+  descent-override: 30.5843%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Source Han Sans fallback";
+  src: local("Source Han Sans");
+  size-adjust: 89.9358%;
+  ascent-override: 115.9717%;
+  descent-override: 29.5767%;
+  line-gap-override: 0%;
+}

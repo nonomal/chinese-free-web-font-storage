@@ -1,30 +1,58 @@
-import { DebounceAtom,  atom, reflect } from '@cn-ui/reactive';
+import { DebounceAtom, atom, reflect } from '@cn-ui/reactive';
 import { VModel } from '../utils/VModel';
 export const CDNHome = () => {
-    const selected = atom<LinkTemplate>({
-        version: 'chinese3',
-        package: 'jxzk',
-        subPackage: '江西拙楷',
-    });
     return (
-        <section class="m-auto w-full max-w-5xl p-8 text-center">
-            <div class=" py-8">
-                <h1 class="my-12  py-8 text-8xl">字图 CDN</h1>
-                <p class="mb-8  text-left text-xl text-gray-500">
-                    字图 CDN, 一个免费的中文字体公益 CDN 服务, 致力于为国内外全球 CJK
-                    开发者提供高质量网络字体服务，让中文字体在互联网世界起飞。
-                </p>
-                <p class="flex justify-around rounded-md bg-blue-400 text-xl text-gray-50">
+        <section class="w-full  p-8 text-center ">
+            <div class="py-8 max-w-5xl m-auto">
+                <h1 class="py-16 my-4 fish-bg  text-8xl">字图 CDN</h1>
+                <p class="flex justify-around rounded-md bg-blue-400 text-xl text-gray-50 mb-4">
                     <span>稳定</span>
                     <span>快速</span>
                     <span>免费</span>
                 </p>
+                <p class="mb-8  text-left text-xl text-gray-500">
+                    字图 CDN, 一个免费的中文字体公益 CDN 服务, 致力于为国内外全球 CJK
+                    开发者提供高质量网络字体服务，让中文字体在互联网世界起飞。
+                </p>
+                <p class='flex gap-4 justify-center'>
+                    <span>如果可以请</span>
+                    <a
+                        href="https://github.com/KonghaYao/chinese-free-web-font-storage"
+                        target="_blank"
+                        class='text-yellow-500'
+                    >
+                        Github Star |
+                    </a>
+                    <span class='text-green-500'>
+                        标注使用的字体 |
+                    </span>
+                    <a
+                        href="https://chinese-font.netlify.app"
+                        target="_blank" class='text-purple-500'>
+                        添加中文网字计划的链接
+                    </a>
+
+                    😀
+                </p>
             </div>
+            <ServerLink></ServerLink>
             <SearchBox />
             {/* <CDNLink {...selected()} /> */}
         </section>
     );
 };
+
+
+function ServerLink() {
+    return <div class='h-10 flex justify-center my-12 gap-12'>
+        <div>服务提供商 | 量大管饱</div>
+        <img src='/brand/cloudflare.svg' alt='cloudflare logo'></img>
+        <img src='/brand/render.svg' alt='render logo'></img>
+        <img src='/brand/imagekit.svg' alt='imagekit logo'></img>
+    </div>
+}
+
+
 import data from '../../index.json';
 import { __CDN__ } from '../global';
 import { Show } from 'solid-js';
@@ -60,7 +88,7 @@ const SearchBox = () => {
     );
     return (
         <>
-            <div class="flex items-center rounded-md bg-white px-4 py-4 text-gray-600 transition-shadow hover:shadow-md">
+            <div class="sticky top-16 z-10 flex items-center rounded-md bg-white px-4 py-4 text-gray-600 transition-shadow  shadow-lg border border-solid border-gray-200">
                 <i class="mr-2 h-5 w-5">
                     <svg
                         viewBox="64 64 896 896"
@@ -73,7 +101,7 @@ const SearchBox = () => {
                 </i>
                 <input
                     type="text"
-                    class="flex-1 appearance-none outline-none"
+                    class="flex-1 appearance-none outline-none bg-transparent text-blue-400"
                     {...VModel(search)}
                     placeholder="试着搜索你想要的字体"
                 />
@@ -83,23 +111,23 @@ const SearchBox = () => {
                     </span>
                 </Show>
             </div>
-           
-            <ul class="grid grid-cols-1 gap-4 py-8  sm:grid-cols-2  md:grid-cols-3">
+
+            <ul class="grid grid-cols-1 gap-4 py-8  sm:grid-cols-2  md:grid-cols-3 xl:grid-cols-5">
                 {items().map((i) => {
                     return i.fonts.map((font) => {
                         return (
                             // biome-ignore lint/correctness/useJsxKeyInIterable: <explanation>
-                            <li class="z-0 flex flex-col justify-between rounded border bg-gray-100 p-2 transition-all hover:z-10 hover:scale-150 hover:text-green-600 hover:shadow-md hover:backdrop-blur-sm">
-                                <span class="mb-2 border-b pb-2 text-2xl">{font.name}</span>
+                            <li class=" z-0 flex flex-col justify-between rounded border bg-white p-2 transition-all hover:z-10 hover:shadow-md hover:shadow-md hover:backdrop-blur-sm">
+                                <span class="mb-2 border-b pb-2 text-2xl text-rose-400">{font.name}</span>
                                 <img loading="lazy" src={`${__CDN__}/${font.pic}`} alt="" />
                                 <span
                                     title={`https://chinese-fonts-cdn.deno.dev/chinese3/${font.cdn}`}
-                                    class="flex justify-evenly border-t pt-1 text-xs text-gray-600"
+                                    class="flex justify-evenly border-t pt-1 text-xs text-blue-400"
                                 >
                                     <span>{font.subName}</span>
                                     <span>·</span>
                                     <span
-                                        class="cursor-pointer transition-colors hover:text-green-600"
+                                        class="cursor-pointer transition-colors text-blue-600"
                                         onclick={() => {
                                             copy(
                                                 `https://chinese-fonts-cdn.deno.dev/chinesefonts3/${font.cdn}`
@@ -123,33 +151,5 @@ const SearchBox = () => {
                 })}
             </ul>
         </>
-    );
-};
-
-interface LinkTemplate {
-    version: string;
-    package: string;
-    subPackage: string;
-}
-
-const CDNLink = (props: LinkTemplate) => {
-    return (
-        <div class="flex w-fit">
-            <p class=" text-lg font-bold text-green-600">
-                https://chinese-fonts-cdn.deno.dev/
-                <span class="cursor-pointer border-b-4 border-dashed border-orange-700">
-                    {props.version}
-                </span>
-                /packages/
-                <span class="cursor-pointer border-b-4 border-dashed border-orange-700">
-                    {props.package}
-                </span>
-                /dist/
-                <span class="cursor-pointer border-b-4 border-dashed border-orange-700">
-                    {props.subPackage}
-                </span>
-                /result.css
-            </p>
-        </div>
     );
 };
