@@ -164,7 +164,7 @@ export const OnlineSplit = () => {
                 </div>
             </div>
 
-            <section class="flex h-full flex-col gap-4 overflow-hidden bg-gray-200 p-4">
+            <section class="flex h-full flex-col gap-4 overflow-hidden bg-gray-200 p-4 noise">
                 <header class="flex justify-between ">
                     <span class="text-xl">Logger 日志</span>
                     <div class="flex-1"></div>

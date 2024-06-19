@@ -36,18 +36,14 @@ a > button:hover {
     @apply transition-transform active:scale-95;
 }
 
-body::before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    background-image: url('/noise.png');
-    position: fixed;
-    top: 0;
-    z-index: -1;
-    opacity: 0.05;
-    pointer-events: none;
-    touch-action: none;
+.noise {
+    background-image: url('./assets/noise.svg');
 }
+
+.fish-bg{
+    background-image: url('./assets/fish.svg');
+}
+
 .blur-background {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);

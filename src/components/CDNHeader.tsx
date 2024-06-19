@@ -16,9 +16,10 @@ export const CDNHeader = () => {
                     字体分包
                 </a>
                 <a href="/article">文章</a>
-                <span class="more-button relative overflow-visible">
+                <a href="https://github.com/KonghaYao/chinese-free-web-font-storage"
+                    target="_blank" class="more-button relative overflow-visible">
                     <button>Github</button>
-                </span>
+                </a>
             </nav>
         </header>
     );
