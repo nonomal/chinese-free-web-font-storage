@@ -8,7 +8,8 @@ body {
 }
 body {
     --defaultFont: 'jiangxizhuokai';
-    font-family: var(--defaultFont), 'jiangxizhuokai';
+    font-family: var(--defaultFont), 'jiangxizhuokai', 'PingFangSC-Semibold fallback',
+        'PingFangSC-Regular fallback', 'Microsoft YaHei fallback', 'Source Han Sans fallback';
 }
 .poetry {
     writing-mode: tb-rl;
@@ -40,7 +41,7 @@ a > button:hover {
     background-image: url('./assets/noise.svg');
 }
 
-.fish-bg{
+.fish-bg {
     background-image: url('./assets/fish.svg');
 }
 
