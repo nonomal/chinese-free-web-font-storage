@@ -12,13 +12,13 @@ article:
     image: 'https://ik.imagekit.io/chinesefonts/tr:w-1200/image/photo-1508804185872-d7badad00f7d.jfif'
 ---
 
-# 中文网络字体优化
+# 中文网络字体最佳实践
 
 这篇文章将会带你一起完成中文网络字体的落地优化，将中文字体带入你的网页中。
 
 ## 字体分包优化
 
-字体分包使用 `cn-font-split` 可以轻松配置并分包，下面的优化也是采用这个插件进行优化的。
+字体分包使用 `cn-font-split` 可以轻松配置并分包，下面的优化也是采用这个插件进行优化的。如果你在使用 Vite、Rspack、Next.js 等前端工具链，那么推荐使用超级简单的 [vite-plugin-font](https://npmjs.com/package/vite-plugin-font), 我们已经帮你完成了大部分的工作。
 
 ### 使用 woff2 格式的成品字体
 
@@ -87,6 +87,76 @@ Preload 预下载会全量下载对应文件，这样会导致字体按需下载
 
 > 作为一种字体加载策略，使用预加载（preload）也需要谨慎使用，因为它会绕过某些浏览器内置的内容协商策略。例如，预加载会忽略“unicode-range”声明，如果明智地使用，应该只用于加载单个字体格式。 [字体使用最佳实践](https://web.dev/font-best-practices/)
 
+
+## 首屏字体优化
+
+
+### 极小量级优化
+
+[极小量级优化](https://github.com/KonghaYao/cn-font-split/blob/main/packages/vite/README_zh.md#%E6%9E%81%E5%B0%8F%E9%87%8F%E7%BA%A7%E4%BC%98%E5%8C%96)适合于官网、大促网页等快速渲染需求大的场景，它收集你的代码中使用的字符，并只加载这些字符，拥有非常好的渲染性能。这里我们使用 [vite-plugin-font](https://npmjs.com/package/vite-plugin-font) 进行操作。
+
+> 添加 `scanFiles`，[Nuxt](#nuxt) 和 Webpack 的方式略有不同，但都是往 options 里面添加扫描文件
+
+```js
+// vite.config.js
+import { defineConfig } from 'vite';
+import viteFont from 'vite-plugin-font';
+export default defineConfig({
+    plugins: [
+        viteFont({
+            scanFiles: ['src/**/*.{vue,ts,tsx,js,jsx}'],
+        }), 
+    ],
+});
+```
+
+> 添加 `?subsets` 到你的链接中
+
+```diff
+// 自动注入 css 导入字体，并且支持字体信息的摇树优化！
+- import { css } from '../../demo/public/SmileySans-Oblique.ttf';
++ import { css } from '../../demo/public/SmileySans-Oblique.ttf?subsets';
+console.log(css.family, css.weight); // 你可以从这里得到 css 相关的数据
+
+export const App = () => {
+    return (
+        <div
+            style={{
+                fontFamily: css.family,
+            }}
+        ></div>
+    );
+};
+```
+
+
+### 布局偏移 CLS 优化
+
+为什么会产生布局偏移？
+
+因为字体加载一般具有延迟，那么就会先显示 fallback 字体，而 fallback 字体一般与你的字体的基础度量单位有差距，这样就会导致浏览器重新计算某些标签的大小，从而导致布局偏移。
+
+怎么减少布局偏移？ 
+
+浏览器提供了 `ascent-override`、`descent-override`、`line-gap-override` 来操作一个 `font-family` 的基础度量。
+我们可以创建一个 fallback 字体，链接到本地的字体上，然后调整  `override` 相关属性来将两种字体的显示大小尽量保持一致。
+
+```js
+@font-face {
+  font-family: 'PingFang override';
+  src: local('PingFang SC');
+  ascent-override: 92.3432%;
+  descent-override: 24.2222%;
+  line-gap-override: 0%;
+}
+```
+
+
+开发中如何使用？
+
+[fontaine](https://www.npmjs.com/package/fontaine) 是一个优秀的字体 fallback 生成库，但是对中文的优化甚小。所以 [vite-plugin-font](https://npmjs.com/package/vite-plugin-font) 在 1.2.0 版本之后，自动帮你计算了常用中文的字体度量，你只需要把 fallback 名称加入到你的代码后面即可。
+
+
 ## 扩展阅读
 
 https://web.dev/font-best-practices/
@@ -94,3 +164,5 @@ https://web.dev/font-best-practices/
 https://web.dev/reduce-webfont-size
 
 https://web.dev/optimize-webfont-loading/
+
+[notes on calculating font metric overrides](https://docs.google.com/document/d/e/2PACX-1vRsazeNirATC7lIj2aErSHpK26hZ6dA9GsQ069GEbq5fyzXEhXbvByoftSfhG82aJXmrQ_sJCPBqcx_/pub)

@@ -7,13 +7,20 @@ article:
     section: 技术内幕
     tags:
         - 性能优化
-    pubDate: 2023-10-8
+    pubDate: 2024-6-19
     image: 'https://ik.imagekit.io/chinesefonts/tr:w-1200/image/photo-1508804185872-d7badad00f7d.jfif'
 ---
 
 # 【数据分析】CDN 性能概况
 
-## LightCDN
+## 2024 年 6 月 - CDN 分发网关设计
+
+1. 由于 LightCDN 没得免费了，所以迁移 CDN
+2. 中文网字计划的字体文件均为静态文件，所以可以使用前端部署的方式，将代码全量部署到各个免费的网站里面，每次构建一下然后部署，效果也不错
+3. 优点是动态转发 CDN 的 host，CDN 挂了也不怕，缺点是没有 CDN 分析数据给我玩了
+4. CDN 总额度高的离谱，总共 220 GB 左右，如果还能搞完，再接入一个 1T 的继续
+
+## 2024 年 6 月已寄 LightCDN
 
 中文网字计划使用 LightCDN 的免费服务的数据统计如下：
 
