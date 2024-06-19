@@ -26,18 +26,33 @@ export const CDNHome = () => {
                     <span class='text-green-500'>
                         标注使用的字体 |
                     </span>
-                    <span class='text-purple-500'>
+                    <a
+                        href="https://chinese-font.netlify.app"
+                        target="_blank" class='text-purple-500'>
                         添加中文网字计划的链接
-                    </span>
-                    
+                    </a>
+
                     😀
                 </p>
             </div>
+            <ServerLink></ServerLink>
             <SearchBox />
             {/* <CDNLink {...selected()} /> */}
         </section>
     );
 };
+
+
+function ServerLink() {
+    return <div class='h-10 flex justify-center my-12 gap-12'>
+        <div>服务提供商 | 量大管饱</div>
+        <img src='/brand/cloudflare.svg' alt='cloudflare logo'></img>
+        <img src='/brand/render.svg' alt='render logo'></img>
+        <img src='/brand/imagekit.svg' alt='imagekit logo'></img>
+    </div>
+}
+
+
 import data from '../../index.json';
 import { __CDN__ } from '../global';
 import { Show } from 'solid-js';
