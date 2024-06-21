@@ -43,9 +43,9 @@ const list = await Promise.all(
         <nav class="float-right flex gap-4 text-sm text-emerald-600">
             <button id="open-font-list">字体列表</button>
             <button>
-                <a href="/feature/test" class="text-center"> 字体特性</a>
+                <a href="/feature/test" class="text-center">字体特性</a>
             </button>
-            <AddFont client:load />
+            <!-- <AddFont client:load /> -->
             <button class="text-cyan-800">{list.length}份</button>
         </nav>
     </h2>
@@ -75,12 +75,15 @@ const list = await Promise.all(
                     const item = document.getElementById('fonts-' + li.dataset.name)!;
 
                     let count = item.offsetTop - item.parentElement!.offsetTop;
-                    console.log(item.parentElement);
                     item.parentElement?.parentElement!.scrollTo({
                         top: count,
                         left: 0,
                         behavior: 'smooth',
                     });
+                    item.classList.add('border-red-400');
+                    setTimeout(() => {
+                        document.getElementById('fonts-index')?.classList.add('font-list-hidden');
+                    }, 200);
                 };
             });
             document.getElementById('open-font-list')?.addEventListener('click', () => {
@@ -111,7 +114,9 @@ const list = await Promise.all(
                         return item.remotePath.map(({ url: remote, style }) => {
                             const [_, name] = remote.match(/dist\/(.*?)\/result/)!;
                             return (
-                                <li class="relative flex-wrap overflow-hidden rounded-md bg-white p-2 transition-colors hover:bg-neutral-100">
+                                <li
+                                    class="relative flex-wrap overflow-hidden rounded-md border bg-white p-2 transition-colors hover:bg-neutral-100"
+                                    id={'fonts-' + item.name}>
                                     <a
                                         class="display-font-show-hover"
                                         href={`/fonts/${item.id}/${name}`}
@@ -119,7 +124,9 @@ const list = await Promise.all(
                                         data-style={style}>
                                         <img
                                             loading="lazy"
-                                            class=" h-32 "
+                                            class="h-32"
+                                            height="128px"
+                                            width="346px"
                                             fetchpriority="low"
                                             src={
                                                 __CDN__ +

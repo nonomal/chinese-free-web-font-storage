@@ -4,27 +4,27 @@ import AllFooter from '../components/AllFooter.astro';
 import FontList from '../components/FontsList.astro';
 import TechSupport from '../components/TechSupport.astro';
 import PerformanceOfTool from '../components/PerformanceOfTool.astro';
-import HomeGlyphInspector from '../components/analyze/Glyph/HomeGlyphInspector';
 import { DemoOfFontSplit } from '../components/Home/DemoOfFontSplit';
 import '../style/animate.css';
 export const prerender = true;
 ---
 
 <Layout class="flex flex-col items-center">
-
     <section
-        class="relative an-scroll-list z-10 flex h-[90vh] snap-start w-screen flex-col items-center justify-center scroll-mt-16"
+        class="relative an-scroll-list z-10 flex snap-start w-screen flex-col items-center justify-center scroll-mt-16"
+        style="height: calc(100vh - 3rem);"
     >
-        <div class="xs:text-xl text-xs font-thin italic leading-[1.1em] text-gray-600 sm:text-4xl">
+        <div class="xs:text-xl text-xs font-thin italic leading-[3em] text-gray-600 sm:text-4xl">
             Chinese Web Fonts Plan
         </div>
         <h2
-            class="home-title xs:text-[8vh] text-[6vh] leading-[1.1em] sm:text-[11vh] lg:text-[20vh]"
+            class="home-title xs:text-[8vh] whitespace-nowrap text-[6vh] leading-[1.1em] sm:text-[11vw] lg:text-[17vh]"
+            style="letter-spacing: 0.5rem;"
         >
             中文网字计划
         </h2>
         <h3
-            class="max-w-[30em] px-4 pt-12 text-xs font-thin text-gray-600 sm:max-w-[30em] sm:text-lg lg:max-w-none lg:text-2xl"
+            class="max-w-[30em] px-4 pt-20 text-xs font-thin text-gray-400 sm:max-w-[30em] sm:text-lg lg:max-w-none lg:text-2xl"
         >
             中文网字计划是收录众多中文字体并通过 Web Font 的形式为
             <b class="px-2 inline-block bg-cyan-700 rounded-md text-white">网站开发者</b>
@@ -33,8 +33,9 @@ export const prerender = true;
         <a href="#font-list">
             <button
                 class="bg-white px-4 py-2 rounded-md text-xl text-rose-600 ring-rose-600 ring-2 mt-12"
+                style="letter-spacing: 0.25rem;"
             >
-                开始搜索
+                开始探索字体之美
             </button>
         </a>
     </section>
@@ -51,10 +52,9 @@ export const prerender = true;
         </div>
     </div>
 
-    <DemoOfFontSplit></DemoOfFontSplit>
+    <DemoOfFontSplit />
     <FontList />
     <TechSupport />
-    <!-- <HomeGlyphInspector client:load /> -->
     <PerformanceOfTool />
     <!-- TimeLine 一个开发时间线 -->
     <AllFooter />

@@ -40,8 +40,8 @@ export const DemoOfFontSplit = () => {
         },
     ];
     return (
-        <nav class="grid w-full max-w-7xl grid-cols-6 md:grid-cols-12 items-center gap-4 py-12 px-4 transition-colors">
-            <div class="col-span-4 ">
+        <nav class="grid w-full max-w-7xl grid-cols-6 items-center gap-4 bg-cyan-50/20 px-8 py-12 transition-colors md:grid-cols-12">
+            <div class="col-span-4 whitespace-nowrap">
                 <span class="font-sans text-xl font-bold transition-colors hover:text-green-600">
                     <a href="https://www.npmjs.com/package/vite-plugin-font" target="_blank">
                         ⚡ vite-plugin-font ⚡
@@ -51,7 +51,6 @@ export const DemoOfFontSplit = () => {
                 <span class="text-md mt-4 text-gray-600">
                     简单的中文字体前端工具链支持
                     <br />✅ 缓存 | ✅ 分包 | ✅ 自动构建
-                     
                 </span>
                 <br />
                 <a
@@ -59,8 +58,15 @@ export const DemoOfFontSplit = () => {
                     class="text-rose-700"
                     target="_blank"
                 >
-                    NPM 文档 
-                   <img height={20} width={138} src='https://img.shields.io/npm/dw/vite-plugin-font' loading='lazy'  alt='download count in npm' fetchpriority='low'></img>
+                    NPM 文档
+                    <img
+                        height={20}
+                        width={138}
+                        src="https://img.shields.io/npm/dw/vite-plugin-font"
+                        loading="lazy"
+                        alt="download count in npm"
+                        fetchpriority="low"
+                    ></img>
                 </a>
             </div>
             {linker.map((item) => {
@@ -71,7 +77,12 @@ export const DemoOfFontSplit = () => {
                         target="_blank"
                         class="flex cursor-pointer flex-col items-center p-2 transition-colors  hover:bg-gray-200"
                     >
-                        <img src={item.pic.src} alt={item.name} fetchpriority="low" loading='lazy' />
+                        <img
+                            src={item.pic.src}
+                            alt={item.name}
+                            fetchpriority="low"
+                            loading="lazy"
+                        />
                         <div>{item.name}</div>
                         <div>Demo</div>
                     </a>
