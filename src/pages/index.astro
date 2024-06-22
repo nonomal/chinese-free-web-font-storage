@@ -4,7 +4,6 @@ import AllFooter from '../components/AllFooter.astro';
 import FontList from '../components/FontsList.astro';
 import TechSupport from '../components/TechSupport.astro';
 import PerformanceOfTool from '../components/PerformanceOfTool.astro';
-import { DemoOfFontSplit } from '../components/Home/DemoOfFontSplit';
 import '../style/animate.css';
 export const prerender = true;
 ---
@@ -51,11 +50,10 @@ export const prerender = true;
             尧
         </div>
     </div>
-
-    <DemoOfFontSplit />
+    <PerformanceOfTool />
     <FontList />
     <TechSupport />
-    <PerformanceOfTool />
+
     <!-- TimeLine 一个开发时间线 -->
     <AllFooter />
 </Layout>

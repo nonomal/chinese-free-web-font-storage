@@ -40,17 +40,18 @@ export const DemoOfFontSplit = () => {
         },
     ];
     return (
-        <nav class="grid w-full max-w-7xl grid-cols-6 items-center gap-4 bg-cyan-50/20 px-8 py-12 transition-colors md:grid-cols-12">
+        <nav class="col-span-6 grid w-full max-w-7xl grid-cols-6 items-center gap-4 bg-cyan-50/60 px-8 py-12 transition-colors md:grid-cols-12">
             <div class="col-span-4 whitespace-nowrap">
-                <span class="font-sans text-xl font-bold transition-colors hover:text-green-600">
+                <span class="text-xl font-bold transition-colors hover:text-green-600">
                     <a href="https://www.npmjs.com/package/vite-plugin-font" target="_blank">
                         ⚡ vite-plugin-font ⚡
                     </a>
                 </span>
                 <br />
                 <span class="text-md mt-4 text-gray-600">
-                    简单的中文字体前端工具链支持
-                    <br />✅ 缓存 | ✅ 分包 | ✅ 自动构建
+                    直接加入你的前端项目里，提供一等一的字体优化支持
+                    <br />
+                    <span>✅ 智能分包 | ✅ 自动压缩 | ✅ 构建缓存 | ✅ 首屏优化</span>
                 </span>
                 <br />
                 <a
