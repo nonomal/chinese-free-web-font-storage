@@ -1,6 +1,16 @@
 import { DebounceAtom, atom, reflect } from '@cn-ui/reactive';
 import { VModel } from '../utils/VModel';
+import { CountUp } from 'countup.js';
 export const CDNHome = () => {
+    const hotCDNs = useHotCDN();
+    createEffect(() => {
+        const max = hotCDNs().reduce((col, cur) => col + cur.value, 0);
+        console.log(max);
+        new CountUp('countUp', max, {
+            duration: 2,
+        }).start();
+    });
+
     return (
         <section class="w-full  p-8 text-center ">
             <div class="m-auto max-w-5xl py-8">
@@ -13,7 +23,15 @@ export const CDNHome = () => {
                 <p class="mb-8  text-left text-xl text-gray-500">
                     字图 CDN, 一个免费的中文字体公益 CDN 服务, 致力于为国内外全球 CJK
                     开发者提供高质量网络字体服务，让中文字体在互联网世界起飞。
+                    <span class="float-right text-xl text-emerald-600">
+                        累计
+                        <span id="countUp" class="mx-4 font-sans text-2xl font-bold">
+                            0
+                        </span>
+                        次使用
+                    </span>
                 </p>
+
                 <p class="flex justify-center gap-4">
                     <span>如果可以请</span>
                     <a
@@ -23,7 +41,7 @@ export const CDNHome = () => {
                     >
                         Github Star |
                     </a>
-                    <span class="text-green-500">标注使用的字体 |</span>
+                    <span class="text-emerald-600">标注使用的字体 |</span>
                     <a
                         href="https://chinese-font.netlify.app"
                         target="_blank"
@@ -54,9 +72,10 @@ function ServerLink() {
 
 import data from '../../index.json';
 import { __CDN__ } from '../global';
-import { Show } from 'solid-js';
+import { Show, createEffect, onMount } from 'solid-js';
 import copy from 'copy-to-clipboard';
 import { Notice } from '../Notice';
+import { useHotCDN } from './message/cdn';
 const SearchBox = () => {
     const search = atom('');
     const items = DebounceAtom(
