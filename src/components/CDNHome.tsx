@@ -1,12 +1,12 @@
 import { DebounceAtom, atom, reflect } from '@cn-ui/reactive';
 import { VModel } from '../utils/VModel';
-import { CountUp } from 'countup.js';
+import CountUp from 'countup.js';
 export const CDNHome = () => {
     const hotCDNs = useHotCDN();
     createEffect(() => {
         const max = hotCDNs().reduce((col, cur) => col + cur.value, 0);
         console.log(max);
-        new CountUp('countUp', max, {
+        new CountUp.CountUp('countUp', max, {
             duration: 2,
         }).start();
     });
