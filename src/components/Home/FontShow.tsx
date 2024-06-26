@@ -14,8 +14,8 @@ const showAnime = () => {
 };
 export const FontShow = () => {
     const originFont = atom({
-        url: __CDN__ + '/packages/jxzk/dist/江西拙楷/result.css',
-        style: 'font-family:jiangxizhuokai',
+        url: __CDN__ + '/packages/lxgwwenkai/dist/LXGWWenKai-Bold/result.css',
+        style: 'font-family: "LXGW WenKai"',
     });
     const font = ThrottleAtom(originFont, 2000);
     createEffect(() => {

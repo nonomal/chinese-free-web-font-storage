@@ -7,6 +7,7 @@ import compress from 'astro-compress';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 // import astroRemark from '@astrojs/markdown-remark';
 import { loadEnv } from 'vite';
+import font from 'vite-plugin-font';
 const env = loadEnv(import.meta.env.MODE, process.cwd(), '');
 // https://astro.build/config
 export default defineConfig({
@@ -28,6 +29,21 @@ export default defineConfig({
                         dest: '',
                     },
                 ],
+            }),
+            font({
+                scanFiles: {
+                    // ?subsets will match default
+                    home: [
+                        'src/pages/index.astro',
+                        'src/components/AllFooter.astro',
+                        'src/components/TechSupport.astro',
+                        'src/components/GlobalHeader.astro',
+                    ],
+                    fontExample: [
+                        'src/components/PerformanceOfTool.astro',
+                        'src/components/FontsList.astro',
+                    ],
+                },
             }),
         ],
     },
