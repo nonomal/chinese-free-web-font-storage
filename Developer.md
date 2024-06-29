@@ -12,6 +12,5 @@
     2. packages/{项目名}/fonts 目录下放置字体文件，程序将自动进行打包
 4. node ./scripts/moveFile.mjs 将所有 packages 内的字体成品转移到 dist 文件夹下面
     1. 上传文件时，由于部分文件夹路径较奇怪，所以进行了一些更改，更改方式看源码
-    2. node ./scripts/uploader.mjs --target=字体文件夹名称 --deleteFolder=true 更新远程 CDN 文件
-    3. netlify deploy 直接将 dist 文件夹部署到 netlify，CORS 已设置为 \*
+    2. netlify deploy 直接将 dist 文件夹部署到 netlify，CORS 已设置为 \*
 5. 先写 override.json 然后 node ./scripts/createIndex.mjs 将会创建索引文件 index.json
