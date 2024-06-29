@@ -27,7 +27,7 @@ export const getFileListIndex = async () =>
             })
     );
 
-export const sortFontListByRemoteCount = (container: HTMLElement) => {
+export const sortFontListByRemoteCount = (container?: any) => {
     if (!container) return;
     return new Promise((resolve) => {
         const hotLink: { key: string[]; value: number }[] = [];

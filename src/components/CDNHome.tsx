@@ -1,6 +1,7 @@
-import { DebounceAtom, atom, reflect } from '@cn-ui/reactive';
+import { DebounceAtom, NullAtom, atom, reflect } from '@cn-ui/reactive';
 import { VModel } from '../utils/VModel';
 import { CountUp } from 'countup.js/src/countUp';
+import './CDNHome.css';
 export const CDNHome = () => {
     const hotCDNs = useHotCDN();
     createEffect(() => {
@@ -76,8 +77,13 @@ import { Show, createEffect, onMount } from 'solid-js';
 import copy from 'copy-to-clipboard';
 import { Notice } from '../Notice';
 import { useHotCDN } from './message/cdn';
+import { sortFontListByRemoteCount } from '../api/fontListIndex';
 const SearchBox = () => {
     const search = atom('');
+    const ListContainer = NullAtom(null);
+    onMount(() => {
+        sortFontListByRemoteCount(ListContainer()!);
+    });
     const items = DebounceAtom(
         reflect(() =>
             Object.entries(data)
@@ -93,6 +99,7 @@ const SearchBox = () => {
                                 name: val.name,
                                 subName: name,
                                 pic,
+                                id: key,
                             };
                         }),
                     };
@@ -130,12 +137,19 @@ const SearchBox = () => {
                 </Show>
             </div>
 
-            <ul class="grid grid-cols-1 gap-4 py-8  sm:grid-cols-2  md:grid-cols-3 xl:grid-cols-5">
+            <ul
+                ref={ListContainer}
+                id="cdn-font-list"
+                class="grid grid-cols-1 gap-4 py-8  sm:grid-cols-2  md:grid-cols-3 xl:grid-cols-5"
+            >
                 {items().map((i) => {
                     return i.fonts.map((font) => {
                         return (
                             // biome-ignore lint/correctness/useJsxKeyInIterable: <explanation>
-                            <li class=" z-0 flex flex-col justify-between rounded border bg-white p-2 transition-all hover:z-10 hover:shadow-md hover:backdrop-blur-sm">
+                            <li
+                                class=" z-0 flex flex-col justify-between rounded border bg-white p-2 transition-all hover:z-10 hover:shadow-md hover:backdrop-blur-sm"
+                                data-id={font.id}
+                            >
                                 <span class="mb-2 border-b pb-2 text-2xl text-rose-400">
                                     {font.name}
                                 </span>
