@@ -12,7 +12,6 @@ export const getFontReporter = (font: string, fileName: string) => {
             .catch((e) => {
                 console.log(item);
                 throw new Error(e);
-                return;
             });
         cache.set(tag, p);
         return p;

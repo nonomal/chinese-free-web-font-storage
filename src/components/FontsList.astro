@@ -1,35 +1,8 @@
 ---
-import Index from '../../index.json';
-import { AddFont } from '../components/Feedback/AddFont';
 import { FontShow } from '../components/Home/FontShow';
 import { __CDN__ } from '../global';
-import { ensureFontMessageString } from '../utils/ensureFontMessageString';
-import { getFontReporter } from '../utils/getFontReporter';
-const list = await Promise.all(
-    Object.entries(Index)
-        .map(([id, value]) => {
-            return { ...value, id };
-        })
-        .reverse()
-        .map(async (i) => {
-            const remotePath = await Promise.all(
-                i.remotePath.map(async (remote) => {
-                    const font_name = remote.match(/dist\/(.*?)\/result/)![1];
-                    const fileName = font_name!
-                        .replaceAll(' ', '_')
-                        // 更换文件夹中的 . 为 _
-                        .replace(/(?<=\/.*)\.(?=.*\/)/g, '_');
-                    const reporter = await getFontReporter(i.id, fileName);
-                    const message = reporter.message.windows ?? reporter.message;
-                    const style = `font-family:'${ensureFontMessageString(
-                        message.fontFamily
-                    )}';font-weight:'${ensureFontMessageString(message.fontSubFamily)}'`;
-                    return { url: remote, style };
-                })
-            );
-            return { ...i, remotePath };
-        })
-);
+import { getFileListIndex, sortFontListByRemoteCount } from '../api/fontListIndex';
+const list = await getFileListIndex();
 ---
 
 <section
@@ -98,6 +71,36 @@ const list = await Promise.all(
             opacity: 0;
             transform: translate(0, -30%);
         }
+        #font-list-ul {
+            [data-index] {
+                position: relative;
+                border-color: #e8b9b9;
+                &::before {
+                    content: '热门';
+                    position: absolute;
+                    bottom: 4px;
+                    left: 4px;
+                    font-weight: 800;
+                    color: #d31746;
+                }
+            }
+            & > :nth-child(1),
+            & > :nth-child(2),
+            & > :nth-child(3),
+            & > :nth-child(4),
+            & > :nth-child(5),
+            & > :nth-child(6) {
+                border-color: #a3d0ca;
+                &::before {
+                    content: '新品';
+                    position: absolute;
+                    bottom: 4px;
+                    left: 4px;
+                    font-weight: 800;
+                    color: #13b4a1;
+                }
+            }
+        }
     </style>
     <nav
         id="fonts-wrapper"
@@ -109,7 +112,10 @@ const list = await Promise.all(
         <nav
             class="flex-1 md:flex-[2] xl:flex-[4] h-full overflow-scroll rounded-lg overflow-x-hidden py-4"
         >
-            <ul class="font-parent grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            <ul
+                id="font-list-ul"
+                class="font-parent grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"
+            >
                 {
                     list.map((item) => {
                         return item.remotePath.map(({ url: remote, style }) => {
@@ -117,7 +123,8 @@ const list = await Promise.all(
                             return (
                                 <li
                                     class="relative flex-wrap overflow-hidden rounded-md border bg-white p-2 transition-colors hover:bg-neutral-100"
-                                    id={'fonts-' + item.name}>
+                                    id={'fonts-' + item.name}
+                                    data-id={item.id}>
                                     <a
                                         class="display-font-show-hover"
                                         href={`/fonts/${item.id}/${name}`}
@@ -147,5 +154,10 @@ const list = await Promise.all(
                 }
             </ul>
         </nav>
+        <script>
+            import { sortFontListByRemoteCount } from '../api/fontListIndex.ts';
+            // 重排数据
+            sortFontListByRemoteCount(document.getElementById('font-list'));
+        </script>
     </nav>
 </section>
