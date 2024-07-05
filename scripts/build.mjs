@@ -66,6 +66,11 @@ for (const iterator of packages) {
             testHTML: true,
             previewImage: {},
             threads: {},
+            logger: {
+                settings: {
+                    minLevel: 4,
+                },
+            },
         });
     }
 
