@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "new": "plop",
-        "build": "node ./scripts/build.mjs",
+        "build": "export NAPI_RS_FORCE_WASI=true && node ./scripts/build.mjs",
         "build:cdn": "node ./scripts/createIndex.mjs && node ./scripts/build.mjs --mode=rebuild && node ./scripts/moveFile.mjs",
         "index": "node ./scripts/createIndex.mjs",
         "test": "node ./scripts/build.mjs --mode=check",
@@ -15,6 +15,7 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@napi-rs/woff-build-wasm32-wasi": "^0.2.0",
         "fs-extra": "^10.1.0",
         "md5": "^2.3.0",
         "plop": "^3.1.2",
