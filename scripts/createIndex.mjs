@@ -14,7 +14,7 @@ const data = Object.fromEntries(
                     .basename(nation, extName)
                     .replaceAll(" ", "_")
                     // 更换文件夹中的 . 为 _
-                    .replace(/(?<=\/.*)\.(?=.*\/)/g, "_");
+                    .replaceAll(".", "_");
             return {
                 path: basePath + "/result.css",
                 css: fs.readJSONSync("./" + basePath + "/reporter.json").css,

@@ -59,7 +59,7 @@ for (const iterator of packages) {
             .replaceAll(" ", "_")
             .replace(/\.\w+$/, "")
             // 更换文件夹中的 . 为 _
-            .replace(/(?<=\/.*)\.(?=.*\/)/g, "_")}`;
+            .replaceAll(".", "_")}`;
         await fse.emptydir(dest);
         /** 计算构建时间 */
         await fontSplit({

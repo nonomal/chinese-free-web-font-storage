@@ -22,7 +22,7 @@
         fetch('./index.json').then(res => res.json()).then(res => {
             console.log(res)
             return Object.entries(res).flatMap(([key, val]) => {
-                return val.remotePath.map(i => {
+                return val.remotePath.map(({ path: i }) => {
                     return './' + i
                 })
             })
