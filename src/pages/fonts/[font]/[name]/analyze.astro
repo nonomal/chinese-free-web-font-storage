@@ -5,7 +5,7 @@ import { getFontReporter } from '../../../../utils/getFontReporter';
 import FontCoverage from '../../../../components/fontDisplay/FontCoverage.astro';
 export function getStaticPaths() {
     return Object.entries(data).flatMap(([key, val]) => {
-        return val.remotePath.map((remote) => {
+        return val.remotePath.map(({ path: remote }) => {
             const [_, name] = remote.match(/dist\/(.*?)\/result/)!;
             return { params: { font: key, name } };
         });
@@ -27,21 +27,23 @@ const reporter = await getFontReporter(font!, fileName);
         <table class="my-4">
             <tbody>
                 {
-                    Object.entries(reporter.message.windows ?? reporter.message).map(([key, val]) => {
-                        return (
-                            <tr class=" transition-colors hover:bg-white">
-                                <td class="px-4 text-sky-600">{key}</td>
-                                {typeof val === 'string' ? (
-                                    <td class="select-text px-4 py-1 text-sm">{val}</td>
-                                ) : (
-                                    <>
-                                        <td class="select-text px-4 py-1 text-sm">{val.en}</td>
-                                        <td class="select-text px-4 py-1 text-sm">{val.cn}</td>
-                                    </>
-                                )}
-                            </tr>
-                        );
-                    })
+                    Object.entries(reporter.message.windows ?? reporter.message).map(
+                        ([key, val]) => {
+                            return (
+                                <tr class=" transition-colors hover:bg-white">
+                                    <td class="px-4 text-sky-600">{key}</td>
+                                    {typeof val === 'string' ? (
+                                        <td class="select-text px-4 py-1 text-sm">{val}</td>
+                                    ) : (
+                                        <>
+                                            <td class="select-text px-4 py-1 text-sm">{val.en}</td>
+                                            <td class="select-text px-4 py-1 text-sm">{val.cn}</td>
+                                        </>
+                                    )}
+                                </tr>
+                            );
+                        }
+                    )
                 }
             </tbody>
         </table>

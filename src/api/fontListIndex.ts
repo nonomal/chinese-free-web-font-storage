@@ -1,6 +1,5 @@
 import { fetchEventSource } from '@microsoft/fetch-event-source';
 import Index from '../../index.json';
-import { getFontReporter } from '../utils/getFontReporter';
 
 export const getFileListIndex = async () =>
     await Promise.all(
@@ -11,15 +10,8 @@ export const getFileListIndex = async () =>
             .reverse()
             .map(async (i) => {
                 const remotePath = await Promise.all(
-                    i.remotePath.map(async (remote) => {
-                        const font_name = remote.match(/dist\/(.*?)\/result/)![1];
-                        const fileName = font_name!
-                            .replaceAll(' ', '_')
-                            // 更换文件夹中的 . 为 _
-                            .replace(/(?<=\/.*)\.(?=.*\/)/g, '_');
-                        const reporter = await getFontReporter(i.id, fileName);
-                        const message = reporter.css;
-                        const style = `font-family:'${message.family}';font-weight:'${message.weight}'`;
+                    i.remotePath.map(async ({ path: remote, css }) => {
+                        const style = `font-family:'${css.family}';font-weight:'${css.weight}'`;
                         return { url: remote, style };
                     })
                 );

@@ -1,35 +1,30 @@
 ---
 import Layout from './Layout.astro';
-import { getFontReporter } from '../utils/getFontReporter';
 import { __CDN__ } from '../global';
-import { ensureFontMessageString } from '../utils/ensureFontMessageString';
 import Index from '../../index.json';
 export interface Props {
     font: string;
     font_name: string;
 }
 const { font, font_name } = Astro.props;
-const fileName = font_name!
-    .replaceAll(' ', '_')
-    // 更换文件夹中的 . 为 _
-    .replace(/(?<=\/.*)\.(?=.*\/)/g, '_');
-const reporter = await getFontReporter(font, fileName);
-const message = reporter.message.windows ?? reporter.message;
-const style = `font-family:'${ensureFontMessageString(
-    message.fontFamily
-)}';font-weight:'${ensureFontMessageString(message.fontSubFamily)}'`;
+
+const css = Index[font as keyof typeof Index].remotePath.find((i) =>
+    i.path.includes(font_name)
+)?.css;
+const style = `font-family:'${css?.family}';font-weight:'${css?.weight}'`;
 
 const root = `/fonts/${font}/${font_name}/`;
 const font_name_cn = (Index as Record<string, { name: string }>)[font]?.name;
 ---
 
 <Layout
-    defaultFontCSS={__CDN__ + `/packages/${font}/dist/${fileName}/result.css`}
-    title={font_name_cn + ' 免费前端开发在线使用部署字体 | ' + font_name + ' | 中文网字计划'}
-    description={font_name_cn + '是一款精美的在线字体，可通过CSS Web引用直接使用。提供多种字体样式和设计，让您的网站更加独特和吸引人。快来体验AAA在线字体，为您的网站增添无限魅力。'}
+    defaultFontCSS={__CDN__ + `/packages/${font}/dist/${font_name}/result.css`}
+    title={font_name_cn + ' 免费前端开发在线使用部署字体 | ' + font_name_cn + ' | 中文网字计划'}
+    description={font_name_cn +
+        '是一款精美的在线字体，可通过CSS Web引用直接使用。提供多种字体样式和设计，让您的网站更加独特和吸引人。快来体验AAA在线字体，为您的网站增添无限魅力。'}
     style={style}
     keywords={font_name_cn}
-    image={__CDN__ + `/packages/${font}/dist/${fileName}/preview.svg`}
+    image={__CDN__ + `/packages/${font}/dist/${font_name}/preview.svg`}
 >
     <section class="grid grid-cols-6 lg:grid-cols-12 gap-4 p-4 lg:max-w-6xl lg:m-auto">
         <header class="p-4 col-span-full items-center flex flex-wrap justify-between">
@@ -49,9 +44,7 @@ const font_name_cn = (Index as Record<string, { name: string }>)[font]?.name;
                         },
                         {
                             name: '文章测试',
-                            link: `/heti.html?font=${font}&name=${font_name}&family=${ensureFontMessageString(
-                                message.fontFamily
-                            )}&subFamily=${ensureFontMessageString(message.fontSubFamily)}`,
+                            link: `/heti.html?font=${font}&name=${font_name}&family=${css?.family}&subFamily=${css?.weight}`,
                         },
                         {
                             name: 'Github',
@@ -61,8 +54,7 @@ const font_name_cn = (Index as Record<string, { name: string }>)[font]?.name;
                         return (
                             <a
                                 href={i.link}
-                                class="rounded-lg px-2  py-1    transition-colors  duration-300 "
-                            >
+                                class="rounded-lg px-2  py-1    transition-colors  duration-300 ">
                                 {i.name}
                             </a>
                         );

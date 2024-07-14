@@ -8,7 +8,7 @@
         "start": "astro dev",
         "build": "pnpm index && astro build",
         "preview": "astro preview",
-        "index": "curl https://raw.githubusercontent.com/KonghaYao/chinese-free-web-font-storage/branch/index.json -o index.json",
+        "index": "curl https://chinese-fonts-cdn.netlify.app/index.json -o index.json",
         "astro": "astro"
     },
     "license": "MIT",

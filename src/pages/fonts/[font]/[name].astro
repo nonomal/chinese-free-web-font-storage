@@ -8,7 +8,7 @@ import { BundleSizeAnalyze } from '../../../components/fontDisplay/BundleSizeAna
 import { BundleContrast } from '../../../components/fontDisplay/BundleContrast';
 export function getStaticPaths() {
     return Object.entries(data).flatMap(([key, val]) => {
-        return val.remotePath.map((remote) => {
+        return val.remotePath.map(({ path: remote }) => {
             const [_, name] = remote.match(/dist\/(.*?)\/result/)!;
             return { params: { font: key, name } };
         });

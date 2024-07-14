@@ -90,7 +90,7 @@ const SearchBox = () => {
                 .flatMap(([key, val]) => {
                     return {
                         name: val.name,
-                        fonts: val.remotePath.map((remote) => {
+                        fonts: val.remotePath.map(({path:remote,css}) => {
                             const [_, name] = remote.match(/dist\/(.*?)\/result/)!;
                             const pic = remote.replace('result.css', 'preview.svg');
                             return {
