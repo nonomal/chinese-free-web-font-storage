@@ -1,6 +1,6 @@
 {
     "name": "@chinese-fonts/index",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "中文网字计划的项目索引文件",
     "files": [],
     "main": "index.json",
@@ -22,14 +22,13 @@
         "fs-extra": "^10.1.0",
         "md5": "^2.3.0",
         "plop": "^3.1.2",
-        "semver": "^7.6.2"
-    },
-    "dependencies": {
-        "cn-font-split": "^5.0.0",
+        "semver": "^7.6.2",
+        "cn-font-split": "^5.0.1",
         "dotenv": "^16.4.5",
         "glob": "^10.4.1",
         "imagekit": "^5.0.1",
         "mri": "^1.2.0",
         "p-limit": "^4.0.0"
-    }
+    },
+    "dependencies": {}
 }
