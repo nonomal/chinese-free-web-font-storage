@@ -25,7 +25,6 @@ const data = Object.fromEntries(
             en,
             {
                 name: cn,
-                path,
                 remotePath: path,
             },
         ];
