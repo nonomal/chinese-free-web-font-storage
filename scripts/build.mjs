@@ -56,8 +56,12 @@ for (const iterator of packages) {
     for (const name of fontsName) {
         const dest = `./packages/${iterator}/dist/${path
             .basename(name)
-            .replace(/\.\w+$/, "")}`;
+            .replaceAll(" ", "_")
+            .replace(/\.\w+$/, "")
+            // 更换文件夹中的 . 为 _
+            .replace(/(?<=\/.*)\.(?=.*\/)/g, "_")}`;
         await fse.emptydir(dest);
+        /** 计算构建时间 */
         await fontSplit({
             FontPath: `./packages/${iterator}/fonts/${name}`,
             destFold: dest,
