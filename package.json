@@ -1,6 +1,6 @@
 {
     "name": "@chinese-fonts/index",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "中文网字计划的项目索引文件",
     "files": [],
     "main": "index.json",
