@@ -15,9 +15,16 @@ export const CDNHeader = () => {
                 <a href="/online-split" class="hidden sm:block">
                     字体分包
                 </a>
+
                 <a href="/article">文章</a>
-                <a href="https://github.com/KonghaYao/chinese-free-web-font-storage"
-                    target="_blank" class="more-button relative overflow-visible">
+                <a href="/issues" class="hidden  sm:block">
+                    反馈
+                </a>
+                <a
+                    href="https://github.com/KonghaYao/chinese-free-web-font-storage"
+                    target="_blank"
+                    class="more-button relative overflow-visible"
+                >
                     <button>Github</button>
                 </a>
             </nav>
