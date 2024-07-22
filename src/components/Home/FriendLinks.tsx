@@ -1,6 +1,6 @@
 import GoogleFont from '../../assets/logo/GoogleFont.svg?url';
 import Netlify from '../../assets/logo/Netlify.svg?url';
-import FontSource from '../../assets/logo/FontSource.svg?url';
+import FontSource from '../../assets/logo/Fontsource.svg?url';
 import Deno from '../../assets/logo/Deno.svg?url';
 interface FriendLink {
     name: string;
