@@ -4,14 +4,23 @@ description: 这篇文章将介绍中文网字计划使用的 CDN 使用情况
 article:
     authors:
         - 江夏尧
-    section: 技术内幕
+    section: 维护日志
     tags:
-        - 性能优化
+        - CDN
     pubDate: 2024-6-19
     image: 'https://ik.imagekit.io/chinesefonts/tr:w-1200/image/photo-1508804185872-d7badad00f7d.jfif'
 ---
 
 # 【数据分析】CDN 性能概况
+
+## 2024 年 7 月 - CDN 分发网关优化
+
+1. Cloudflare Page 和 Render 的免费静态部署有并发限制，导致加载字体时容易导致卡屏
+2. 架构底层 CDN 更改为 ImageKit, 它的服务商为 AWS，没有并发限制。
+3. 横向扩容 CDN 服务账号，全部 CDN 账号通过 HTTP Proxy 指向 chinese-fonts-cdn 源站。
+4. 0622-0722 网关日志 135K 使用量，两个 CDN 逼近极限，扩容至 6 个。
+5. 最多使用的还是那个哔咔漫画和它的多个影分身，2333。
+6. 需要一个更详细的全链路监控系统。
 
 ## 2024 年 6 月 - CDN 分发网关设计
 

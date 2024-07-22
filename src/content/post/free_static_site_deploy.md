@@ -5,7 +5,7 @@ description: 获取多个服务商提供的免费静态资源部署服务
 article:
     authors:
         - 江夏尧
-    section: 技术内幕
+    section: 维护日志
     pubDate: 2024-6-16
     image: ''
 ---

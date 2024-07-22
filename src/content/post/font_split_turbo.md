@@ -1,7 +1,7 @@
 ---
 index: 20
-title: 字体分包性能优化
-description: 这篇文章将介绍 cn-font-split 在 4.0 版本中的各项性能优化
+title: 字体分包性能优化：多线程与 WebAssembly 的完美结合
+description: 在 4.0 版本中，cn-font-split 通过多线程和 WebAssembly 技术将字体分包时间从 19s 缩短至 5s，实现了跨平台兼容。了解我们如何利用 Harfbuzz（WASM）和多线程优化提升性能，探索 Nodejs、Deno、Browser 的兼容性解决方案。
 article:
     authors:
         - 江夏尧
@@ -12,7 +12,7 @@ article:
     image: 'https://ik.imagekit.io/chinesefonts/tr:w-1200/image/photo-1508804185872-d7badad00f7d.jfif'
 ---
 
-# 字体分包性能优化
+# 字体分包性能优化：多线程与 WebAssembly 的完美结合
 
 在 4.0 版本中，我们采用了多线程和基于 WebAssembly 的插件，使得我们的分包时间从原先的 19s 缩减到了 5s，并且通过一些特殊操作实现了跨平台通用。那么我们是如何实现这一些功能的呢？
 
