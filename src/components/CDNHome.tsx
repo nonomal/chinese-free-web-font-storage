@@ -60,15 +60,17 @@ export const CDNHome = () => {
     );
 };
 
+import Deno from '../assets/logo/Deno.svg?url';
+import Netlify from '../assets/logo/Netlify.svg?url';
 function ServerLink() {
     return (
         <div class="mb-12 flex h-10 justify-center gap-6 ">
             <div class="col-span-2">服务提供商 | 量大管饱</div>
             <a href="https://deno.com/deploy" class="flex h-full flex-none " target="_blank">
-                <img src="/src/assets/logo/deno.svg" alt="deno logo"></img>
+                <img src={Deno} alt="deno logo"></img>
             </a>
             <a href="https://netlify.com/" class="flex h-full flex-none" target="_blank">
-                <img src="/src/assets/logo/Netlify.svg" alt="netlify logo"></img>
+                <img src={Netlify} alt="netlify logo"></img>
             </a>
             <a href="https://imagekit.io" class="flex h-full flex-none" target="_blank">
                 <img class="scale-75" src="/brand/imagekit.svg" alt="imagekit logo"></img>
