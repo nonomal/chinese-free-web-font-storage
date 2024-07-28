@@ -1,7 +1,7 @@
 import { DebounceAtom, NullAtom, atom, reflect } from '@cn-ui/reactive';
 import { VModel } from '../utils/VModel';
 import { CountUp } from 'countup.js/src/countUp';
-import './CDNHome.css';
+import './CDNHome.less';
 export const CDNHome = () => {
     const hotCDNs = useHotCDN();
     createEffect(() => {
@@ -62,11 +62,17 @@ export const CDNHome = () => {
 
 function ServerLink() {
     return (
-        <div class="my-12 flex h-10 justify-center gap-12">
-            <div>服务提供商 | 量大管饱</div>
-            <img src="/brand/cloudflare.svg" alt="cloudflare logo"></img>
-            <img src="/brand/render.svg" alt="render logo"></img>
-            <img src="/brand/imagekit.svg" alt="imagekit logo"></img>
+        <div class="mb-12 flex h-10 justify-center gap-6 ">
+            <div class="col-span-2">服务提供商 | 量大管饱</div>
+            <a href="https://deno.com/deploy" class="flex h-full flex-none " target="_blank">
+                <img src="/src/assets/logo/deno.svg" alt="deno logo"></img>
+            </a>
+            <a href="https://netlify.com/" class="flex h-full flex-none" target="_blank">
+                <img src="/src/assets/logo/Netlify.svg" alt="netlify logo"></img>
+            </a>
+            <a href="https://imagekit.io" class="flex h-full flex-none" target="_blank">
+                <img class="scale-75" src="/brand/imagekit.svg" alt="imagekit logo"></img>
+            </a>
         </div>
     );
 }
@@ -90,7 +96,7 @@ const SearchBox = () => {
                 .flatMap(([key, val]) => {
                     return {
                         name: val.name,
-                        fonts: val.remotePath.map(({path:remote,css}) => {
+                        fonts: val.remotePath.map(({ path: remote, css }) => {
                             const [_, name] = remote.match(/dist\/(.*?)\/result/)!;
                             const pic = remote.replace('result.css', 'preview.svg');
                             return {

@@ -21,6 +21,7 @@
         "autoprefixer": "^10.4.15",
         "cn-font-metrics": "^1.1.4",
         "cn-font-split": "^4.14.0",
+        "less": "^4.2.0",
         "node-fetch": "^3.3.2",
         "prettier": "^2.8.8",
         "prettier-plugin-astro": "^0.9.1",

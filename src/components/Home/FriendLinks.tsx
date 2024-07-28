@@ -68,7 +68,7 @@ export const FriendLinks = () => {
                         >
                             <div class=" text-center text-lg">{item.name}</div>
                             <img
-                                class="h-16"
+                                class="h-16 object-contain"
                                 src={item.avatar}
                                 alt={item.name + ' 的 icon'}
                                 loading="lazy"

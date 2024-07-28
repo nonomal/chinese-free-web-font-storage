@@ -32,15 +32,19 @@ export const sortFontListByRemoteCount = (container?: any) => {
                 onclose() {
                     hotLink
                         .sort((a, b) => b.value - a.value)
-                        .filter((i) => i.value >= 400)
                         .forEach((item, index, arr) => {
                             const doms = container.querySelectorAll(
                                 `[data-id=${item.key[item.key.length - 1]}]`
                             ) as any as HTMLElement[];
                             doms.forEach((dom) => {
-                                dom!.style.order = `-${arr.length - index}`;
-                                dom!.dataset.index = `${index}`;
+                                dom.dataset.count = item.value.toString();
                             });
+                            if (index <= 5) {
+                                doms.forEach((dom) => {
+                                    dom!.style.order = `-${arr.length - index}`;
+                                    dom!.dataset.index = `${index}`;
+                                });
+                            }
                         });
                 },
             }
