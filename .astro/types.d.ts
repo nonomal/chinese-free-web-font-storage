@@ -197,6 +197,13 @@ declare module 'astro:content' {
   collection: "post";
   data: any
 } & { render(): Render[".md"] };
+"deployment-architecture-of-zi-tu-cdn.md": {
+	id: "deployment-architecture-of-zi-tu-cdn.md";
+  slug: "deployment-architecture-of-zi-tu-cdn";
+  body: string;
+  collection: "post";
+  data: any
+} & { render(): Render[".md"] };
 "font_split_turbo.md": {
 	id: "font_split_turbo.md";
   slug: "font_split_turbo";
@@ -228,6 +235,13 @@ declare module 'astro:content' {
 "performace_turbo.md": {
 	id: "performace_turbo.md";
   slug: "performace_turbo";
+  body: string;
+  collection: "post";
+  data: any
+} & { render(): Render[".md"] };
+"prompt_for_article.md": {
+	id: "prompt_for_article.md";
+  slug: "prompt_for_article";
   body: string;
   collection: "post";
   data: any
