@@ -54,7 +54,7 @@ const links = [
 ] as FriendLink[];
 export const FriendLinks = () => {
     return (
-        <section style='font-family:"LXGW WenKai"'>
+        <section style='font-family:"LXGW WenKai"' id="friend-links">
             <h2 class=" mb-6 mt-24 text-center text-4xl">网站推荐</h2>
             <h3 class=" mb-12 text-center text-xl text-neutral-400">
                 中文网字计划的诞生与发展皆离不开这些同行者

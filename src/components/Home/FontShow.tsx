@@ -28,6 +28,10 @@ export const FontShow = () => {
             (dom) => {
                 dom.addEventListener('mouseover', (i) => {
                     originFont(() => ({ url: dom.dataset.src!, style: dom.dataset.style! }));
+                    const el = document.getElementById('font-list');
+                    const els = document.getElementById('friend-links');
+                    if (el) (el as any).style = dom.dataset.style;
+                    if (els) (els as any).style = dom.dataset.style;
                 });
             }
         );

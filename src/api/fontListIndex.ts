@@ -29,23 +29,24 @@ export const sortFontListByRemoteCount = (container?: any) => {
                 onmessage(e) {
                     hotLink.push(JSON.parse(e.data));
                 },
+                onerror(err) {
+                    throw err;
+                },
                 onclose() {
                     hotLink
                         .sort((a, b) => b.value - a.value)
+                        .slice(0, 6)
                         .forEach((item, index, arr) => {
                             const doms = container.querySelectorAll(
                                 `[data-id=${item.key[item.key.length - 1]}]`
                             ) as any as HTMLElement[];
                             doms.forEach((dom) => {
                                 dom.dataset.count = item.value.toString();
+                                dom!.style.order = `-${arr.length - index}`;
+                                dom!.dataset.index = `${index}`;
                             });
-                            if (index <= 5) {
-                                doms.forEach((dom) => {
-                                    dom!.style.order = `-${arr.length - index}`;
-                                    dom!.dataset.index = `${index}`;
-                                });
-                            }
                         });
+                    resolve(null);
                 },
             }
         );

@@ -13,6 +13,10 @@ export const useHotCDN = () => {
                 onmessage(e) {
                     hotSubCDN((i) => [...i, JSON.parse(e.data)]);
                 },
+
+                onerror(err) {
+                    throw err;
+                },
             }
         );
     });
