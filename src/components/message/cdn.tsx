@@ -219,7 +219,9 @@ export type ImageKitAnalyzeData = {
 
 export const CDNAnalyze = () => {
     const data = resource<ImageKitAnalyzeData[]>(() => {
-        return fetch('https://cache-api.deno.dev?url=https://imagekit-analyze.deno.dev')
+        return fetch(
+            'https://cache-api.deno.dev/index.js?url=https://imagekit-analyze.deno.dev/index.js'
+        )
             .then((res) => res.json())
             .then((res) => res.filter(Boolean));
     });
