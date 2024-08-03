@@ -1,27 +1,8 @@
-import { resource, atom, computed } from '@cn-ui/reactive';
+import { resource, computed } from '@cn-ui/reactive';
 import { Show, type JSX } from 'solid-js';
 import { ECharts } from '../fontDisplay/ECharts';
 import prettyBytes from 'pretty-bytes';
-import { fetchEventSource } from '@microsoft/fetch-event-source';
 
-export const useHotCDN = () => {
-    const hotSubCDN = atom<{ key: string[]; value: number }[]>([]);
-    resource(() => {
-        return fetchEventSource(
-            'https://cache-api.deno.dev?url=https://chinese-fonts-cdn.deno.dev/v1/deno-kv?get=["records","hit_cdn"]',
-            {
-                onmessage(e) {
-                    hotSubCDN((i) => [...i, JSON.parse(e.data)]);
-                },
-
-                onerror(err) {
-                    throw err;
-                },
-            }
-        );
-    });
-    return hotSubCDN;
-};
 export type ImageKitAnalyzeData = {
     name: string;
     count: number;
@@ -317,7 +298,7 @@ function Table<T>(props: {
 }
 
 import worldJSON from './datamaps.world.json';
-import { echarts } from '../fontDisplay/registerEcharts';
+import * as echarts from 'echarts/core';
 import { MapChart } from 'echarts/charts';
 import { VisualMapComponent } from 'echarts/components';
 echarts.use([MapChart]);

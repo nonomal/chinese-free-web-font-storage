@@ -75,6 +75,9 @@ function ServerLink() {
             <a href="https://imagekit.io" class="flex h-full flex-none" target="_blank">
                 <img class="scale-75" src="/brand/imagekit.svg" alt="imagekit logo"></img>
             </a>
+            <a href="/message/cdn" class="col-span-2">
+                | 服务器数据分析
+            </a>
         </div>
     );
 }
@@ -84,7 +87,7 @@ import { __CDN__ } from '../global';
 import { Show, createEffect, onMount } from 'solid-js';
 import copy from 'copy-to-clipboard';
 import { Notice } from '../Notice';
-import { useHotCDN } from './message/cdn';
+import { useHotCDN } from './message/useHotCDN';
 import { sortFontListByRemoteCount } from '../api/fontListIndex';
 const SearchBox = () => {
     const search = atom('');
