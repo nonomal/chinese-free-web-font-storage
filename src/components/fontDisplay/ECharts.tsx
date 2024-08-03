@@ -18,6 +18,7 @@ const renderSVGChart = async (reporter: EChartsCoreOption, dom: HTMLElement | nu
 export const ECharts = (props: {
     options: EChartsCoreOption;
     onReady?: (chart: _ECharts) => void;
+    height?: string;
 }) => {
     const dom = atom<HTMLElement | null>(null);
     const info = {} as { innerHTML?: string };
@@ -31,7 +32,7 @@ export const ECharts = (props: {
             myChart = await renderSVGChart(props.options, dom());
             setTimeout(() => {
                 myChart.resize({
-                    height: 400,
+                    height: props.height ? parseInt(props.height) : 400,
                     width: 'auto',
                 });
             }, 0);
@@ -44,8 +45,8 @@ export const ECharts = (props: {
     return (
         <div
             ref={dom}
-            class="m-auto flex w-full max-w-2xl items-center justify-center rounded-xl bg-white"
-            style={{ height: '400px' }}
+            class="m-auto flex w-full items-center justify-center rounded-xl bg-white"
+            style={{ height: props.height ?? '400px' }}
             {...info}
         ></div>
     );

@@ -1,5 +1,5 @@
-import { resource, atom } from '@cn-ui/reactive';
-import { Show } from 'solid-js';
+import { resource, atom, computed } from '@cn-ui/reactive';
+import { Show, type JSX } from 'solid-js';
 import { ECharts } from '../fontDisplay/ECharts';
 import prettyBytes from 'pretty-bytes';
 import { fetchEventSource } from '@microsoft/fetch-event-source';
@@ -223,6 +223,22 @@ export const CDNAnalyze = () => {
             .then((res) => res.json())
             .then((res) => res.filter(Boolean));
     });
+    const combineReferer = computed(() => {
+        if (!data()) return [];
+        const mapper = new Map<string, { name: string; count: number; bandwidth: number }>();
+        data().forEach((i) => {
+            return i.referral.items.map((j) => {
+                if (mapper.has(j.name)) {
+                    const old = mapper.get(j.name)!;
+                    old.bandwidth += j.bandwidth;
+                    old.count += j.count;
+                } else {
+                    mapper.set(j.name, j);
+                }
+            });
+        });
+        return [...mapper.values()].sort((a, b) => b.bandwidth - a.bandwidth);
+    });
     return (
         <>
             <h2 class=" my-12 text-center text-3xl leading-9">中文网字计划 CDN 分析（近三天）</h2>
@@ -239,11 +255,203 @@ export const CDNAnalyze = () => {
                     ></PieChart>
                     <LineChart data={data()} key={'bandwidth'} title="请求曲线图"></LineChart>
                     <ErrorChart data={data()}></ErrorChart>
+                    <section class="max-h-96 overflow-scroll bg-white p-4">
+                        <Table
+                            data={combineReferer()}
+                            render={{
+                                name: (value) => (
+                                    <a href={'https://' + value} target="_blank">
+                                        {value}
+                                    </a>
+                                ),
+                                count: (value) => <>{value}</>,
+                                bandwidth: (value) => <>{prettyBytes(value)}</>,
+                            }}
+                        ></Table>
+                    </section>
+                    <CacheRate data={data()}></CacheRate>
+                    <section class="col-span-2 row-span-2">
+                        <GlobalMap data={data()}></GlobalMap>
+                    </section>
                 </section>
+                <div class="h-24"></div>
             </Show>
         </>
     );
 };
+
+// 一个 table 表格，自动解析 props.data 的属性并渲染
+function Table<T>(props: {
+    data: T[];
+    render?: Partial<{
+        [key in keyof T]: (value: T[key]) => JSX.Element;
+    }>;
+}) {
+    // 获取所有列名
+    const columnNames = computed(() => Object.keys(props.data[0] ?? {}));
+    const renderToDom = (value: any, render: any): any => {
+        return render?.(value) ?? value;
+    };
+    return (
+        <table class="font-sans">
+            <thead>
+                <tr>
+                    {columnNames().map((columnName) => (
+                        <th>{columnName}</th>
+                    ))}
+                </tr>
+            </thead>
+            <tbody>
+                {props.data.map((item) => (
+                    <tr>
+                        {columnNames().map((columnName) => (
+                            <td>{renderToDom(item[columnName], props.render?.[columnName])}</td>
+                        ))}
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    );
+}
+
+import worldJSON from './datamaps.world.json';
+import { echarts } from '../fontDisplay/registerEcharts';
+import { MapChart } from 'echarts/charts';
+import { VisualMapComponent } from 'echarts/components';
+echarts.use([MapChart]);
+echarts.registerMap('Global', worldJSON as any);
+echarts.use([VisualMapComponent]);
+function GlobalMap(props: { data: ImageKitAnalyzeData[] }) {
+    // const data = computed(() => {
+    //     const dataMap = new Map<string, { name: string; code: string; count: number }>();
+    //     props.data.forEach((i) => {
+    //         i.country.items.forEach((country) => {
+    //             const name = nameMapper(country.name || 'China')
+    //             country.name = name
+    //             if (dataMap.has(name)) {
+    //                 const old = dataMap.get(name)!;
+    //                 old.count += country.count;
+    //             } else {
+    //                 dataMap.set(name, country as any);
+    //             }
+    //         });
+    //     });
+    //     return [...dataMap.values()];
+    // });
+    const mapper = {
+        'USA (LA)': 'United States of America',
+        UK: 'United Kingdom',
+        Taiwan: 'China',
+        Kong: 'China',
+    };
+    const nameMapper = (name: string) => {
+        return mapper[name] ?? name;
+    };
+    return (
+        <ECharts
+            height="800px"
+            options={{
+                title: {
+                    text: '全球访问',
+                },
+                visualMap: {
+                    left: 'right',
+                    min: 1000,
+                    max: props.data.length * 6000,
+                    inRange: {
+                        color: [
+                            '#66B3FF',
+                            '#99CCFF',
+                            '#CCE6FF',
+                            '#FFCC99',
+                            '#FF9966',
+                            '#FF6633',
+                            '#FF3300',
+                        ],
+                    },
+                    text: ['High', 'Low'],
+                    calculable: true,
+                },
+                tooltip: {
+                    trigger: 'item',
+                    showDelay: 0,
+                    transitionDuration: 0.2,
+                },
+                series: [
+                    {
+                        name: '访问数',
+                        type: 'map',
+                        map: 'Global',
+                        emphasis: {
+                            label: {
+                                show: true,
+                            },
+                        },
+                        data: props.data?.flatMap((server) => {
+                            return server.country.items.map((i) => {
+                                return { name: nameMapper(i.name || 'China'), value: i.count };
+                            });
+                        }),
+                    },
+                ],
+            }}
+        ></ECharts>
+    );
+}
+
+function CacheRate(props: { data: ImageKitAnalyzeData[] }) {
+    const titles = ['Hit', 'Miss', 'Error'];
+    return (
+        <ECharts
+            options={{
+                title: {
+                    text: `缓存率分析`,
+                    left: 'center',
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        // Use axis to trigger tooltip
+                        type: 'shadow', // 'shadow' as default; can also be 'line' or 'shadow'
+                    },
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true,
+                },
+                xAxis: {
+                    type: 'value',
+                },
+                yAxis: {
+                    type: 'category',
+                    data: props.data.map((i) => i.name),
+                },
+                series: titles.map((i) => {
+                    return {
+                        name: i,
+                        type: 'bar',
+                        stack: 'total',
+                        label: {
+                            show: true,
+                            formatter: (params: { value: number }) =>
+                                Math.round(params.value * 1000) / 10 + '%',
+                        },
+                        emphasis: {
+                            focus: 'series',
+                        },
+                        data: props.data.map(
+                            (row) =>
+                                (row.resultType.find((ii) => ii.name === i)?.count ?? 0) /
+                                row.resultType.reduce((a, b) => a + b.count, 0)
+                        ),
+                    };
+                }),
+            }}
+        />
+    );
+}
 
 function ErrorChart(props: { data: ImageKitAnalyzeData[]; format?: (a: number) => string }) {
     const table = props.data.map((i) => {
