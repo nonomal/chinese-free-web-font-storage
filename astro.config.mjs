@@ -5,8 +5,9 @@ import tailwind from '@astrojs/tailwind';
 import robotsTxt from 'astro-robots-txt';
 import compress from 'astro-compress';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
-// import astroRemark from '@astrojs/markdown-remark';
 import { loadEnv } from 'vite';
+
+import netlify from '@astrojs/netlify'
 import font from 'vite-plugin-font';
 const env = loadEnv(import.meta.env.MODE, process.cwd(), '');
 // https://astro.build/config
@@ -14,11 +15,14 @@ export default defineConfig({
     site: 'https://chinese-font.netlify.app',
 
     integrations: [sitemap(), solidJs(), tailwind(), robotsTxt(), compress()],
-    // output: 'server',
-    output: 'static',
+    output: 'hybrid',
+    adapter: netlify({
+        edgeMiddleware: true
+      }),
     vite: {
         optimizeDeps: {
             exclude: ['cn-font-split'],
+            include: ['dayjs/esm/index.js'],
         },
         build: { sourcemap: true },
         plugins: [
@@ -56,7 +60,6 @@ export default defineConfig({
             wrap: true,
         },
         render: [
-            // astroRemark,
             {
                 rehypePlugins: [
                     'rehype-slug',

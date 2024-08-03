@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 console.log('using tailwindcss config');
-module.exports = {
+export default {
     content: ['./{src,demo,gallery,notebook}/**/*.{ts,tsx,astro}'],
     theme: {
         extend: {},

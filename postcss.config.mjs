@@ -1,5 +1,5 @@
 console.log('using postcss config');
-module.exports = {
+export default {
     purge: ['./{src}/**/*.{ts,tsx}'],
     plugins: {
         tailwindcss: {},
