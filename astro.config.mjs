@@ -42,6 +42,7 @@ export default defineConfig({
                         'src/components/AllFooter.astro',
                         'src/components/TechSupport.astro',
                         'src/components/GlobalHeader.astro',
+                        'src/components/Home/FriendLinks.tsx',
                     ],
                     fontExample: [
                         'src/components/PerformanceOfTool.astro',
