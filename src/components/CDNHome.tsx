@@ -109,6 +109,7 @@ const SearchBox = () => {
                                 cdn: remote,
                                 name: val.name,
                                 subName: name,
+                                css,
                                 pic,
                                 id: key,
                             };
@@ -155,40 +156,71 @@ const SearchBox = () => {
             >
                 {items().map((i) => {
                     return i.fonts.map((font) => {
+                        const copied = atom(false);
                         return (
-                            // biome-ignore lint/correctness/useJsxKeyInIterable: <explanation>
-                            <li
-                                class=" z-0 flex flex-col justify-between rounded border bg-white p-2 transition-all hover:z-10 hover:shadow-md hover:backdrop-blur-sm"
-                                data-id={font.id}
-                            >
-                                <span class="mb-2 border-b pb-2 text-2xl text-rose-400">
-                                    {font.name}
-                                </span>
-                                <img loading="lazy" src={`${__CDN__}/${font.pic}`} alt="" />
-                                <span
-                                    title={`https://chinese-fonts-cdn.deno.dev/${font.cdn}`}
-                                    class="flex justify-evenly border-t pt-1 text-xs text-blue-400"
+                            <>
+                                <li
+                                    class=" z-0 flex justify-between rounded border bg-white p-2 transition-all hover:z-10 hover:shadow-md hover:backdrop-blur-sm"
+                                    classList={{
+                                        'col-span-2': copied()
+                                    }}
+                                    data-id={font.id}
                                 >
-                                    <span>{font.subName}</span>
-                                    <span>·</span>
-                                    <span
-                                        class="cursor-pointer text-blue-600 transition-colors"
-                                        onclick={() => {
-                                            copy(`https://chinese-fonts-cdn.deno.dev/${font.cdn}`);
-                                            Notice.success('复制 CDN 地址成功');
-                                        }}
-                                    >
-                                        复制 CSS 地址
-                                    </span>
-                                    <span>·</span>
-                                    <a
-                                        href={font.url}
-                                        class="cursor-pointer transition-colors hover:text-green-600"
-                                    >
-                                        详情
-                                    </a>
-                                </span>
-                            </li>
+                                    <section class='flex-1 flex flex-col justify-between'>
+                                        <span class="mb-2 border-b pb-2 text-2xl text-rose-400">
+                                            {font.name}
+                                        </span>
+                                        <img loading="lazy" src={`${__CDN__}/${font.pic}`} alt="" />
+                                        <span
+                                            title={`https://chinese-fonts-cdn.deno.dev/${font.cdn}`}
+                                            class="flex justify-evenly border-t pt-1 text-xs text-blue-400"
+                                        >
+                                            <span>{font.subName}</span>
+                                            <span>·</span>
+                                            <span
+                                                class="cursor-pointer text-blue-600 transition-colors"
+                                                onclick={() => {
+                                                    copy(`https://chinese-fonts-cdn.deno.dev/${font.cdn}`);
+                                                    Notice.success('复制 CDN 地址成功');
+                                                    copied(true)
+                                                }}
+                                            >
+                                                复制 CSS
+                                            </span>
+                                            <span>·</span>
+                                            <a
+                                                href={font.url}
+                                                class="cursor-pointer transition-colors hover:text-green-600"
+                                            >
+                                                详情
+                                            </a>
+
+                                        </span>
+                                    </section>
+                                    <Show when={copied()}>
+                                        <div class='flex-1 overflow-hidden flex flex-col text-xs text-left gap-1 text-neutral-600 px-2 bg-gray-100' >
+
+                                            <h4>1. 请使用 Link 标签导入 CSS 文件</h4>
+                                            <pre class=' text-wrap select-all bg-gray-200 rounded-md p-1' >
+                                                <code>
+                                                    &lt;{`link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/${font.cdn}' /`}&gt;
+
+                                                </code>
+                                            </pre>
+                                            <h4>2. 请为元素添加 css</h4>
+                                            <pre class='w-full select-all bg-gray-200 rounded-md p-1'>
+                                                <code class='select-all'>
+                                                    {`body {
+    font-family: '${font.css.family}';
+    font-weight: ${font.css.weight};
+};`}
+                                                </code>
+                                            </pre>
+                                        </div>
+                                    </Show>
+                                </li>
+
+                            </>
                         );
                     });
                 })}

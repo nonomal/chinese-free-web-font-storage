@@ -7,7 +7,7 @@ export default  {
     useTabs: false,
     tabWidth: 4,
     trailingComma: 'es5',
-    plugins: [require('prettier-plugin-tailwindcss'), require.resolve('prettier-plugin-astro')],
+    plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-astro'],
     tailwindConfig: './tailwind.config.js',
     overrides: [
         {

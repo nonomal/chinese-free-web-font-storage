@@ -12,6 +12,9 @@ body {
     font-family: var(--defaultFont), 'jiangxizhuokai', 'PingFangSC-Semibold fallback',
         'PingFangSC-Regular fallback', 'Microsoft YaHei fallback', 'Source Han Sans fallback';
 }
+.dynamic-font{
+    font-family: var(--defaultFont);
+}
 .poetry {
     writing-mode: tb-rl;
 }

@@ -18,7 +18,7 @@ export default defineConfig({
     output: 'hybrid',
     adapter: netlify({
         edgeMiddleware: true
-      }),
+    }),
     vite: {
         optimizeDeps: {
             exclude: ['cn-font-split'],
@@ -34,7 +34,7 @@ export default defineConfig({
                     },
                 ],
             }),
-            font({
+            font.vite({
                 scanFiles: {
                     // ?subsets will match default
                     home: [
