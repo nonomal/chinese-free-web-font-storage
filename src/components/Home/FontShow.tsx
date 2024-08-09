@@ -15,7 +15,6 @@ const showAnime = () => {
 export const FontShow = () => {
     const originFont = atom({
         url: __CDN__ + '/packages/lxgwwenkai/dist/LXGWWenKai-Bold/result.css',
-        style: 'font-family: "LXGW WenKai"',
     });
     const font = ThrottleAtom(originFont, 2000);
     createEffect(() => {
@@ -27,19 +26,22 @@ export const FontShow = () => {
         [...document.querySelectorAll<HTMLAnchorElement>('.display-font-show-hover')].forEach(
             (dom) => {
                 dom.addEventListener('mouseover', (i) => {
-                    originFont(() => ({ url: dom.dataset.src!, style: dom.dataset.style! }));
-                    const el = document.getElementById('font-list');
-                    const els = document.getElementById('friend-links');
-                    if (el) (el as any).style = dom.dataset.style;
-                    if (els) (els as any).style = dom.dataset.style;
+                    originFont(() => ({ url: dom.dataset.src! }));
+                    const el = [...document.getElementsByClassName('dynamic-font')]
+                    el.forEach(el => {
+                        (el as any).style = dom.dataset.style;
+                    })
                 });
             }
         );
     });
     return (
         <div
-            class="flex flex-1 select-text flex-col justify-center xl:flex-[2] "
-            style={font().style}
+            class="dynamic-font flex flex-1 select-text flex-col justify-center xl:flex-[2] "
+            style={{
+                "--defaultFont": "'LXGW WenKai'",
+                "font-family": "var(--defaultFont)"
+            }}
         >
             <div class="text-sky-500">鼠标移动到右侧字体，即可预览字体样式</div>
             <div class="showing-text my-6 text-6xl" style={'line-height:1.3;'} contentEditable>
