@@ -8,7 +8,6 @@ export const OnlineSplit = () => {
     const file = atom<File | null>(null);
     const logMessage = ArrayAtom<string[]>([]);
     const resultList = atom<{ name: string; buffer: Uint8Array }[]>([]);
-    const versions = resource(getVersions, { initValue: [] });
     /** 监控 cn-font-split 的加载状态并给予提示 */
     const fontSplitStatus = resource(preload);
 
@@ -67,18 +66,6 @@ export const OnlineSplit = () => {
         >
             <div class="flex flex-col p-4">
                 <header class="flex items-center gap-8">
-                    <label class="flex-none">版本号</label>
-                    <select
-                        oninput={(e) => {
-                            PluginVersion(e.target.value);
-                            fontSplitStatus.refetch();
-                            Notice.success('正在更换版本中，请稍等');
-                        }}
-                    >
-                        {versions().map((version) => {
-                            return <option value={version}>{version}</option>;
-                        })}
-                    </select>
                     <button
                         class="w-full cursor-pointer transition-colors hover:bg-neutral-200"
                         onclick={() => {
@@ -219,7 +206,7 @@ export const OnlineSplit = () => {
 };
 import { createAutoAnimate } from '@formkit/auto-animate/solid';
 import { useZip } from './useZip';
-import { getVersions, preload, PluginVersion, getTestingFile } from './getVersions';
+import { preload, PluginVersion, getTestingFile } from './getVersions';
 
 /** 右下角的文件列表 */
 function FileList(props: {
