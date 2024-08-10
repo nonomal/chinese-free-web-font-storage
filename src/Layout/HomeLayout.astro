@@ -67,7 +67,9 @@ const {
         <link rel="preconnect" href="https://jsdelivr.deno.dev/" crossorigin />
     </head>
     <body
-        style={`font-family: "${css.family}", ${fontFamilyFallback};${style ?? ''}`}
+        style={{
+            'font-family': `'${css.family}', ${fontFamilyFallback.replaceAll('"',"'")}`
+        }}
         class={className}
     >
         <GlobalHeader />
