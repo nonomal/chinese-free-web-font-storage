@@ -1,5 +1,5 @@
 import { atom } from '@cn-ui/reactive';
-import { Component, For, onCleanup, onMount, Show } from 'solid-js';
+import { type Component, For, onMount, Show } from 'solid-js';
 
 import { selectDefPreviewText } from './defPreviewLanguages';
 

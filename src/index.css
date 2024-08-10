@@ -5,7 +5,9 @@ html {
 body {
     margin: 0;
     overflow-x: hidden;
-    @apply select-none bg-neutral-100;
+
+    background-image: url(./assets/concrete-wall-2.webp);
+    @apply select-none;
 }
 body {
     --defaultFont: 'jiangxizhuokai';

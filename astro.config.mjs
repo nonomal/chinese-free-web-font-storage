@@ -15,7 +15,7 @@ export default defineConfig({
     site: 'https://chinese-font.netlify.app',
 
     integrations: [sitemap(), solidJs(), tailwind(), robotsTxt(), compress()],
-    output: 'hybrid',
+    output: 'server',
     adapter: netlify({
         edgeMiddleware: true
     }),
@@ -42,7 +42,9 @@ export default defineConfig({
                         'src/components/AllFooter.astro',
                         'src/components/TechSupport.astro',
                         'src/components/GlobalHeader.astro',
-                        'src/components/Home/FriendLinks.tsx',
+                        'src/components/Home/*.tsx',
+                        'src/components/Home/*.astro',
+                        'index.json',
                     ],
                     fontExample: [
                         'src/components/PerformanceOfTool.astro',

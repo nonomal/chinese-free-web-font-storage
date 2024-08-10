@@ -1,10 +1,9 @@
 ---
 import Layout from '../Layout/HomeLayout.astro';
 import AllFooter from '../components/AllFooter.astro';
-import FontList from '../components/FontsList.astro';
-import TechSupport from '../components/TechSupport.astro';
+import FontList from '../components/Home/FontsList.astro';
 import { FriendLinks } from '../components/Home/FriendLinks';
-import PerformanceOfTool from '../components/PerformanceOfTool.astro';
+import PerformanceOfTool from '../components/Home/PerformanceOfTool.astro';
 import '../style/animate.css';
 export const prerender = true;
 ---
@@ -40,7 +39,7 @@ export const prerender = true;
         </a>
     </section>
 
-    <div class="pointer-events-none">
+    <div class="pointer-events-none opacity-70">
         <div class="absolute top-52 -left-16 text-gray-300 opacity-50" style="font-size:50vh">
             江
         </div>

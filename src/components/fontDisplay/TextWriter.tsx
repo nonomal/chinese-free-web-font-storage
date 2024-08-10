@@ -1,39 +1,33 @@
 import { atom, reflect, resource } from '@cn-ui/reactive';
-import { AsyncReporterLoader } from './AsyncReporterLoader';
-import { UnicodeRange } from '@japont/unicode-range';
 import prettyBytes from 'pretty-bytes';
 import { VModel } from '../../utils/VModel';
 
 
-export const TextWriter = AsyncReporterLoader((props) => {
-    const reporter = props.reporter;
-    const packages = reporter.data.map((i) => {
-        return { ...i, chars: new Set(UnicodeRange.parse(i.chars.split(','))) };
-    });
+export const TextWriter = (props: { font_subsets: { name: string, size: number, chars: number[] }[] }) => {
+    const packages = props.font_subsets
     const fontSize = atom(48);
     const text = atom('');
     const textCodes = reflect(() =>
-        text()
-            .split('')
+        [...text()]
             .map((i) => i.charCodeAt(0))
     );
     const usedPackages = reflect(() => {
-        const usedPackages = new Set<{
-            chars: Set<number>;
+        const used = new Set<{
+            chars: number[];
             name: string;
             size: number;
         }>();
 
         for (const iterator of textCodes()) {
-            const item = packages.find((i) => i.chars.has(iterator));
-            if (item) usedPackages.add(item);
+            const item = packages.find((i) => i.chars.includes(iterator));
+            if (item) used.add(item);
         }
-        return [...usedPackages];
+        return [...used];
     });
     const usedRate = reflect(() => {
         const rate =
             (new Set(textCodes()).size * 100) /
-            usedPackages().reduce((col, i) => col + i.chars.size, 0);
+            usedPackages().reduce((col, i) => col + i.chars.length, 0);
         return isNaN(rate) ? 0 : rate.toFixed(2);
     });
     const usedSize = reflect(() => usedPackages().reduce((col, cur) => col + cur.size, 0));
@@ -68,4 +62,4 @@ export const TextWriter = AsyncReporterLoader((props) => {
             </div>
         </aside>
     );
-});
+}

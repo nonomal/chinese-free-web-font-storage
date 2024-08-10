@@ -1,7 +1,7 @@
 ---
-import { FontShow } from '../components/Home/FontShow';
-import { __CDN__ } from '../global';
-import { getFileListIndex, sortFontListByRemoteCount } from '../api/fontListIndex';
+import { FontShow } from './FontShow';
+import { __CDN__ } from '../../global';
+import { getFileListIndex } from '../../api/fontListIndex';
 const list = await getFileListIndex();
 ---
 
@@ -156,7 +156,7 @@ const list = await getFileListIndex();
             </ul>
         </nav>
         <script>
-            import { sortFontListByRemoteCount } from '../api/fontListIndex.ts';
+            import { sortFontListByRemoteCount } from '../../api/fontListIndex.ts';
             // 重排数据
             sortFontListByRemoteCount(document.getElementById('font-list'));
         </script>

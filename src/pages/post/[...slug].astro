@@ -6,6 +6,7 @@ import ArticleAside from '../../components/post/ArticleAside.astro';
 import Navigate from '../../components/post/Navigate.astro';
 import { TOC } from '../../components/post/TOC';
 import '../../style/animate.css';
+export const prerender = true;
 export async function getStaticPaths() {
     const posts = await getCollection('post');
     return posts.map((post) => ({

@@ -1,6 +1,6 @@
-import { Component, For, Suspense, lazy } from 'solid-js';
+import { For, Suspense, lazy } from 'solid-js';
 import { selectDefPreviewText } from './defPreviewLanguages';
-import { FontMetaData, getMetaData } from './useGoogleFontData';
+import { type FontMetaData, getMetaData } from './useGoogleFontData';
 import copy from 'copy-to-clipboard';
 export const GoogleFontDetailed = () => {
     const packageName = new URLSearchParams(location.search).get('packageName');

@@ -1,21 +1,29 @@
 ---
-import data from '../../../../index.json';
 import { TextWriter } from '../../../components/fontDisplay/TextWriter';
 import FontLayout from '../../../Layout/FontLayout.astro';
 import WebSupport from '../../../components/fontDisplay/WebSupport.astro';
 import { TimeAnalyze } from '../../../components/fontDisplay/TimeAnalyze';
 import { BundleSizeAnalyze } from '../../../components/fontDisplay/BundleSizeAnalyze';
 import { BundleContrast } from '../../../components/fontDisplay/BundleContrast';
-export function getStaticPaths() {
-    return Object.entries(data).flatMap(([key, val]) => {
-        return val.remotePath.map(({ path: remote }) => {
-            const [_, name] = remote.match(/dist\/(.*?)\/result/)!;
-            return { params: { font: key, name } };
-        });
-    });
-}
+import { getFontReporter } from '../../../utils/getFontReporter';
+import { UnicodeRange } from '@japont/unicode-range';
+// export function getStaticPaths() {
+//     return Object.entries(data).flatMap(([key, val]) => {
+//         return val.remotePath.map(({ path: remote }) => {
+//             const [_, name] = remote.match(/dist\/(.*?)\/result/)!;
+//             return { params: { font: key, name } };
+//         });
+//     });
+// }
+export const prerender = false;
+
 const { font, name: font_name } = Astro.params;
+const reporter = await getFontReporter(font!, font_name!)
+const font_subsets = reporter.data.map((i) => {
+    return { ...i, chars: UnicodeRange.parse(i.chars.split(',')) };
+});
 ---
+
 
 <FontLayout font_name={font_name!} font={font!}>
     <section class="col-span-7 flex justify-center items-center bg-white rounded-2xl">
@@ -63,7 +71,7 @@ const { font, name: font_name } = Astro.params;
         <header class="p-2 text-lg text-right">
             <span class="bg-blue-500 text-white p-2 rounded-md"> ✒️ 尝试字体</span>
         </header>
-        <TextWriter fontName={font_name!} font={font!} client:only />
+        <TextWriter client:load font_subsets={font_subsets}/>
     </section>
     <section class="col-span-6 text-center">
         <span class="text-4xl pr-4"> 中文网字计划</span>
@@ -74,12 +82,12 @@ const { font, name: font_name } = Astro.params;
         <span class="bg-blue-500 text-white p-2 rounded-md"> ✒️ cn-font-split 打包信息</span>
     </header>
     <section class="col-span-6" style="height:400px">
-        <TimeAnalyze client:only fontName={font_name!} font={font!} />
+        <TimeAnalyze client:only="solid" fontName={font_name!} font={font!} />
     </section>
     <section class="col-span-6" style="height:400px">
-        <BundleSizeAnalyze client:only fontName={font_name!} font={font!} />
+        <BundleSizeAnalyze client:only="solid" fontName={font_name!} font={font!} />
     </section>
     <section class="col-span-6" style="height:400px">
-        <BundleContrast client:only fontName={font_name!} font={font!} />
+        <BundleContrast client:only="solid" fontName={font_name!} font={font!} />
     </section>
 </FontLayout>

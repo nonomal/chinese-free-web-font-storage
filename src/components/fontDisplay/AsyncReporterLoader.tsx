@@ -8,6 +8,8 @@ export const AsyncReporterLoader = (
     Comp: Component<{ font: string; fontName: string; reporter: FontReporter }>
 ) => {
     return (props: { font: string; fontName: string; reporter?: FontReporter }) => {
+        /** @ts-ignore */
+        if (props.reporter) return <Comp  {...props}></Comp>
         let reporter = atom<FontReporter>(props.reporter as any);
         const Temp = lazy(async () => {
             reporter(await getFontReporter(props.font, props.fontName));
