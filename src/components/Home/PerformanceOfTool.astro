@@ -36,7 +36,6 @@ const config = [
 
 <section
     class="dynamic-font w-full select-auto lg:w-[80%] snap-center font-serif max-w-7xl border-gray-200 text-gray-600 p-8 lg:rounded-2xl my-12 grid grid-cols-6 gap-4 bg-white/70"
-    style="font-family: 'LXGW WenKai';"
 >
     <a
         href="/online-split"
@@ -44,12 +43,12 @@ const config = [
         class="text-center rounded-md bg-yellow-50/60 text-xl font-bold flex justify-center items-center flex-col col-span-2"
     >
         <img class="h-20 w-20" src={ChromeImage.src} alt="chrome image" />
-        <span> 在线分包</span>
+        <span style="letter-spacing: 0.3rem;">部署自己的字体！</span>
         <span class="text-sm text-gray-500">
             就在你的浏览器上 😊<br />
             准备好你的字体，<br />
             只需要一两分钟，<br />
-            字体就帮你准备好了 ！！！🚀
+            加入到你的前端 ！！！🚀
         </span>
     </a>
     <h2 class="col-span-2 bg-yellow-50/60 text-left p-8 flex flex-col justify-center items-center">
@@ -74,8 +73,8 @@ const config = [
                             src={i.img.src}
                             alt={i.title}
                         />
-                        <nav class=" absolute bottom-0 right-0 h-4 w-4 rounded-full bg-gradient-to-b from-lime-400 to-lime-500 text-center  text-white">
-                            √
+                        <nav class=" absolute bottom-0 right-0 h-4 w-4 rounded-full text-center">
+                            ✅
                         </nav>
                     </li>
                 );
@@ -101,7 +100,7 @@ const config = [
             <div class="font-black pr-8">cn-font-split</div>
 
             <div class="my-4">一款超厉害的字体分包引擎 🔗</div>
-            <div class="text-sm text-neutral-400 w-full flex justify-between">
+            <div class="text-sm text-neutral-400 w-full flex justify-between flex-wrap">
                 <span>整包构建时间 820 ms</span>
                 <img
                     class="inline-block"

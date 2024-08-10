@@ -81,6 +81,8 @@ export const DemoOfFontSplit = () => {
                         <img
                             src={item.pic.src}
                             alt={item.name}
+                            height='45px'
+                            width='45px'
                             fetchpriority="low"
                             loading="lazy"
                         />
