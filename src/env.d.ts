@@ -10,3 +10,6 @@ declare module '@konghayao/opentype.js' {
 declare module '@minht11/solid-virtual-container' {
     export const VirtualContainer: any;
 }
+declare module "*?subsets&key=home" {
+    export * from '@konghayao/_font_';
+}

@@ -1,6 +1,7 @@
 ---
-import { CDNHome } from '../components/CDNHome';
+import { ServerLink ,SearchBox } from '../components/CDNHome';
 import CDNLayout from '../Layout/CDNLayout.astro';
+import Hero from '../assets/eirc-shi-pxfrGGnHVYA-unsplash.jpg?url'
 export const prerender = true;
 ---
 
@@ -9,5 +10,84 @@ export const prerender = true;
     description="中文网字计划提供的开源免费中文字体公益 CDN 服务，致力于为国内外全球 CJK 开发者提供高质量网络字体服务，让中文字体在互联网世界起飞。"
     keywords="免费公益CDN服务,免费中文字体服务,免费中文字体CDN,开源中文字体,免费CJK字体CDN"
 >
-    <CDNHome client:load />
+    <main class="w-full  p-8 text-center ">
+        <section class="py-8 grid grid-cols-12 px-12 gap-12">
+            <div class=" text-left col-span-5 col-start-2">
+
+                <h1 class="mb-8 mt-12 text-6xl">字图 CDN</h1>
+                <p class="mb-8 text-xl text-gray-500">
+                    字图 CDN, 一个免费的中文字体公益 CDN 服务, 致力于为国内外全球 CJK
+                    开发者提供高质量网络字体服务，让中文字体在互联网世界起飞。
+                </p>
+                <a href="/" class=" py-2 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100/80 rounded-full dark:bg-gray-800 transition-all dark:text-white hover:bg-gray-300/80 dark:hover:bg-gray-700" role="alert">
+                    <span class="bg-rose-600 rounded-full text-white px-4 py-1.5 mr-3">中文网字计划</span>
+                    <span class="font-medium">一套互联网的中文字体解决方案 {">"} </span>
+                </a>
+                <div class="text-left mb-8 mt-8 text-gray-500">
+                    <span>
+                        服务提供商 | 量大管饱 |
+                    </span>
+                    <a href="/message/cdn">
+                        服务器数据分析
+                    </a>
+                </div>
+                <ServerLink></ServerLink>
+            </div>
+            <div class="col-span-5 bg-white shadow-md rounded-xl p-2">
+                <div class="rounded-md h-full" style={{
+                    backgroundImage: `url(${Hero})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                }} >
+                    <span class="text-xs text-white/10 float-end">
+                        Photo by <a href="https://unsplash.com/@wwolf5566?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Eirc Shi</a> on <a href="https://unsplash.com/photos/a-picture-frame-with-asian-writing-on-it-pxfrGGnHVYA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+                    </span>
+
+                </div>
+            </div>
+
+            <ul class="mb-4 flex justify-between rounded-md text-left col-span-10 col-start-2">
+
+                <li class=" py-4 px-6 rounded-xl max-w-md">
+                    <div class="mb-4 text-xl"> 📈 稳定服务</div>
+                    <div class="font-serif text-gray-400 text-md">
+                        已连续提供<span itemprop="duration">一年</span>稳定服务，采用高可用CDN及负载均衡技术。每月使用量超过 <b class="text-gray-600" >200,000</b> 次，服务可靠。
+                    </div>
+                </li>
+                <li class=" py-4 px-6 rounded-xl max-w-md">
+                    <div class="mb-4 text-xl">🚀 快速响应</div>
+                    <div class="font-serif text-gray-400 text-md">
+                        服务器遍布全球，边缘 CDN 覆盖广泛，确保快速响应。
+                    </div>
+                </li>
+                <li class=" py-4 px-6 rounded-xl max-w-md">
+                    <div class="mb-4 text-xl">💻 免费开源</div>
+                    <div class="font-serif text-gray-400 text-md">
+                        项目自始至终保持开源，您可在 <a href="https://github.com/KonghaYao/chinese-free-web-font-storage" class="text-gray-600" >GitHub</a> 上获取全部源代码。所有功能完全免费。
+                    </div>
+                </li>
+            </ul>
+            <p class="flex justify-center gap-4 col-span-12 border-b border-gray-300 pb-4 my-8">
+                <span>如果可以请</span>
+                <a
+                    href="https://github.com/KonghaYao/chinese-free-web-font-storage"
+                    target="_blank"
+                    class="text-yellow-500"
+                >
+                    Github Star |
+                </a>
+                <span class="text-emerald-600">标注使用的字体 |</span>
+                <a
+                    href="https://chinese-font.netlify.app"
+                    target="_blank"
+                    class="text-purple-500"
+                >
+                    添加中文网字计划的链接
+                </a>
+                😀
+            </p>
+        </section>
+        <SearchBox client:load />
+    </main>
 </CDNLayout>

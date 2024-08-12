@@ -2,70 +2,12 @@ import { DebounceAtom, NullAtom, atom, reflect } from '@cn-ui/reactive';
 import { VModel } from '../utils/VModel';
 import { CountUp } from 'countup.js/src/countUp';
 import './CDNHome.less';
-export const CDNHome = () => {
-    const hotCDNs = useHotCDN();
-    createEffect(() => {
-        const max = hotCDNs().reduce((col, cur) => col + cur.value, 0);
-        console.log(max);
-        new CountUp('countUp', max, {
-            duration: 2,
-        }).start();
-    });
-
-    return (
-        <section class="w-full  p-8 text-center ">
-            <div class="m-auto max-w-5xl py-8">
-                <h1 class="fish-bg my-4 py-16  text-8xl">字图 CDN</h1>
-                <p class="mb-4 flex justify-around rounded-md bg-blue-400 text-xl text-gray-50">
-                    <span>稳定</span>
-                    <span>快速</span>
-                    <span>免费</span>
-                </p>
-                <p class="mb-8  text-left text-xl text-gray-500">
-                    字图 CDN, 一个免费的中文字体公益 CDN 服务, 致力于为国内外全球 CJK
-                    开发者提供高质量网络字体服务，让中文字体在互联网世界起飞。
-                    <span class="float-right text-xl text-emerald-600">
-                        累计
-                        <span id="countUp" class="mx-4 font-sans text-2xl font-bold">
-                            0
-                        </span>
-                        次使用
-                    </span>
-                </p>
-
-                <p class="flex justify-center gap-4">
-                    <span>如果可以请</span>
-                    <a
-                        href="https://github.com/KonghaYao/chinese-free-web-font-storage"
-                        target="_blank"
-                        class="text-yellow-500"
-                    >
-                        Github Star |
-                    </a>
-                    <span class="text-emerald-600">标注使用的字体 |</span>
-                    <a
-                        href="https://chinese-font.netlify.app"
-                        target="_blank"
-                        class="text-purple-500"
-                    >
-                        添加中文网字计划的链接
-                    </a>
-                    😀
-                </p>
-            </div>
-            <ServerLink></ServerLink>
-            <SearchBox />
-            {/* <CDNLink {...selected()} /> */}
-        </section>
-    );
-};
 
 import Deno from '../assets/logo/Deno.svg?url';
 import Netlify from '../assets/logo/Netlify.svg?url';
-function ServerLink() {
+export function ServerLink() {
     return (
-        <div class="mb-12 flex h-10 justify-center gap-6 ">
-            <div class="col-span-2">服务提供商 | 量大管饱</div>
+        <div class="mb-12 flex h-10  gap-6  col-span-12">
             <a href="https://deno.com/deploy" class="flex h-full flex-none " target="_blank">
                 <img src={Deno} alt="deno logo"></img>
             </a>
@@ -75,21 +17,17 @@ function ServerLink() {
             <a href="https://imagekit.io" class="flex h-full flex-none" target="_blank">
                 <img class="scale-75" src="/brand/imagekit.svg" alt="imagekit logo"></img>
             </a>
-            <a href="/message/cdn" class="col-span-2">
-                | 服务器数据分析
-            </a>
         </div>
     );
 }
 
 import data from '../../index.json';
 import { __CDN__ } from '../global';
-import { Show, createEffect, onMount } from 'solid-js';
+import { Show, onMount } from 'solid-js';
 import copy from 'copy-to-clipboard';
 import { Notice } from '../Notice';
-import { useHotCDN } from './message/useHotCDN';
 import { sortFontListByRemoteCount } from '../api/fontListIndex';
-const SearchBox = () => {
+export const SearchBox = () => {
     const search = atom('');
     const ListContainer = NullAtom(null);
     onMount(() => {

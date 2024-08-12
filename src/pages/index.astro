@@ -10,11 +10,15 @@ export const prerender = true;
 
 <Layout class="flex flex-col items-center">
     <section
-        class="relative an-scroll-list z-10 flex snap-start w-screen flex-col items-center justify-center scroll-mt-16"
-        style="height: calc(100vh - 3rem);"
+        class="relative an-scroll-list z-10 flex snap-start w-screen flex-col items-center my-36"
     >
+
+        <a href="/cdn" class=" py-2 px-1 pr-4 mb-14 text-sm text-gray-700 bg-gray-100/80 rounded-full dark:bg-gray-800 transition-all dark:text-white hover:bg-gray-300/80 dark:hover:bg-gray-700" role="alert">
+            <span class="bg-rose-600 rounded-full text-white px-4 py-1.5 mr-3">字图</span>
+            <span class="font-medium">可以免费使用的前端字体 CDN  {">"} </span>
+        </a>
         <div class="xs:text-xl text-xs font-thin italic leading-[3em] text-gray-600 sm:text-4xl">
-            Chinese Web Fonts Plan
+           The Chinese Web Fonts Plan
         </div>
         <h2
             class="home-title xs:text-[8vh] whitespace-nowrap text-[6vh] leading-[1.1em] sm:text-[11vw] lg:text-[17vh]"
@@ -23,20 +27,55 @@ export const prerender = true;
             中文网字计划
         </h2>
         <h3
-            class="max-w-[30em] px-4 pt-20 text-xs font-thin text-gray-400 sm:max-w-[30em] sm:text-lg lg:max-w-none lg:text-2xl"
+            class="max-w-[30em] px-4 mt-12 text-xs font-thin text-gray-500 sm:max-w-[30em] sm:text-lg lg:max-w-none lg:text-2xl"
+            style="letter-spacing: 0.25rem;"
         >
             中文网字计划是收录众多中文字体并通过 Web Font 的形式为
             <b class="px-2 inline-block bg-cyan-700 rounded-md text-white">网站开发者</b>
             提供美丽字体的项目。
         </h3>
-        <a href="#font-list">
-            <button
-                class="bg-white px-4 py-2 rounded-md text-xl text-rose-600 ring-rose-600 ring-2 mt-12"
-                style="letter-spacing: 0.25rem;"
-            >
-                开始探索字体之美
-            </button>
-        </a>
+        <div class="flex gap-4 mt-24 bg-white rounded-lg ring-rose-600 py-4 px-6">
+            <a href="/cdn">
+                <button
+                    class=" px-2 py-1 rounded-md text-gray-500  hover:bg-gray-200 hover:text-gray-500 "
+                    style="letter-spacing: 0.25rem;"
+                    >
+                    免费 CDN
+                </button>
+            </a>
+            <a href="/article">
+                <button
+                    class=" px-2 py-1 rounded-md text-gray-500  hover:bg-gray-200 hover:text-gray-500 "
+                    style="letter-spacing: 0.25rem;"
+                    >
+                    教程列表
+                </button>
+            </a>
+            <a href="/online-split">
+                <button
+                    class=" px-2 py-1 rounded-md text-gray-500  hover:bg-gray-200 hover:text-gray-500 "
+                    style="letter-spacing: 0.25rem;"
+                    >
+                    私人部署
+                </button>
+            </a>
+            <a href="https://github.com/KonghaYao/chinese-free-web-font-storage" target="_blank">
+                <button
+                    class=" px-2 py-1 rounded-md  text-gray-500  hover:bg-gray-200 hover:text-gray-500 "
+                    style="letter-spacing: 0.25rem;"
+                    >
+                    开源仓库
+                </button>
+            </a>
+            <a href="#font-list">
+                <button
+                    class=" px-2 py-1 rounded-md bg-rose-50 text-rose-600 hover:text-rose-600 hover:bg-rose-200 "
+                    style="letter-spacing: 0.25rem;"
+                    >
+                    开始探索字体之美
+                </button>
+            </a>
+        </div>
     </section>
 
     <div class="pointer-events-none opacity-70">
