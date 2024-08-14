@@ -289,6 +289,7 @@ function Table<T>(props: {
                 {props.data.map((item) => (
                     <tr>
                         {columnNames().map((columnName) => (
+                            // @ts-ignore
                             <td>{renderToDom(item[columnName], props.render?.[columnName])}</td>
                         ))}
                     </tr>
@@ -329,6 +330,7 @@ function GlobalMap(props: { data: ImageKitAnalyzeData[] }) {
         Kong: 'China',
     };
     const nameMapper = (name: string) => {
+        // @ts-ignore
         return mapper[name] ?? name;
     };
     return (
