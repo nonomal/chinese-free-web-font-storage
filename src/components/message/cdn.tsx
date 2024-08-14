@@ -220,11 +220,12 @@ export const CDNAnalyze = () => {
                 }
             });
         });
-        return [...mapper.values()].sort((a, b) => b.bandwidth - a.bandwidth);
+        const info =  [...mapper.values()].sort((a, b) => b.count - a.count);
+        return info
     });
     return (
         <>
-            <h2 class=" my-12 text-center text-3xl leading-9">中文网字计划 CDN 分析（近三天）</h2>
+            <h2 class=" my-12 text-center text-3xl leading-9">中文网字计划 CDN 分析</h2>
             <Show when={data()}>
                 <section class="m-auto grid max-w-7xl grid-cols-2 gap-4">
                     <PieChart data={data()} key="request" title="请求数"></PieChart>
