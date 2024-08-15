@@ -19,6 +19,10 @@ export default defineConfig({
     adapter: netlify({
         edgeMiddleware: true
     }),
+    i18n: {
+        defaultLocale: "zh",
+        locales: ["zh","en"],
+    },
     vite: {
         optimizeDeps: {
             exclude: ['cn-font-split'],

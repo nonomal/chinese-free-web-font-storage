@@ -126,93 +126,93 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"post": {
-"cdn_analyze.md": {
-	id: "cdn_analyze.md";
-  slug: "cdn_analyze";
+"zh/cdn_analyze.md": {
+	id: "zh/cdn_analyze.md";
+  slug: "zh/cdn_analyze";
   body: string;
   collection: "post";
   data: any
 } & { render(): Render[".md"] };
-"cn-font-split.md": {
-	id: "cn-font-split.md";
-  slug: "cn-font-split";
+"zh/cn-font-split.md": {
+	id: "zh/cn-font-split.md";
+  slug: "zh/cn-font-split";
   body: string;
   collection: "post";
   data: any
 } & { render(): Render[".md"] };
-"cn_font_split_design.md": {
-	id: "cn_font_split_design.md";
-  slug: "cn_font_split_design";
+"zh/cn_font_split_design.md": {
+	id: "zh/cn_font_split_design.md";
+  slug: "zh/cn_font_split_design";
   body: string;
   collection: "post";
   data: any
 } & { render(): Render[".md"] };
-"deploy_to_cdn.md": {
-	id: "deploy_to_cdn.md";
-  slug: "deploy_to_cdn";
+"zh/deploy_to_cdn.md": {
+	id: "zh/deploy_to_cdn.md";
+  slug: "zh/deploy_to_cdn";
   body: string;
   collection: "post";
   data: any
 } & { render(): Render[".md"] };
-"deployment-architecture-of-zi-tu-cdn.md": {
-	id: "deployment-architecture-of-zi-tu-cdn.md";
-  slug: "deployment-architecture-of-zi-tu-cdn";
+"zh/deployment-architecture-of-zi-tu-cdn.md": {
+	id: "zh/deployment-architecture-of-zi-tu-cdn.md";
+  slug: "zh/deployment-architecture-of-zi-tu-cdn";
   body: string;
   collection: "post";
   data: any
 } & { render(): Render[".md"] };
-"font_split_turbo.md": {
-	id: "font_split_turbo.md";
-  slug: "font_split_turbo";
+"zh/font_split_turbo.md": {
+	id: "zh/font_split_turbo.md";
+  slug: "zh/font_split_turbo";
   body: string;
   collection: "post";
   data: any
 } & { render(): Render[".md"] };
-"free_static_site_deploy.md": {
-	id: "free_static_site_deploy.md";
-  slug: "free_static_site_deploy";
+"zh/free_static_site_deploy.md": {
+	id: "zh/free_static_site_deploy.md";
+  slug: "zh/free_static_site_deploy";
   body: string;
   collection: "post";
   data: any
 } & { render(): Render[".md"] };
-"get_start.md": {
-	id: "get_start.md";
-  slug: "get_start";
+"zh/get_start.md": {
+	id: "zh/get_start.md";
+  slug: "zh/get_start";
   body: string;
   collection: "post";
   data: any
 } & { render(): Render[".md"] };
-"how_to_support_font_feature.md": {
-	id: "how_to_support_font_feature.md";
-  slug: "how_to_support_font_feature";
+"zh/how_to_support_font_feature.md": {
+	id: "zh/how_to_support_font_feature.md";
+  slug: "zh/how_to_support_font_feature";
   body: string;
   collection: "post";
   data: any
 } & { render(): Render[".md"] };
-"performace_turbo.md": {
-	id: "performace_turbo.md";
-  slug: "performace_turbo";
+"zh/performace_turbo.md": {
+	id: "zh/performace_turbo.md";
+  slug: "zh/performace_turbo";
   body: string;
   collection: "post";
   data: any
 } & { render(): Render[".md"] };
-"prompt_for_article.md": {
-	id: "prompt_for_article.md";
-  slug: "prompt_for_article";
+"zh/prompt_for_article.md": {
+	id: "zh/prompt_for_article.md";
+  slug: "zh/prompt_for_article";
   body: string;
   collection: "post";
   data: any
 } & { render(): Render[".md"] };
-"simple_tutorial.md": {
-	id: "simple_tutorial.md";
-  slug: "simple_tutorial";
+"zh/simple_tutorial.md": {
+	id: "zh/simple_tutorial.md";
+  slug: "zh/simple_tutorial";
   body: string;
   collection: "post";
   data: any
 } & { render(): Render[".md"] };
-"transport_imagekit.md": {
-	id: "transport_imagekit.md";
-  slug: "transport_imagekit";
+"zh/transport_imagekit.md": {
+	id: "zh/transport_imagekit.md";
+  slug: "zh/transport_imagekit";
   body: string;
   collection: "post";
   data: any
