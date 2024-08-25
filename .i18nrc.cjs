@@ -8,7 +8,7 @@ module.exports = {
             return '.md';
         },
         outputFileName(locale, path) {
-            return path.replace('/content/post/zh/', '/content/post/' + locale + '/')
+            return path.replace('/content/post/zh-cn/', '/content/post/' + locale + '/')
         }
     },
 };
