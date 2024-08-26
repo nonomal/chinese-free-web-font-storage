@@ -20,8 +20,9 @@ export default defineConfig({
         edgeMiddleware: true
     }),
     i18n: {
-        defaultLocale: "zh",
-        locales: ["zh","en"],
+        defaultLocale: "zh-cn",
+        prefixDefaultLocale: true,
+        locales: ["zh-cn","en"],
     },
     vite: {
         optimizeDeps: {

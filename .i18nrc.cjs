@@ -1,6 +1,6 @@
 module.exports = {
     markdown: {
-        entry: ['./src/content/post/zh-cn/**/*.md'],
+        entry: ['./src/content/post/*.md'],
         entryLocale: 'zh-CN',
         entryExtension: '.md',
         outputLocales: ['en'],
@@ -8,7 +8,7 @@ module.exports = {
             return '.md';
         },
         outputFileName(locale, path) {
-            return path.replace('/content/post/zh-cn/', '/content/post/' + locale + '/')
+            return path.replace('/content/post/', '/content/post/' + locale + '/')
         }
     },
 };
