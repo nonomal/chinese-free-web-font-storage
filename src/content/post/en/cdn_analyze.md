@@ -10,7 +10,7 @@ article:
   section: 维护日志
   tags:
     - CDN
-  pubDate: 2024-7-22
+  pubDate: 2024-07-22
   image: >-
     https://ik.imagekit.io/chinesefonts/tr:w-1200/image/photo-1508804185872-d7badad00f7d.jfif
 ---

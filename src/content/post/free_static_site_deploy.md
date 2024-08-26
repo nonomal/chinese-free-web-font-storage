@@ -6,7 +6,7 @@ article:
     authors:
         - 江夏尧
     section: 维护日志
-    pubDate: 2024-6-16
+    pubDate: 2024-06-16
     image: ''
 ---
 

@@ -8,7 +8,7 @@ article:
   section: 使用教程
   tags:
     - 使用指南
-  pubDate: 2023-7-16
+  pubDate: 2023-07-16
   image: ''
 ---
 # How to Deploy and Use Subfont: A Detailed Guide

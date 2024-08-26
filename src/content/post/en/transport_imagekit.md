@@ -7,7 +7,7 @@ article:
   section: 使用教程
   tags:
     - 使用指南
-  pubDate: 2023-12-24T00:00:00.000Z
+  pubDate: 2023-12-24
   image: >-
     https://ik.imagekit.io/chinesefonts/tr:w-1200/image/photo-1508804185872-d7badad00f7d.jfif
 ---

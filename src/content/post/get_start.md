@@ -8,7 +8,7 @@ article:
     section: 使用教程
     tags:
         - 计划概述
-    pubDate: 2023-5-23
+    pubDate: 2023-05-23
     image: 'https://ik.imagekit.io/chinesefonts/tr:w-1200/image/photo-1508804185872-d7badad00f7d.jfif'
 ---
 
