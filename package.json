@@ -19,7 +19,7 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "cn-font-split": "^5.2.1",
+        "cn-font-split": "^5.2.2",
         "dotenv": "^16.4.5",
         "fs-extra": "^10.1.0",
         "glob": "^10.4.5",
