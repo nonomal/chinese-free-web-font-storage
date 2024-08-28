@@ -20,7 +20,7 @@ jobs:
                   registry-url: https://registry.npmjs.org/
             - run: npm install
             - run: npm install pnpm -g
-            - run: pnpm build
+            - run: pnpm build --mode=rebuild
             - run: pnpm --filter @chinese-fonts/* publish --access public  --no-git-checks
             - run: |
                   git config user.name github-actions
