@@ -126,184 +126,93 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"post": {
-"cdn_analyze.md": {
-	id: "cdn_analyze.md";
-  slug: "cdn_analyze";
+"zh-cn/cdn_analyze.md": {
+	id: "zh-cn/cdn_analyze.md";
+  slug: "zh-cn/cdn_analyze";
   body: string;
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
-"cn-font-split.md": {
-	id: "cn-font-split.md";
-  slug: "cn-font-split";
+"zh-cn/cn-font-split.md": {
+	id: "zh-cn/cn-font-split.md";
+  slug: "zh-cn/cn-font-split";
   body: string;
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
-"cn_font_split_design.md": {
-	id: "cn_font_split_design.md";
-  slug: "cn_font_split_design";
+"zh-cn/cn_font_split_design.md": {
+	id: "zh-cn/cn_font_split_design.md";
+  slug: "zh-cn/cn_font_split_design";
   body: string;
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
-"deploy_to_cdn.md": {
-	id: "deploy_to_cdn.md";
-  slug: "deploy_to_cdn";
+"zh-cn/deploy_to_cdn.md": {
+	id: "zh-cn/deploy_to_cdn.md";
+  slug: "zh-cn/deploy_to_cdn";
   body: string;
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
-"deployment-architecture-of-zi-tu-cdn.md": {
-	id: "deployment-architecture-of-zi-tu-cdn.md";
-  slug: "deployment-architecture-of-zi-tu-cdn";
+"zh-cn/deployment-architecture-of-zi-tu-cdn.md": {
+	id: "zh-cn/deployment-architecture-of-zi-tu-cdn.md";
+  slug: "zh-cn/deployment-architecture-of-zi-tu-cdn";
   body: string;
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
-"en/cdn_analyze.md": {
-	id: "en/cdn_analyze.md";
-  slug: "en/cdn_analyze";
+"zh-cn/font_split_turbo.md": {
+	id: "zh-cn/font_split_turbo.md";
+  slug: "zh-cn/font_split_turbo";
   body: string;
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
-"en/cn-font-split.md": {
-	id: "en/cn-font-split.md";
-  slug: "en/cn-font-split";
+"zh-cn/free_static_site_deploy.md": {
+	id: "zh-cn/free_static_site_deploy.md";
+  slug: "zh-cn/free_static_site_deploy";
   body: string;
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
-"en/cn_font_split_design.md": {
-	id: "en/cn_font_split_design.md";
-  slug: "en/cn_font_split_design";
+"zh-cn/get_start.md": {
+	id: "zh-cn/get_start.md";
+  slug: "zh-cn/get_start";
   body: string;
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
-"en/deploy_to_cdn.md": {
-	id: "en/deploy_to_cdn.md";
-  slug: "en/deploy_to_cdn";
+"zh-cn/how_to_support_font_feature.md": {
+	id: "zh-cn/how_to_support_font_feature.md";
+  slug: "zh-cn/how_to_support_font_feature";
   body: string;
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
-"en/deployment-architecture-of-zi-tu-cdn.md": {
-	id: "en/deployment-architecture-of-zi-tu-cdn.md";
-  slug: "en/deployment-architecture-of-zi-tu-cdn";
+"zh-cn/performace_turbo.md": {
+	id: "zh-cn/performace_turbo.md";
+  slug: "zh-cn/performace_turbo";
   body: string;
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
-"en/font_split_turbo.md": {
-	id: "en/font_split_turbo.md";
-  slug: "en/font_split_turbo";
+"zh-cn/prompt_for_article.md": {
+	id: "zh-cn/prompt_for_article.md";
+  slug: "zh-cn/prompt_for_article";
   body: string;
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
-"en/free_static_site_deploy.md": {
-	id: "en/free_static_site_deploy.md";
-  slug: "en/free_static_site_deploy";
+"zh-cn/simple_tutorial.md": {
+	id: "zh-cn/simple_tutorial.md";
+  slug: "zh-cn/simple_tutorial";
   body: string;
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
-"en/get_start.md": {
-	id: "en/get_start.md";
-  slug: "en/get_start";
-  body: string;
-  collection: "post";
-  data: InferEntrySchema<"post">
-} & { render(): Render[".md"] };
-"en/how_to_support_font_feature.md": {
-	id: "en/how_to_support_font_feature.md";
-  slug: "en/how_to_support_font_feature";
-  body: string;
-  collection: "post";
-  data: InferEntrySchema<"post">
-} & { render(): Render[".md"] };
-"en/performace_turbo.md": {
-	id: "en/performace_turbo.md";
-  slug: "en/performace_turbo";
-  body: string;
-  collection: "post";
-  data: InferEntrySchema<"post">
-} & { render(): Render[".md"] };
-"en/prompt_for_article.md": {
-	id: "en/prompt_for_article.md";
-  slug: "en/prompt_for_article";
-  body: string;
-  collection: "post";
-  data: InferEntrySchema<"post">
-} & { render(): Render[".md"] };
-"en/simple_tutorial.md": {
-	id: "en/simple_tutorial.md";
-  slug: "en/simple_tutorial";
-  body: string;
-  collection: "post";
-  data: InferEntrySchema<"post">
-} & { render(): Render[".md"] };
-"en/transport_imagekit.md": {
-	id: "en/transport_imagekit.md";
-  slug: "en/transport_imagekit";
-  body: string;
-  collection: "post";
-  data: InferEntrySchema<"post">
-} & { render(): Render[".md"] };
-"font_split_turbo.md": {
-	id: "font_split_turbo.md";
-  slug: "font_split_turbo";
-  body: string;
-  collection: "post";
-  data: InferEntrySchema<"post">
-} & { render(): Render[".md"] };
-"free_static_site_deploy.md": {
-	id: "free_static_site_deploy.md";
-  slug: "free_static_site_deploy";
-  body: string;
-  collection: "post";
-  data: InferEntrySchema<"post">
-} & { render(): Render[".md"] };
-"get_start.md": {
-	id: "get_start.md";
-  slug: "get_start";
-  body: string;
-  collection: "post";
-  data: InferEntrySchema<"post">
-} & { render(): Render[".md"] };
-"how_to_support_font_feature.md": {
-	id: "how_to_support_font_feature.md";
-  slug: "how_to_support_font_feature";
-  body: string;
-  collection: "post";
-  data: InferEntrySchema<"post">
-} & { render(): Render[".md"] };
-"performace_turbo.md": {
-	id: "performace_turbo.md";
-  slug: "performace_turbo";
-  body: string;
-  collection: "post";
-  data: InferEntrySchema<"post">
-} & { render(): Render[".md"] };
-"prompt_for_article.md": {
-	id: "prompt_for_article.md";
-  slug: "prompt_for_article";
-  body: string;
-  collection: "post";
-  data: InferEntrySchema<"post">
-} & { render(): Render[".md"] };
-"simple_tutorial.md": {
-	id: "simple_tutorial.md";
-  slug: "simple_tutorial";
-  body: string;
-  collection: "post";
-  data: InferEntrySchema<"post">
-} & { render(): Render[".md"] };
-"transport_imagekit.md": {
-	id: "transport_imagekit.md";
-  slug: "transport_imagekit";
+"zh-cn/transport_imagekit.md": {
+	id: "zh-cn/transport_imagekit.md";
+  slug: "zh-cn/transport_imagekit";
   body: string;
   collection: "post";
   data: InferEntrySchema<"post">

@@ -19,6 +19,14 @@ sections.forEach((value) => {
     })
 })
 
+export const getSections = (lang:string)=>{
+    return new Map([...sections.entries()].map(([key,val])=>{
+        return [key,val.filter(i=>{
+            return i.id.startsWith(lang)
+        })]
+    }).filter(([_,val])=>val.length))
+}
+
 /** 获取当篇的上下篇的函数 */
 export const getPostSection = (slug: string) => {
     let prev: CollectionEntry<'post'> | null = null;

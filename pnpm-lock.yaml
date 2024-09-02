@@ -121,8 +121,8 @@ importers:
         version: 3.4.7
     devDependencies:
       '@konghayao/i18n-cli':
-        specifier: ^1.20.0
-        version: 1.20.0(ignore@5.3.1)(ink@4.4.1(react@18.3.1))(openai@4.56.0(zod@3.23.8))(react@18.3.1)(ws@8.18.0)
+        specifier: ^1.24.0
+        version: 1.24.0(ignore@5.3.1)(ink@4.4.1(react@18.3.1))(openai@4.56.0(zod@3.23.8))(react@18.3.1)(ws@8.18.0)
       '@solidjs/router':
         specifier: ^0.5.1
         version: 0.5.1(solid-js@1.8.19)
@@ -1480,8 +1480,8 @@ packages:
   '@konghayao/harfbuzzjs@9.0.5':
     resolution: {integrity: sha512-IgdSA309ntzUDkitSlkvYANlFVv9YNpUXeopC9EHHlXrzTFRVUUYKLM4C56od02FXcdFJIbLYHeA29VvXaomNQ==}
 
-  '@konghayao/i18n-cli@1.20.0':
-    resolution: {integrity: sha512-mEmuU76v6x361ibWUNuZ8w8RwGiiHXHwHXhLvlJ387Sm/UeaC1Wy1nb30gh3gYYHk/Sq6BXikPDJ69Gg4GglCg==}
+  '@konghayao/i18n-cli@1.24.0':
+    resolution: {integrity: sha512-fIK0o9lz8aZGOVP87JlH11TS98pthTDBjwl2YGa95nodKlw3OIlPY+VgkAX8qMUr8o8V5X/FZNvK5xhzjLBFqw==}
     engines: {node: '>=18'}
     hasBin: true
     peerDependencies:
@@ -7625,7 +7625,7 @@ snapshots:
 
   '@konghayao/harfbuzzjs@9.0.5': {}
 
-  '@konghayao/i18n-cli@1.20.0(ignore@5.3.1)(ink@4.4.1(react@18.3.1))(openai@4.56.0(zod@3.23.8))(react@18.3.1)(ws@8.18.0)':
+  '@konghayao/i18n-cli@1.24.0(ignore@5.3.1)(ink@4.4.1(react@18.3.1))(openai@4.56.0(zod@3.23.8))(react@18.3.1)(ws@8.18.0)':
     dependencies:
       '@deno/kv': 0.7.0
       '@inkjs/ui': 1.0.0(ink@4.4.1(react@18.3.1))
