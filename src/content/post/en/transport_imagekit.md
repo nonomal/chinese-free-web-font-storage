@@ -1,39 +1,39 @@
 ---
-title: 转接 ImageKit 服务器
-description: 转接 ImageKit 服务器
+title: "Connecting to ImageKit Server"
+description: "Connecting to ImageKit Server"
 article:
-  authors:
-    - 江夏尧
-  section: 使用教程
-  tags:
-    - 使用指南
-  pubDate: 2023-12-24
-  image: >-
-    https://ik.imagekit.io/chinesefonts/tr:w-1200/image/photo-1508804185872-d7badad00f7d.jfif
+    authors:
+        - "KonghaYao"
+    section: "How to Use"
+    tags:
+        - "User Guide"
+    pubDate: 2023-12-24
+    image: "https://ik.imagekit.io/chinesefonts/tr:w-1200/image/photo-1508804185872-d7badad00f7d.jfif"
 ---
-# Redirecting to ImageKit Server
 
-For various reasons, we may need to redirect the CDN of the ImageKit service provider to achieve faster and better loading speed for our website. At this time, we need to use a free function computing service to convert the data provided by ImageKit to another domain.
+# Connecting to ImageKit Server
 
-> If you are redirecting to a CDN, there is no problem at all; the CDN cache will only have a small amount of access to your relay server. However, if it is directly provided to your website, it is better to think twice.
+For various reasons, we may need to route through the CDN of the ImageKit service provider for faster and improved loading speeds for our website. In this case, we can use a free function computing service to redirect the data provided by ImageKit to another domain.
+
+> If you are routing it for CDN use, there's no issue; the CDN's cache will only minimally access your relay server. However, if it's directly provided for your website, it’s best to consider this carefully.
 
 ## Core Logic
 
-1. Use a free Worker service to transform the original website URL into another URL.
-2. The achieved effect is that the same data can be accessed by simply changing the domain of the URL.
-3. Worker is a server with a JS runtime deployed at the edge. Generally, service providers will directly provide a domain for you to deploy this server.
+1. Utilize a free Worker service to convert the original website URL to another URL.
+2. The desired effect is that the same data can be accessed by merely changing the domain of the URL.
+3. A Worker is an edge-deployed JS runtime server. Generally, service providers will directly offer a domain for you to deploy this server.
 
-## Redirecting with Cloudflare (Recommended)
+## Using Cloudflare for Routing (Recommended)
 
-Although Cloudflare's speed in China is not good, it is much better overseas. Additionally, Cloudflare provides a huge amount of free Worker quota, which can be used to redirect the original site to another domain.
+Although Cloudflare has poor speeds domestically, it performs much better internationally. Furthermore, Cloudflare provides a massive amount of free Worker quotas, which can be leveraged to convert the original site to another domain.
 
-1. Log in or register at <https://www.cloudflare.com/>.
+1. Log in or register at <https://www.cloudflare.com/>
 
-2. Enter the management panel and create a Worker. Keep clicking the blue button until the creation is successful.
+2. Go to the management panel and create a Worker. Keep clicking the blue button until it’s successfully created.
 
-![cloudflare\_create\_worker](../../../assets/cloudflare_create_worker.png)
+![cloudflare_create_worker](../../../assets/cloudflare_create_worker.png)
 
-3. Enter the code editing panel, directly input the following code, and then click the "Deploy" button.
+3. Enter the code editing panel, input the following code, and then click the "Deploy" button.
 
 ![Alt text](../../../assets/cloudflare_playground_deploy.png)
 
@@ -41,7 +41,7 @@ Although Cloudflare's speed in China is not good, it is much better overseas. Ad
 export default {
     async fetch(request, env, ctx) {
         const url = new URL(request.url);
-        const redirectUrl = 'ik.imagekit.io'
+        const redirectUrl = 'ik.imagekit.io';
         url.host = redirectUrl;
         return fetch(url).then(res => {
             return new Response(res.body, {
@@ -50,28 +50,28 @@ export default {
                     "Access-Control-Allow-Origin": "*",
                     "Cache-Control": "public, max-age=86400"
                 }
-            })
-        })
+            });
+        });
     }
 };
 ```
 
-4. This completes the creation of the worker. Generally, when deploying, you will be provided with the Worker's address, so remember to save it.
+4. The Worker creation is now complete. Generally, when deployed, the Worker’s address will be provided, so remember to save it!
 
-## Redirecting with deno.dev
+## Using deno.dev for Routing
 
-deno.dev also provides free Worker services and can be used to redirect websites.
+deno.dev also provides a free Worker service and can route websites.
 
-1. Log in with your Github account at [deno.dev](https://deno.dev).
+1. Log in using your Github account at [deno.dev](https://deno.dev).
 
-2. Create a playground. (Note: Click the New Playground button, not Project)
+2. Create a playground. (Make sure to click the New Playground button, not Project.)
 
-3. You will enter a code editor, copy the following code into the editor (without changing any information), and save it.
+3. You will be directed to a code editor; copy the code below into the editor (without changing any information) and save.
 
    ```ts
    import { ConnInfo, serve } from 'https://deno.land/std@0.177.0/http/server.ts';
 
-   /** Copy Headers */
+   /** Copy headers */
    const copyHeaders = (headers: Headers) => {
        const newHeader = new Headers();
        for (let i of headers.entries()) {
@@ -79,11 +79,11 @@ deno.dev also provides free Worker services and can be used to redirect websites
        }
        return newHeader;
    };
-   /** Rewrite Request Headers */
+   /** Rewrite request headers */
    const ReqHeadersRewrite = (req: Request, Url: URL) => {
        const newH = copyHeaders(req.headers);
        newH.delete('X-deno-transparent');
-       // Rewrite referer and origin to ensure data can be obtained
+       // Rewrite referer and origin to ensure data can be fetched
        newH.set('referer', Url.toString());
        newH.set('origin', Url.toString());
        return newH;
@@ -93,10 +93,10 @@ deno.dev also provides free Worker services and can be used to redirect websites
        newHeader.set('access-control-allow-origin', '*');
        const cookie = newHeader.get('set-cookie');
        cookie && newHeader.set('set-cookie', cookie.replace(/domain=(.+?);/, `domain=${domain};`));
-       newHeader.delete('X-Frame-Options'); // Prevents iframe nesting restrictions
+       newHeader.delete('X-Frame-Options'); // Prevent unauthorized iframe nesting
        return newHeader;
    };
-   /** Proxy the entire website, including all request modes */
+   /** Proxy entire website, including all request patterns */
    const proxy = (host: string, req: Request) => {
        const Url = new URL(req.url);
        Url.host = host;
@@ -115,7 +115,9 @@ deno.dev also provides free Worker services and can be used to redirect websites
                statusText: res.statusText,
                headers: newHeader,
            };
+           console.log(res.status, res.url);
            if (res.status >= 300 && res.status < 400) {
+               console.log('Redirecting to', req.url);
                return Response.redirect(req.url, res.status);
            }
            return new Response(res.body, config);
@@ -138,7 +140,7 @@ deno.dev also provides free Worker services and can be used to redirect websites
    );
    ```
 
-4. You can see the URL in the address bar on the right side of the editor, which is the URL after the redirection.
+4. You can see the URL in the address bar on the right side of the editor; this is your routed URL address.
 
-5. The path following this address is the same as the path of the original website, except that the domain has changed to deno.dev.
+5. The path following this address remains the same as that of the original website, simply changing the domain to deno.dev.
 

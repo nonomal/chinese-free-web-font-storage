@@ -1,73 +1,70 @@
 ---
-title: 【数据分析】2024 年 CDN 性能优化与分发网关概况
-description: >-
-  了解 2024 年 7 月和 6 月 CDN 性能优化与分发网关设计的详细情况，包括 Cloudflare Page 和 Render
-  的并发限制问题、架构底层 CDN 更改为 ImageKit、横向扩容 CDN 服务账号、全链路监控系统需求，以及 LightCDN
-  的使用数据统计和部分服务挂机问题。分析各地区的 CDN 使用情况和性能表现，特别是东亚和美国地区的流量分布和传输延迟。
+title: "Data Analysis: Overview of CDN Performance Optimization and Distribution Gateway in 2024"
+description: "Learn about the detailed situation of CDN performance optimization and distribution gateway design in July and June 2024, including the concurrency limit issues with Cloudflare Page and Render, architectural changes of the underlying CDN to ImageKit, horizontal expansion of CDN service accounts, requirements for a full-link monitoring system, as well as usage statistics and some service downtime issues with LightCDN. Analyze the usage and performance of CDN in various regions, especially the traffic distribution and transmission latency in East Asia and the United States."
 article:
-  authors:
-    - 江夏尧
-  section: 维护日志
-  tags:
-    - CDN
-  pubDate: 2024-07-22
-  image: >-
-    https://ik.imagekit.io/chinesefonts/tr:w-1200/image/photo-1508804185872-d7badad00f7d.jfif
+    authors:
+        - "KonghaYao"
+    section: "Maintenance Log"
+    tags:
+        - "CDN"
+    pubDate: 2024-07-22
+    image: "https://ik.imagekit.io/chinesefonts/tr:w-1200/image/photo-1508804185872-d7badad00f7d.jfif"
 ---
-# [Data Analysis] Overview of CDN Performance Optimization and Distribution Gateway in 2024
+
+# Data Analysis: Overview of CDN Performance Optimization and Distribution Gateway in 2024
 
 ## July 2024 - CDN Distribution Gateway Optimization
 
-1. Cloudflare Page and Render's free static deployment have concurrency limitations, leading to screen freezing when loading fonts.
-2. The underlying architecture of CDN has been changed to ImageKit, a service provider by AWS, without concurrency limitations.
-3. Horizontal scaling of CDN service accounts, with all CDN accounts pointing to the chinese-fonts-cdn origin via HTTP Proxy.
-4. From 0622 to 0722, the gateway logs reached 135K usage, with two CDNs approaching their limits, and then scaled up to 6.
-5. The most used is still that Bilibili Comics and its multiple shadow clones, 2333.
-6. A more detailed end-to-end monitoring system is needed.
+1. The free static deployment of Cloudflare Page and Render has concurrency limits, making it easy to cause loading stalls when rendering fonts.
+2. The underlying architectural CDN has been changed to ImageKit, whose service provider is AWS and has no concurrency limits.
+3. Horizontally expanded the CDN service accounts, redirecting all CDN accounts through HTTP Proxy to the chinese-fonts-cdn origin station.
+4. The gateway log usage from June 22 to July 22 is 135K, with two CDN services nearing capacity; expanded to 6 services.
+5. The most used service remains Bilibili Comics and its various clones, 2333.
+6. A more detailed full-link monitoring system is needed.
 
 ## June 2024 - CDN Distribution Gateway Design
 
-1. Due to the discontinuation of LightCDN's free service, the CDN was migrated.
-2. The font files for the Chinese Font Plan are all static files, so they can be deployed using a front-end deployment method, by deploying the code to various free websites each time and the effect is not bad.
-3. The advantage is dynamically forwarding the CDN's host, not afraid even if the CDN goes down, but the downside is that there is no CDN analysis data for me to play with.
-4. The total CDN quota is ridiculously high, totaling around 220 GB, and if it's still not enough, then connect another 1T for continued usage.
+1. Since LightCDN is no longer free, migration of the CDN is necessary.
+2. The font files of the Chinese Web Font Project are all static files, so a frontend deployment approach can be used to deploy the code fully to various free websites, building and deploying each time, which works quite well.
+3. The advantage is the dynamic forwarding of the CDN's host; even if the CDN goes down, it is not a problem. The downside is the lack of CDN analytics data to play with.
+4. The total CDN capacity is absurdly high, around 220 GB; if we can still manage that, we'll add another 1T for continuity.
 
-## LightCDN has been sent in June 2024
+## Data Statistics for LightCDN in June 2024
 
-The data statistics of the Chinese Font Plan using LightCDN's free service are as follows:
+The data statistics for the free service of LightCDN used by the Chinese Web Font Project are as follows:
 
-| Visitor Country | Total traffic | Avg latency | Avg transfer rate |
-| --------------- | ------------- | ----------- | ----------------- |
-| China           | 7.59 GB       | 192 ms      | 68.39 KB          |
-| Hong Kong-China | 1.42 GB       | 30 ms       | 271.65 KB         |
-| United States   | 1.38 GB       | 60 ms       | 289.81 KB         |
-| Japan           | 850.52 MB     | 20 ms       | 436.83 KB         |
-| Taiwan-China    | 487.91 MB     | 70 ms       | 211.49 KB         |
+| Visitor Country   | Total Traffic | Avg Latency | Avg Transfer Rate |
+|-------------------|---------------|-------------|-------------------|
+| China             | 7.59 GB       | 192 ms      | 68.39 KB          |
+| Hong Kong-China   | 1.42 GB       | 30 ms       | 271.65 KB         |
+| United States     | 1.38 GB       | 60 ms       | 289.81 KB         |
+| Japan             | 850.52 MB     | 20 ms       | 436.83 KB         |
+| Taiwan-China      | 487.91 MB     | 70 ms       | 211.49 KB         |
 
-According to the given table, we can see that the usage of this CDN is mainly distributed in East Asia and the United States.
+Based on the provided table, we can see that the usage of the CDN is mainly distributed in East Asia and the United States.
 
-The usage in mainland China is very high, but due to the nodes being located in remote areas such as Hong Kong and Tokyo, the coverage for the inland areas is small, resulting in the average transmission volume being almost the same as our cn-font-split's default segmentation size, so the effect is just passable.
+The usage in mainland China is significant; however, the node distribution in remote areas like Hong Kong and Tokyo means limited coverage inland, resulting in average transmission close to the default splitting size of our cn-font-split, so the results are just barely acceptable.
 
-In the United States, Singapore, and Japan, which are close to edge servers, their transport latency and capacity are very strong, making them very suitable for font loading.
+In regions close to edge servers, such as the United States, Singapore, and Japan, the transport latency and burden capacity are very strong, making them quite suitable for font loading.
 
-> Note: During certain festivals and special periods, foreign nodes are all unstable, which is unavoidable.
+> Note: During certain holidays and special periods, foreign nodes can be unstable; there is no solution to this.
 
-## March 2024 - Partial Service Outage Issue
+## March 2024 - Partial Service Downtime Issues
 
 ![Alt text](../../../assets/202403_CDN.png)
 
-One of the CDN branches experienced a sudden surge in traffic within a week without a clear entry point, directly occupying 100G and causing the service to crash. Fortunately, it was a free CDN, so no money was spent 😂.
+One of the sub-CDNs experienced a traffic surge without a clear entry point, overwhelming 100G in just a week, resulting in service downtime. Fortunately, it was a free CDN, so no money was spent 😂.
 
-After restarting, it was discovered that there was a huge traffic from France and Japan, so we closed all sites except for those in Tokyo, Hong Kong, and Singapore, as they are mainly targeted at the domestic market.
+After restarting, it was found that the traffic from France and Japan was tremendous, so we decided to shut down sites in Asia, except for Tokyo, Hong Kong, and Singapore, as our main audience is domestic.
 
-| Edge locations                  | Total traffic |
-| ------------------------------- | ------------- |
-| Tokyo, Japan                    | 53.31 GB      |
-| **Frankfurt, Germany**          | 46.87 GB      |
-| Washington, America             | 17.59 GB      |
-| Singapore                       | 11.42 GB      |
-| Dubai, The United Arab Emirates | 1.62 GB       |
-| Hong Kong, China                | 943.4 MB      |
-| Silicon Valley, America         | 720.65 MB     |
-| Sao Paulo, Brazil               | 16.7 MB       |
+| Edge Locations                         | Total Traffic |
+|----------------------------------------|---------------|
+| Tokyo, Japan                           | 53.31 GB      |
+| **Frankfurt, Germany**                 | 46.87 GB      |
+| Washington, America                    | 17.59 GB      |
+| Singapore                              | 11.42 GB      |
+| Dubai, The United Arab Emirates       | 1.62 GB       |
+| Hong Kong, China                       | 943.4 MB      |
+| Silicon Valley, America                | 720.65 MB     |
+| Sao Paulo, Brazil                      | 16.7 MB       |
 

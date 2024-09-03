@@ -1,61 +1,62 @@
 ---
 index: 30
-title: 如何进行字体分包部署与使用：详细指南
-description: 了解如何通过在线工具进行字体分包，并将其部署到 ImageKit OSS 或其他 CDN 服务中。本文提供详细步骤和图文教程，帮助开发者优化网页加载速度。
+title: "Detailed Guide on Font Sub-Package Deployment and Usage"
+description: "Learn how to sub-package fonts using online tools and deploy them to ImageKit OSS or other CDN services. This article provides detailed steps and visual tutorials to help developers optimize web page loading speed."
 article:
-  authors:
-    - 江夏尧
-  section: 使用教程
-  tags:
-    - 使用指南
-  pubDate: 2023-07-16
-  image: ''
+    authors:
+        - "KonghaYao"
+    section: "How to Use"
+    tags:
+        - "Usage Guide"
+    pubDate: 2023-07-16
+    image: ""
 ---
-# How to Deploy and Use Subfont: A Detailed Guide
 
-> Due to the Chinese Font Project's CDN being stolen by multiple platforms, the corresponding traffic for providing public CDN links will be reduced in the future, and link stability will no longer be guaranteed. Therefore, developers need to deploy fonts to a CDN by themselves to speed up their web pages.
+# Detailed Guide on Font Sub-Package Deployment and Usage
 
-There are many ways to quickly load font files on the web, but the logic for deploying these static files remains the same.
+> Due to the misuse of the Chinese Web Font Project's CDN by multiple platforms, we will reduce the corresponding traffic for public CDN links in the future and no longer guarantee link stability. Therefore, developers need to deploy fonts to their own CDN to accelerate their web pages.
 
-First, you need a link to place the static files and then protect it using a CDN. You can purchase any object storage service in China to upload the files and then add a layer of CDN service to it. You can also use free services provided by LightCDN and Netlify to expand your website globally.
+There are many ways to quickly load font files online, but the logic of deploying these static files remains consistent.
 
-## Deployment Process
+First, you need a link to place static files, then use a CDN to protect it. You can purchase any domestic object storage service to upload files and then overlay a layer of CDN service; you can also use free services provided by overseas LightCDN and Netlify to extend your website globally.
 
-After font files go through online subfont or code tool subfont, you will get a finished folder containing segmented woff2 files, CSS index files, reporter.json, and other static files.
+## Build Phase
 
-### Online Subfont (Recommended)
+After a font has gone through [**online font sub-packaging**](/online-split) or **code tool sub-packaging**, you will receive a final product folder, which contains subdivided woff2 files, CSS index files, reporter.json, and other static files.
 
-Go to the [**online subfont page**](/online-split), upload your font source file, click start packaging, and wait for it to complete. After completion, you can download the files.
+### Online Font Sub-Packaging (Recommended)
+
+Go to the [**Online Font Sub-Packaging Page**](/online-split), upload your font source file, click to start packaging, then wait for it to complete, after which you can download the files.
 
 ## Deployment of Static Files
 
-### Deployment to ImageKit OSS (Recommended)
+### Deploying to ImageKit OSS (Recommended)
 
-Since uploading OSS files is similar, we will use ImageKit with free quotas for this tutorial. ImageKit itself comes with a CDN, but the quota is only 20GB per month. It can be directly used for small to medium-sized websites.
+Since OSS file uploads are quite similar across services, we choose [ImageKit](https://imagekit.io/) for teaching, which comes with a CDN. However, it only has a quota of 20GB/month, which is sufficient for small to medium-sized websites to use directly.
 
-After registration, you can directly upload the entire folder (remember to save it in the appropriate location) as shown in the picture below.
+After registration, you can upload the entire folder directly according to the image below (be careful to save it in the appropriate location).
 
 ![image_folder_upload_guide](/assets/image_folder_upload_guide.png)
 
-After uploading, find your CSS file, right-click, and copy the link for later use. There may be multiple files, if you find it cumbersome, you can copy the file path of the same folder, then modify the file name to `result.css`.
+After uploading, find your CSS file, right-click and copy the link for future use. There might be many files; if you find it cumbersome, you can copy the file path of the same folder and rename the file to `result.css`.
 
 ![how_to_get_image_url](/assets/how_to_get_image_url.png)
 
-### Deployment to Website System
+### Deploying to a Website System
 
-In fact, all packaged fonts are static files, so you can follow the rules for deploying static websites, treating all font files as a website, and using their links.
+In fact, all packaged fonts are static files, so you can follow the same rules as deploying a static website by treating all font files as a website and using the links obtained.
 
-The majority of font deployments by the Chinese Font Project use this method. Netlify generously offers 100GB of bandwidth for free every month, which is more than enough for our use.
+Many font deployments for the Chinese Web Font Project are done using this method, and Netlify generously provides free bandwidth of 100GB per month, which is more than enough for our use.
 
-Different service providers have different ways of deploying websites, but deploying static files can be as simple as uploading the folder and paying attention to its path.
+Deployment methods vary among service providers, but you can usually just upload the folder and pay attention to its path.
 
 ## Setting Up the CDN Environment
 
-The purpose of a CDN is to set file caching on multiple servers around the world, ensuring that static files can be quickly served from the nearest point to the user. By wrapping the OSS with a CDN, you can reduce the download pressure on the OSS and obtain edge data acceleration.
+The role of the CDN is to set file caching on multiple servers around the globe, ensuring that the nearest point to the user can quickly respond to static files. By wrapping the OSS with a CDN, it can reduce the download pressure on OSS and also provide edge data acceleration.
 
-### Service Provider's Default CDN
+### Default CDN from Service Providers
 
-Some service providers provide a CDN setup option when you purchase object storage or website deployment services. In this case, you just need to operate on their interface without any special settings.
+Some service providers offer a CDN setup option when you purchase object storage or website deployment services, so you only need to operate on their interface without any special configurations.
 
-### ~~LightCDN~~ No longer offers free monthly quotas, so it is not recommended to use.
+### ~~LightCDN~~ no longer offers monthly free quotas, so it is not recommended for use.
 

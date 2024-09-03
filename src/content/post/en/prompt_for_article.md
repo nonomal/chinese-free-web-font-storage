@@ -1,21 +1,22 @@
 ---
-title: 【AI】写作 Prompt 示例
-description: 这是中文网字计划文章的写作优化 Prompt，帮助你在技术写作上更进一层楼。
+title: "【AI】Writing Prompt Examples"
+description: "This is a writing optimization prompt for articles in the Chinese Language Web Character Project, helping you elevate your technical writing."
 article:
-  authors:
-    - 江夏尧
-  section: 维护日志
-  tags:
-    - GPT
-  pubDate: 2024-07-22
-  image: ''
+    authors:
+        - "KonghaYao"
+    section: "Maintenance Log"
+    tags:
+        - "GPT"
+    pubDate: "2024-07-22"
+    image: ""
 ---
-# Writing Prompt Example
+
+# Writing Prompt Examples
 
 ## SEO Title and Description Generation
 
 ```bash
-Please provide appropriate SEO title and description for
+Please provide a suitable SEO title and description
 
 {{article}}
 ```
@@ -23,7 +24,7 @@ Please provide appropriate SEO title and description for
 ## Optimizing Article Writing
 
 ```bash
-As a technical expert, you are currently reviewing and optimizing a technical patent. Modify and enrich the relevant technical discourse in the following chapter, using forward-looking feature suggestions and highly academic writing.
+You are a technical expert reviewing and optimizing a technical patent. Revise and enrich the related technical discussions in the following section, incorporating forward-looking functional suggestions and a high level of academic writing.
 
 {{article}}
 ```

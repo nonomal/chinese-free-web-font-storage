@@ -9,9 +9,8 @@ module.exports = {
             "性能优化": "Performance Optimization"
         }
     },
-    modelName: 'gpt-3.5-turbo',
     markdown: {
-        entry: ['./src/content/post/*.md'],
+        entry: ['./src/content/post/zh-cn/*.md'],
         entryLocale: 'zh-CN',
         entryExtension: '.md',
         outputLocales: ['en'],
@@ -20,7 +19,7 @@ module.exports = {
             return '.md';
         },
         outputFileName(locale, path) {
-            return path.replace('/content/post/', '/content/post/' + locale + '/')
+            return path.replace('/zh-cn/', '/' + locale + '/')
         }
     },
 };

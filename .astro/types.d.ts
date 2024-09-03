@@ -126,6 +126,97 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"post": {
+"en/cdn_analyze.md": {
+	id: "en/cdn_analyze.md";
+  slug: "en/cdn_analyze";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
+"en/cn-font-split.md": {
+	id: "en/cn-font-split.md";
+  slug: "en/cn-font-split";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
+"en/cn_font_split_design.md": {
+	id: "en/cn_font_split_design.md";
+  slug: "en/cn_font_split_design";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
+"en/deploy_to_cdn.md": {
+	id: "en/deploy_to_cdn.md";
+  slug: "en/deploy_to_cdn";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
+"en/deployment-architecture-of-zi-tu-cdn.md": {
+	id: "en/deployment-architecture-of-zi-tu-cdn.md";
+  slug: "en/deployment-architecture-of-zi-tu-cdn";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
+"en/font_split_turbo.md": {
+	id: "en/font_split_turbo.md";
+  slug: "en/font_split_turbo";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
+"en/free_static_site_deploy.md": {
+	id: "en/free_static_site_deploy.md";
+  slug: "en/free_static_site_deploy";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
+"en/get_start.md": {
+	id: "en/get_start.md";
+  slug: "en/get_start";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
+"en/how_to_support_font_feature.md": {
+	id: "en/how_to_support_font_feature.md";
+  slug: "en/how_to_support_font_feature";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
+"en/performace_turbo.md": {
+	id: "en/performace_turbo.md";
+  slug: "en/performace_turbo";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
+"en/prompt_for_article.md": {
+	id: "en/prompt_for_article.md";
+  slug: "en/prompt_for_article";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
+"en/simple_tutorial.md": {
+	id: "en/simple_tutorial.md";
+  slug: "en/simple_tutorial";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
+"en/transport_imagekit.md": {
+	id: "en/transport_imagekit.md";
+  slug: "en/transport_imagekit";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
 "zh-cn/cdn_analyze.md": {
 	id: "zh-cn/cdn_analyze.md";
   slug: "zh-cn/cdn_analyze";

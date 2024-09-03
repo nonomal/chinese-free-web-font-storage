@@ -1,51 +1,51 @@
 ---
 index: 40
-title: 【字体分包】cn-font-split 4.5.0：支持复杂字形渲染的字体分包算法
-description: >-
-  了解 cn-font-split 4.5.0
-  版本如何通过特殊分包算法支持复杂字形渲染。我们提供了简单的示例网页，详细介绍了网络字体在复杂字形渲染方面的困难、OpenType Features
-  的存储方式以及如何单独汇集特性所需的 Unicode。
+title: "[Font Splitting] cn-font-split 4.5.0: A Font Splitting Algorithm Supporting Complex Glyph Rendering"
+description: "Learn how the cn-font-split 4.5.0 version supports complex glyph rendering through a special splitting algorithm. We provide a simple example webpage detailing the challenges of web fonts in complex glyph rendering, the storage method of OpenType Features, and how to gather the necessary Unicode for individual features."
 article:
-  authors:
-    - 江夏尧
-  section: 技术内幕
-  tags:
-    - 性能优化
-  pubDate: 2023-07-16
-  image: ''
+    authors:
+        - "KonghaYao"
+    section: "Technical Insights"
+    tags:
+        - "Performance Optimization"
+    pubDate: "2023-07-16"
+    image: ""
 ---
-#【Font Subsetting】cn-font-split 4.5.0: Font subsetting algorithm supporting complex glyph rendering
 
-Starting from version 4.5.0, cn-font-split supports rendering special glyphs through a special subsetting algorithm. We have created a simple example webpage showcasing the glyph features, [Feature Rendering Page](/feature/test).
+# [Font Splitting] cn-font-split 4.5.0: A Font Splitting Algorithm Supporting Complex Glyph Rendering
 
-## Challenges in complex glyph rendering with web fonts
+After version 4.5.0, cn-font-split supports rendering special glyphs through a special splitting algorithm. We created a relatively simple example webpage focused on glyph features, 
+[Feature Rendering Page](/feature/test).
 
-When browsers render complex glyphs, they need to gather all the glyphs that make up the complex glyph into the same subset so that the browser can render them as the complex glyph in that subset.
+## Challenges of Web Fonts in Complex Glyph Rendering
 
-The difficulty lies in extracting the triggering and final display glyphs from the original font file and grouping them into a subset. Therefore, when developing the subsetting algorithm, I decided to pre-calculate features and distribute them into separate subsets based on glyph characteristics to achieve rendering of complex glyph features.
+When rendering complex glyphs, the browser requires all the glyphs that make up a complex glyph to be in the same package; only then does the browser render them as the complex glyphs within that package.
 
-## Storage method of OpenType Features
+The challenge lies in extracting and grouping many complex glyph-triggering characters and the final displayed characters from the original files into a single package. Therefore, I decided to calculate the Features in advance during the splitting algorithm and distribute them into separate packages to achieve rendering of the complex glyph features.
 
-OpenType fonts store all glyphs in the glyf table, while font features are stored in the [GSUB table](https://learn.microsoft.com/zh-cn/typography/opentype/spec/gsub).
+## Storage Method of OpenType Features
+
+OpenType fonts store all glyphs in the glyf table, while font features are stored via the [GSUB table](https://learn.microsoft.com/en-us/typography/opentype/spec/gsub).
 
 ### GSUB
 
-The storage method of the GSUB table is very complex, with various forms of storage that can represent many different types of glyph substitution methods. Due to the complexity and multitude of features, OpenType defines a Tag for each feature, along with usage instructions and binary storage declarations. Specific declarations for each Tag can be found [here](https://learn.microsoft.com/zh-cn/typography/opentype/spec/featurelist).
+The storage method of the GSUB table is quite complex and has many formats, representing numerous types of glyph substitution methods. 
+Due to the abundance and complexity of Features, OpenType defines a Tag for each feature and provides corresponding usage instructions and binary storage method declarations. You can [view the specific declarations for each Tag here](https://learn.microsoft.com/en-us/typography/opentype/spec/featurelist).
 
-To simplify the retrieval of font features data, we use opentype.js to parse the GSUB table in the font and retrieve its processed features.
+To simplify the acquisition of font features data, we use opentype.js to parse the GSUB table in the font and retrieve its processed features.
 
 ```ts
 import { parse } from 'opentype.js';
 const font = parse(ttfFile.buffer);
 const substitution = font.substitution.getFeature('aalt');
-// substitution is an object containing the original glyph and the replacement glyph, 'aalt' is a Feature Tag
+// substitution is an object containing the original glyph and the replacement glyph; aalt is a Feature Tag
 ```
 
 ### GPOS
 
-Some font features are stored in the GPOS table of the font file, but opentype.js has poor support for this table. Therefore, our support for features related to GPOS is also limited.
+Some font features are stored in the GPOS table of the font file, but opentype.js has poor support for this table, so we do not support features that rely on GPOS well.
 
-## Collecting Unicode for individual features
+## Unicode Needed for Gathering Features Separately
 
-The `substitution` obtained from opentype.js contains multiple `Glyphs`, each pointing to a specific unicode encoding. Next, we only need to extract the unicode values corresponding to the original and replacement glyphs of the feature and aggregate them into an array. These unicode values within the array need to be grouped into a subset during subsetting and then automatically made into a separate subset by the existing subsetting program, thereby enabling the final woff2 font file to support this feature within one subset.
+The `substitution` obtained from opentype.js contains multiple `Glyphs`, which point to the corresponding specific Unicode codes. Next, we only need to get the Unicode values of the original and replacement glyphs corresponding to the features and aggregate them into an array. The Unicode values within this array need to be divided into a single package during splitting, and then through the existing splitting program, the feature glyphs can be automatically separated into packages, allowing the resultant woff2 font file to support this feature within a single package.
 

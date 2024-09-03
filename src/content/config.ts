@@ -9,7 +9,7 @@ const postCollection = defineCollection({
         section: z.string(),
         authors: z.array(z.string()),
         tags: z.optional(z.array(z.string())),
-        pubDate: z.date(),
+        pubDate: z.string().or(z.date()),
         image: z.optional(z.string()),
     })
   })

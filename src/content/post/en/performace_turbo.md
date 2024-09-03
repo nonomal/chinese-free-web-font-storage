@@ -1,39 +1,37 @@
 ---
 index: 30
-title: 中文网络字体优化最佳实践：提升网页加载速度与用户体验
-description: >-
-  了解如何通过中文网络字体的分包优化、使用 woff2 格式、合理的字体分包切割大小、高并发 CDN 服务、HTTP/2 和 HTTP/3
-  协议、Preconnect 预链接、极小量级优化和布局偏移 CLS 优化等方法，提升网页加载速度与用户体验。详细教程与代码示例助你轻松实现中文字体优化。
+title: "Best Practices for Optimizing Chinese Web Fonts: Enhancing Page Load Speed and User Experience"
+description: "Learn how to enhance webpage loading speed and user experience through techniques such as subpackage optimization of Chinese web fonts, using the woff2 format, reasonable font subpackage chunk sizes, high-concurrency CDN services, HTTP/2 and HTTP/3 protocols, preconnect hints, minimal optimization, and CLS optimization. Detailed tutorials and code examples will help you easily achieve Chinese font optimization."
 article:
-  authors:
-    - 江夏尧
-  section: 性能优化
-  tags:
-    - 性能优化
-  pubDate: 2023-05-23
-  image: >-
-    https://ik.imagekit.io/chinesefonts/tr:w-1200/image/photo-1508804185872-d7badad00f7d.jfif
+    authors:
+        - "KonghaYao"
+    section: "Performance Optimization"
+    tags:
+        - "Performance Optimization"
+    pubDate: 2023-05-23
+    image: "https://ik.imagekit.io/chinesefonts/tr:w-1200/image/photo-1508804185872-d7badad00f7d.jfif"
 ---
-# Best Practices for Optimizing Chinese Web Fonts: Improving Web Page Loading Speed and User Experience
 
-Learn how to improve web page loading speed and user experience through Chinese web font optimization, including methods such as font subsetting optimization, using the WOFF2 format, reasonable font subsetting size, high-concurrency CDN services, HTTP/2 and HTTP/3 protocols, Preconnect, minimal optimization, and layout shift (CLS) optimization. Detailed tutorials and code examples will help you easily achieve Chinese font optimization.
+# Best Practices for Optimizing Chinese Web Fonts: Enhancing Page Load Speed and User Experience
 
-## Font Subsetting Optimization
+Learn how to enhance webpage loading speed and user experience through techniques such as subpackage optimization of Chinese web fonts, using the woff2 format, reasonable font subpackage chunk sizes, high-concurrency CDN services, HTTP/2 and HTTP/3 protocols, preconnect hints, minimal optimization, and CLS optimization. Detailed tutorials and code examples will help you easily achieve Chinese font optimization.
 
-Font subsetting can be easily configured and split using `cn-font-split`. The following optimizations are also performed using this plugin. If you are using frontend toolchains such as Vite, Rspack, Next.js, etc., it is recommended to use the super simple [vite-plugin-font](https://npmjs.com/package/vite-plugin-font), where most of the work has been done for you.
+## Font Subpackage Optimization
 
-### Use the WOFF2 Format for Font Output
+Font subpackaging can be easily configured and executed using `cn-font-split`. The optimizations below also utilize this plugin. If you are using front-end toolchains like Vite, Rspack, or Next.js, we recommend using the super easy [vite-plugin-font](https://npmjs.com/package/vite-plugin-font), which has already handled most of the work for you.
 
-Chinese fonts are very large, with an OTF or TTF file ranging from 5 to 10 MB, which can cause network congestion when directly used. Therefore, these fonts can be split into smaller WOFF2 fonts, allowing for on-demand loading and support for all text.
+### Using WOFF2 Format for Processed Fonts
 
-`cn-font-split` now defaults to using WOFF2 as the font subsetting result, and you only need to run a command line or JavaScript code. Alternatively, you can also [use it directly online](/online-split)!
+Chinese font packages are quite large; a single OTF or TTF file can range from 5 to 10 MB, which can lead to network lags if used directly. Thus, we can split these fonts into smaller WOFF2 fonts, allowing for on-demand loading while supporting all text.
+
+`cn-font-split` now defaults to using WOFF2 as the result for font subpackaging; you just need to run the command line or JavaScript code. Alternatively, you can... [use it online directly](/online-split)!
 
 ```js
 import { fontSplit } from 'cn-font-split';
 await fontSplit({
-    FontPath: `./fonts/fonts.ttf`, // The plugin will automatically convert
+    FontPath: `../zh-cn/fonts/fonts.ttf`, // The plugin will automatically convert
     destFold: dest,
-    targetType: 'woff2', // Configure WOFF2
+    targetType: 'woff2', // Configured for WOFF2
     chunkSize: 70 * 1024,
     testHTML: true,
     threads: {},
@@ -41,41 +39,41 @@ await fontSplit({
 });
 ```
 
-> In modern fonts, WOFF2 is the latest font format with the widest browser support and the best compression ratio. Using the Brotli algorithm, WOFF2 achieves a 30% better compression effect than the WOFF format, resulting in less data to download and therefore better performance. [Best Practices for Font Usage](https://web.dev/font-best-practices/#be-cautious-when-using-preload-to-load-fonts)
+> In modern font technology, WOFF2 is the latest font format with the widest browser support and the best compression rates. Utilizing the Brotli algorithm, WOFF2 offers 30% better compression compared to WOFF, which means less data to download, leading to faster performance. [Font Use Best Practices](https://web.dev/font-best-practices/#be-cautious-when-using-preload-to-load-fonts)
 
 ![WOFF2 Support Status](/assets/woff2_support_status.png)
 
-### Reasonable Font Subsetting Size
+### Reasonable Font Subpackage Chunk Size
 
-> If using `cn-font-split` for font subsetting, it has already been optimized, so there is no need to worry about this.
+> If using `cn-font-split` for font subpackaging, it has already been optimized, so there's no need to worry about this aspect.
 
-When splitting fonts, it is recommended to divide the font into 70KB segments, suitable for general network conditions. When the font is divided into 70KB segments, the loading time is roughly around 1.5 seconds, and the complete loading time does not exceed 2 seconds, so there is no need to worry about speed issues.
+When splitting fonts, it's recommended to chunk them into sizes of 70 KB, which is suitable for relatively average network conditions. Large font fragments can lead to excessive server response times and potentially low character hit rates for the fragments. When chunked at 70 KB, loading time is approximately 1.5 seconds, and full loading will not exceed 2 seconds, so speed concerns are minimal.
 
 ![Loading Time Chart](/assets/performance_states.png)
 
 ## Font Download Optimization
 
-### Use a High-Concurrency CDN Service!!!
+### Utilize a High-Concurrency CDN Service!!!
 
-The basis for fast and stable loading of Chinese fonts is a website with a high-concurrency CDN service. With a large number of Chinese font subsets, a single page has a high concurrency when loading. If the CDN service does not support high concurrency, it can lead to page lag. By using a free overseas CDN service, loading can be completed within 2 seconds; if using a domestic service provider, it can be stable within 1 second!
+The foundation for the rapid and stable loading of Chinese fonts is a website that supports high-concurrency CDN services. With many Chinese font fragments, the concurrency while loading a single page can be very high. If the CDN service does not support high concurrency, it may lead to page lag. Here, I used a free foreign CDN service and achieved loading in under 2 seconds; if domestic service providers are used, stable loading can be achieved in under 1 second!
 
 ![High-Concurrency Download](/assets/performance_states.png)
 
-### Adopt Advanced HTTP Protocols and Use Cache Headers Reasonably
+### Adopt Advanced HTTP Protocols and Use Cache Headers Wisely
 
-[HTTP/2 and HTTP/3 protocols](https://web.dev/content-delivery-networks/#http2-and-http3) can greatly accelerate font downloads by enabling browsers to download files concurrently. It is recommended to enable them.
+Both [HTTP/2 and HTTP/3 protocols](https://web.dev/content-delivery-networks/#http2-and-http3) can facilitate concurrent file downloads by the browser, significantly speeding up font download processes—it's recommended to enable them.
 
-For the font subsetting folder, CDN file caching can be set to permanent caching. This allows users to load the font only once, and subsequently use browser caching when revisiting the page. Since the packaged font subsets use hashed names, there is no need to worry about cache not being updated due to font changes.
+For font subpackage folders, the CDN file cache can be set to permanent. This allows users to load the fonts only once, with subsequent visits to the page using the browser cache. Since the packaged font fragments utilize hashed names, there is no need to worry about outdated caches when changing fonts.
 
-> Note: Set a reasonable cache time for CSS files, as CSS files are index files. If there are font updates, users may still be in a cached state. (If the font files will not be changed in the future, this can be ignored.)
+> Note: Set a reasonable cache duration for CSS files, as they are index files; if a font update occurs, users may still be in a cached state. (This point can be ignored if font files will not be updated in the future.)
 
-![Cache Header Settings](/assets/status_cache.png)
+![Cache Header Configuration](/assets/status_cache.png)
 
 ## Frontend Code Optimization
 
-### Preconnect
+### Preconnect Hints
 
-In general, CDNs are separate from the main site, and the main site obtains resources from the CDN site through cross-origin requests. Using `preconnect` in HTML can prompt the browser to connect to your CDN in advance, saving time when downloading fonts.
+Generally, CDNs are separated from the main site, and the main site retrieves resources from the CDN via cross-domain requests. Using `preconnect` in HTML can prompt the browser to connect to your CDN in advance, saving some time when it comes to downloading fonts.
 
 ```html
 <head>
@@ -83,19 +81,19 @@ In general, CDNs are separate from the main site, and the main site obtains reso
 </head>
 ```
 
-#### ❗❗❗ Do Not Use Preload to Preload CSS Files
+#### ❗❗❗ Avoid Using Preload for CSS File Downloads
 
-Preloading will fully download the corresponding files, causing on-demand font loading to fail. However, you can preload a few commonly used font file subsets, but this requires manual judgment and is not recommended due to its complexity.
+Preload attempts to download an entire file, which can cause on-demand font loading to fail. However, you may pre-load a few commonly used font file fragments, but this requires manual assessment for loading and is quite complex; it is not recommended.
 
-> As a font loading strategy, the use of preload also needs to be used with caution, as it bypasses certain browser built-in content negotiation policies. For example, preload ignores the "unicode-range" declaration and should only be used to load a single font format if used wisely. [Best Practices for Font Usage](https://web.dev/font-best-practices/)
+> As a font loading strategy, using preload must be approached with caution, as it bypasses built-in content negotiation strategies in some browsers. For example, preload ignores the "unicode-range" declaration; it should be wisely used only for loading a single font format. [Font Use Best Practices](https://web.dev/font-best-practices/)
 
 ## First Screen Font Optimization
 
 ### Minimal Optimization
 
-[Minimal optimization](https://github.com/KonghaYao/cn-font-split/blob/main/packages/vite/README_zh.md#%E6%9E%81%E5%B0%8F%E9%87%8F%E7%BA%A7%E4%BC%98%E5%8C%96) is suitable for scenarios with high demand for rapid rendering, such as official websites and major promotional web pages. It collects the characters used in your code and only loads these characters, providing excellent rendering performance. Here, we use [vite-plugin-font](https://npmjs.com/package/vite-plugin-font) for this operation.
+[Minimal Optimization](https://github.com/KonghaYao/cn-font-split/blob/main/packages/vite/README_zh.md#%E6%9E%81%E5%B0%8F%E9%87%8F%E7%BA%A7%E4%BC%98%E5%8C%96) is suited for official websites, promotional pages, and other scenarios that require rapid rendering. It collects characters used in your code and only loads those characters, achieving excellent rendering performance. Here, we use [vite-plugin-font](https://npmjs.com/package/vite-plugin-font) for this task.
 
-> Add `scanFiles`, the way to do this in Nuxt and Webpack is slightly different, but both involve adding the scan files to the options.
+> Add `scanFiles`—the method differs slightly for Nuxt and Webpack, but both require adding the scanning files into options.
 
 ```js
 // vite.config.js
@@ -110,13 +108,13 @@ export default defineConfig({
 });
 ```
 
-> Add `?subsets` to your links
+> Add `?subsets` to your link
 
 ```diff
-// Automatically inject CSS to import fonts and support font information tree shaking optimization!
+// Automatically inject CSS to import fonts and support tree-shaking optimization!
 - import { css } from '../../demo/public/SmileySans-Oblique.ttf';
 + import { css } from '../../demo/public/SmileySans-Oblique.ttf?subsets';
-console.log(css.family, css.weight); // You can get CSS-related data from here
+console.log(css.family, css.weight); // You can retrieve CSS related data from here
 
 export const App = () => {
     return (
@@ -129,15 +127,15 @@ export const App = () => {
 };
 ```
 
-### Layout Shift (CLS) Optimization
+### CLS Optimization of Layout Shifts
 
-Why does layout shift occur?
+Why do layout shifts occur?
 
-Because font loading generally has a delay, fallback fonts are displayed first, and fallback fonts generally have differences in basic metrics compared to your fonts, causing the browser to recalculate the size of certain elements, leading to layout shift.
+Layout shifts generally occur due to delays in font loading, leading to the fallback font being displayed initially. Since the fallback font often differs from the base measurement units of your font, this requires the browser to recalculate the size of certain elements, resulting in layout shifts.
 
-How to reduce layout shift?
+How to reduce layout shifts?
 
-Browsers provide `ascent-override`, `descent-override`, and `line-gap-override` to manipulate the basic metrics of a `font-family`. We can create a fallback font linked to the local font and adjust the `override` related properties to make the display sizes of the two fonts as consistent as possible.
+The browser provides properties like `ascent-override`, `descent-override`, and `line-gap-override` to manipulate the basic measurements of a `font-family`. We can create a fallback font linked to a local font and adjust the `override` properties to keep the display sizes of both fonts as consistent as possible.
 
 ```js
 @font-face {
@@ -149,9 +147,9 @@ Browsers provide `ascent-override`, `descent-override`, and `line-gap-override` 
 }
 ```
 
-How to use in development?
+How to use this in development?
 
-[fontaine](https://www.npmjs.com/package/fontaine) is an excellent font fallback generation library, but it has minimal optimization for Chinese. Therefore, [vite-plugin-font](https://npmjs.com/package/vite-plugin-font) automatically calculates the font metrics for commonly used Chinese characters after version 1.2.0, and you only need to add the fallback name to your code.
+[fontaine](https://www.npmjs.com/package/fontaine) is an excellent font fallback generation library, but its optimization for Chinese fonts is limited. Therefore, after version 1.2.0, [vite-plugin-font](https://npmjs.com/package/vite-plugin-font) automatically calculates commonly used Chinese font metrics—just append the fallback names to your code.
 
 ## Further Reading
 
@@ -161,5 +159,5 @@ How to use in development?
 
 <https://web.dev/optimize-webfont-loading/>
 
-[notes on calculating font metric overrides](https://docs.google.com/document/d/e/2PACX-1vRsazeNirATC7lIj2aErSHpK26hZ6dA9GsQ069GEbq5fyzXEhXbvByoftSfhG82aJXmrQ_sJCPBqcx_/pub)
+[Notes on calculating font metric overrides](https://docs.google.com/document/d/e/2PACX-1vRsazeNirATC7lIj2aErSHpK26hZ6dA9GsQ069GEbq5fyzXEhXbvByoftSfhG82aJXmrQ_sJCPBqcx_/pub)
 
