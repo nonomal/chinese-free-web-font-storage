@@ -18,6 +18,7 @@ export interface Props {
     style?: string;
     class?: string;
     htmlClass?: string;
+    lang?: string
 }
 const {
     title = '✨中文网字计划-提供便捷实用的全字符集中文渲染方案',
@@ -30,11 +31,12 @@ const {
     defaultFontCSS = __CDN__ + '/packages/jxzk/dist/江西拙楷/result.css',
     class: className,
     htmlClass,
+    lang = 'zh',
 } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="zh" class={htmlClass}>
+<html lang={lang} class={htmlClass}>
     <head>
         <!-- Global Metadata -->
         <meta charset="utf-8" />

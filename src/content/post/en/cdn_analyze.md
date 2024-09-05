@@ -51,7 +51,7 @@ In regions close to edge servers, such as the United States, Singapore, and Japa
 
 ## March 2024 - Partial Service Downtime Issues
 
-![Alt text](../../../assets/202403_CDN.png)
+![Alt text](../../../../assets/202403_CDN.png)
 
 One of the sub-CDNs experienced a traffic surge without a clear entry point, overwhelming 100G in just a week, resulting in service downtime. Fortunately, it was a free CDN, so no money was spent 😂.
 

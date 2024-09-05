@@ -13,3 +13,4 @@ declare module '@minht11/solid-virtual-container' {
 declare module "*?subsets&key=home" {
     export * from '@konghayao/_font_';
 }
+

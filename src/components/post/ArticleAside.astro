@@ -1,5 +1,7 @@
 ---
-import { sections } from '../../utils/getPostSections';
+import { getSections } from '../../utils/getPostSections';
+const lang = Astro.params.slug.split('/')[0] ?? 'zh-cn'
+const sections = getSections(lang)
 ---
 
 <ul class="flex-1 overflow-scroll">

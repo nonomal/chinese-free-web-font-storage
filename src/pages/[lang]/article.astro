@@ -1,10 +1,11 @@
 ---
 import Layout from '../../Layout/Layout.astro';
 import { getSections } from '../../utils/getPostSections';
-const sections = getSections(Astro.props.lang ?? Astro.params.lang)
+const lang = Astro.props.lang ?? Astro.params.lang
+const sections = getSections(lang)
 ---
 
-<Layout title={'文章列表'} keywords='中文网字计划文档'>
+<Layout lang={lang} title={'文章列表'} keywords='中文网字计划文档'>
     <main class="py-4 px-12">
         <h2 class="w-full py-8 text-3xl text-center">中文网字计划——文档列表</h2>
 

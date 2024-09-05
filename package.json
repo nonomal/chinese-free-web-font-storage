@@ -14,7 +14,7 @@
     },
     "license": "MIT",
     "devDependencies": {
-        "@konghayao/i18n-cli": "^1.25.0",
+        "@konghayao/i18n-cli": "^1.30.0",
         "@solidjs/router": "^0.5.1",
         "@types/animejs": "^3.1.12",
         "@types/file-saver": "^2.0.7",
@@ -59,6 +59,7 @@
         "echarts": "^5.5.1",
         "file-saver": "^2.0.5",
         "font-analyze": "^1.4.2",
+        "i18next": "^23.14.0",
         "instantsearch.css": "^7.4.5",
         "instantsearch.js": "^4.73.3",
         "jszip": "^3.10.1",
@@ -72,7 +73,8 @@
         "rehype-toc": "^3.0.2",
         "sharp": "^0.33.4",
         "solid-js": "^1.8.19",
-        "tailwindcss": "^3.4.7"
+        "tailwindcss": "^3.4.7",
+        "unplugin-auto-import": "^0.18.2"
     },
     "browserslist": [
         "last 2 version",
