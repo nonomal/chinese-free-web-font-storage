@@ -157,8 +157,8 @@ importers:
         specifier: ^5.0.0
         version: 5.1.1
       i18nation:
-        specifier: ^1.0.1
-        version: 1.0.1(vue@3.5.3)
+        specifier: ^1.1.0
+        version: 1.1.0(vue@3.5.3)
       lenis:
         specifier: ^1.1.9
         version: 1.1.9(react@18.3.1)
@@ -3603,8 +3603,8 @@ packages:
   hyphenate-style-name@1.0.4:
     resolution: {integrity: sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==}
 
-  i18nation@1.0.1:
-    resolution: {integrity: sha512-BysAdGi/XboR6ut0tF5zFqml79iippPyWEDYR/PzwkqkzW9M8IvxjrbPelEZAI5ZSbouD5dlUSQDg2Qda6d3MA==}
+  i18nation@1.1.0:
+    resolution: {integrity: sha512-PL+aeZhRagZ9HxtMU/LUetdBWE3tOjCeI6nir2Fi4A40FMSS+C9lpTrkn5r56jPiEfVVBIQVu3xwT3t7qXMtSw==}
 
   i18next@23.14.0:
     resolution: {integrity: sha512-Y5GL4OdA8IU2geRrt2+Uc1iIhsjICdHZzT9tNwQ3TVqdNzgxHToGCKf/TPRP80vTCAP6svg2WbbJL+Gx5MFQVA==}
@@ -5469,7 +5469,6 @@ packages:
 
   rimraf@2.6.3:
     resolution: {integrity: sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==}
-    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@3.0.2:
@@ -10707,7 +10706,7 @@ snapshots:
 
   hyphenate-style-name@1.0.4: {}
 
-  i18nation@1.0.1(vue@3.5.3):
+  i18nation@1.1.0(vue@3.5.3):
     dependencies:
       glob: 11.0.0
       gogocode: 1.0.55(vue@3.5.3)

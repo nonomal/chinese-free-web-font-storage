@@ -16,14 +16,19 @@ export default defineConfig({
 
     integrations: [
         AutoImport({
+            include: [
+                /\.[tj]sx?$/,
+                /\.astro$/,
+            ],
             imports: [
                 {
                     'i18next': [
                       // default imports
-                      ['t', '$t'], // import { default as axios } from 'axios',
+                      ['$t'], // import { default as axios } from 'axios',
                     ],
                 },
-            ]
+            ],
+            dts: './auto-imports.d.ts',
         }), sitemap(), solidJs(), tailwind(), robotsTxt(), compress()],
     output: 'server',
     adapter: netlify({
