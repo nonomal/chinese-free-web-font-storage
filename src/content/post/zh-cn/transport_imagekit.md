@@ -32,11 +32,11 @@ article:
 
 2. 进入管理面板，创建一个 Worker。一直点击蓝色，直到创建成功。
 
-![cloudflare_create_worker](../../../assets/cloudflare_create_worker.png)
+![cloudflare_create_worker](../../../../assets/cloudflare_create_worker.png)
 
 3. 进入代码编辑面板，直接输入下面的代码，然后点击 "Deploy" 按钮即可
 
-![Alt text](../../../assets/cloudflare_playground_deploy.png)
+![Alt text](../../../../assets/cloudflare_playground_deploy.png)
 
 ```js
 export default {

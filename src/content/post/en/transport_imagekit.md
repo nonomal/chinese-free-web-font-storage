@@ -31,11 +31,11 @@ Although Cloudflare has poor speeds domestically, it performs much better intern
 
 2. Go to the management panel and create a Worker. Keep clicking the blue button until it’s successfully created.
 
-![cloudflare_create_worker](../../../assets/cloudflare_create_worker.png)
+![cloudflare_create_worker](../../../../assets/cloudflare_create_worker.png)
 
 3. Enter the code editing panel, input the following code, and then click the "Deploy" button.
 
-![Alt text](../../../assets/cloudflare_playground_deploy.png)
+![Alt text](../../../../assets/cloudflare_playground_deploy.png)
 
 ```js
 export default {
