@@ -1,15 +1,17 @@
 import i18n from 'i18next';
-// 初始化 i18next
-// 配置参数的文档: https://www.i18next.com/overview/configuration-options
+import zh from './i18n/zh-cn.json'
 i18n.init({
-    debug: true,
-    fallbackLng: 'zh-cn',
-    resources: {
-      en: {
-        translation: {
-          // 这里是我们的翻译文本
-        }
-      }
-    }
+  // 设置默认语言
+  lng: 'zh',
+  fallbackLng: 'zh',
+  // 是否启用调试模式
+  debug: false,
+  resources: {
+    zh: { translation: zh }
+  }
+}, function (err, t) {
+  if(err) throw err
+  // i18n插件初始化完成或异常时的回调函数
+  console.log('国际化插件初始化完毕!')
 });
-export default i18n;
+export * from 'i18next'

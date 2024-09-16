@@ -22,9 +22,9 @@ export default defineConfig({
             ],
             imports: [
                 {
-                    'i18next': [
+                    '/src/i18n': [
                       // default imports
-                      ['$t'], // import { default as axios } from 'axios',
+                      ['t','$t'], // import { default as axios } from 'axios',
                     ],
                 },
             ],

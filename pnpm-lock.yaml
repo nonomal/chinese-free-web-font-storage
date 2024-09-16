@@ -156,9 +156,12 @@ importers:
       cn-font-split:
         specifier: ^5.0.0
         version: 5.1.1
+      fs-extra:
+        specifier: ^11.2.0
+        version: 11.2.0
       i18nation:
-        specifier: ^1.1.0
-        version: 1.1.0(vue@3.5.3)
+        specifier: ^1.1.7
+        version: 1.1.7(vue@3.5.3)
       lenis:
         specifier: ^1.1.9
         version: 1.1.9(react@18.3.1)
@@ -3603,8 +3606,8 @@ packages:
   hyphenate-style-name@1.0.4:
     resolution: {integrity: sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==}
 
-  i18nation@1.1.0:
-    resolution: {integrity: sha512-PL+aeZhRagZ9HxtMU/LUetdBWE3tOjCeI6nir2Fi4A40FMSS+C9lpTrkn5r56jPiEfVVBIQVu3xwT3t7qXMtSw==}
+  i18nation@1.1.7:
+    resolution: {integrity: sha512-MMotCWPr3GjTj0sd129FM6k9xA3CvBRCqXBPNBrALohPutC5bnIvTBVIk5gcNZeRQsNIwC57esLmbYsP8XVjdw==}
 
   i18next@23.14.0:
     resolution: {integrity: sha512-Y5GL4OdA8IU2geRrt2+Uc1iIhsjICdHZzT9tNwQ3TVqdNzgxHToGCKf/TPRP80vTCAP6svg2WbbJL+Gx5MFQVA==}
@@ -5980,7 +5983,7 @@ packages:
     resolution: {integrity: sha512-DuB1Uoq01LrrXTScxnwOoMSlTXxyKcULguFxbLrMDFcE/CO0ZWHpEiyhovN0mycPt7K6luAHe8laqvwvuoeUPg==}
 
   uniq@1.0.1:
-    resolution: {integrity: sha512-Gw+zz50YNKPDKXs+9d+aKAjVwpjNwqzvNpLigIruT4HA9lMZNdMqs9x07kKHB/L9WRzqp4+DlTU5s4wG2esdoA==}
+    resolution: {integrity: sha1-sxxa6CVIRKOoKBVBzisEuGWnNP8=}
 
   unique-string@3.0.0:
     resolution: {integrity: sha512-VGXBUVwxKMBUznyffQweQABPRRW1vHZAbadFZud4pLFAqRGvv/96vafgjWFqzourzr8YonlQiPgH0YCJfawoGQ==}
@@ -10706,7 +10709,7 @@ snapshots:
 
   hyphenate-style-name@1.0.4: {}
 
-  i18nation@1.1.0(vue@3.5.3):
+  i18nation@1.1.7(vue@3.5.3):
     dependencies:
       glob: 11.0.0
       gogocode: 1.0.55(vue@3.5.3)

@@ -2,7 +2,7 @@ import { glob } from 'glob'
 import { createDefaultConfig } from 'i18nation/dist/index.js'
 import { sourceCodeReplacer } from 'i18nation/dist/sourceCodeReplacer.js'
 import { JSXPresets } from 'i18nation/dist/presets/jsx.js'
-import fs from 'fs'
+import fs from 'fs-extra'
 const items = glob.sync('src/**/*.{tsx,astro}')
 const context = {
     json: {},
@@ -10,13 +10,13 @@ const context = {
         return `$t("${hash}"${params ? `, ${params}` : ''})`
     },
     createStringSlot(key) {
-        return `{${key}}`
+        return `{{${key}}}`
     }
 }
 
 
 for (const item of items) {
-    const content = await fs.promises.readFile(item, 'utf-8')
+    const content = await fs.readFile(item, 'utf-8')
     try {
 
         const result = await sourceCodeReplacer(item, content, createDefaultConfig({
@@ -26,9 +26,10 @@ for (const item of items) {
                 ...context
             })
         }))
-        fs.writeFileSync(item, result)
+        await fs.outputFile(item, result)
         console.log("✅", item)
     } catch (e) {
         console.error('❌', item, e)
     }
 }
+fs.outputFile('src/i18n/zh-cn.json', JSON.stringify(context.json, null, 2))
