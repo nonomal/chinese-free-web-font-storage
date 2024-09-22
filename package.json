@@ -14,7 +14,8 @@
     },
     "license": "MIT",
     "devDependencies": {
-        "@konghayao/i18n-cli": "^1.30.0",
+        "@konghayao/i18n-cli": "^1.40.0",
+        "i18nation": "^1.4.3",
         "@solidjs/router": "^0.5.1",
         "@types/animejs": "^3.1.12",
         "@types/file-saver": "^2.0.7",
@@ -24,7 +25,6 @@
         "cn-font-metrics": "^1.1.4",
         "cn-font-split": "^5.0.0",
         "fs-extra": "^11.2.0",
-        "i18nation": "^1.4.3",
         "lenis": "^1.1.9",
         "less": "^4.2.0",
         "node-fetch": "^3.3.2",

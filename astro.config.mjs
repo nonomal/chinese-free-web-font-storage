@@ -9,6 +9,7 @@ import { loadEnv } from 'vite';
 import netlify from '@astrojs/netlify'
 import font from 'vite-plugin-font';
 import AutoImport from 'unplugin-auto-import/astro'
+import path from 'path'
 const env = loadEnv(import.meta.env.MODE, process.cwd(), '');
 // https://astro.build/config
 export default defineConfig({
@@ -22,9 +23,9 @@ export default defineConfig({
             ],
             imports: [
                 {
-                    '/src/i18n': [
-                      // default imports
-                      ['t','$t'], // import { default as axios } from 'axios',
+                    [path.resolve('./src/i18n')]: [
+                        // default imports
+                        ['t', '$t'], // import { default as axios } from 'axios',
                     ],
                 },
             ],
@@ -37,7 +38,7 @@ export default defineConfig({
     i18n: {
         defaultLocale: "zh-cn",
         prefixDefaultLocale: true,
-        locales: ["zh-cn","en"],
+        locales: ["zh-cn", "en"],
     },
     vite: {
         optimizeDeps: {

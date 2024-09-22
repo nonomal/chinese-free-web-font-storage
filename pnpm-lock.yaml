@@ -130,8 +130,8 @@ importers:
         version: 0.18.2(@nuxt/kit@3.12.4(rollup@4.20.0))(rollup@4.20.0)
     devDependencies:
       '@konghayao/i18n-cli':
-        specifier: ^1.30.0
-        version: 1.30.0(ignore@5.3.1)(ink@4.4.1(react@18.3.1))(openai@4.56.0(zod@3.23.8))(react@18.3.1)(ws@8.18.0)
+        specifier: ^1.40.0
+        version: 1.40.0(ignore@5.3.1)(ink@4.4.1(react@18.3.1))(openai@4.56.0(zod@3.23.8))(react@18.3.1)(ws@8.18.0)
       '@solidjs/router':
         specifier: ^0.5.1
         version: 0.5.1(solid-js@1.8.19)
@@ -1523,8 +1523,8 @@ packages:
   '@konghayao/harfbuzzjs@9.0.5':
     resolution: {integrity: sha512-IgdSA309ntzUDkitSlkvYANlFVv9YNpUXeopC9EHHlXrzTFRVUUYKLM4C56od02FXcdFJIbLYHeA29VvXaomNQ==}
 
-  '@konghayao/i18n-cli@1.30.0':
-    resolution: {integrity: sha512-1IkJNOJuKk0SSR9vZQt8GG40nPX8XpB5hHhVL9ix4xawTS6NdOy3ZQQZH3umcZLmVk7fh1zTNf3b1yXYvDcEqw==}
+  '@konghayao/i18n-cli@1.40.0':
+    resolution: {integrity: sha512-kxtLOqmyTZIf72WuLGUCT5pm5WCDwzUswl1V6BbzY1vcFCOMPSWrnL+9vOdDI7gZ31kczGH/znBnWPVlZGI3KQ==}
     engines: {node: '>=18'}
     hasBin: true
     peerDependencies:
@@ -2028,9 +2028,6 @@ packages:
 
   '@types/node@17.0.45':
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
-
-  '@types/node@18.19.43':
-    resolution: {integrity: sha512-Mw/YlgXnyJdEwLoFv2dpuJaDFriX+Pc+0qOBJ57jC1H6cDxIj2xc5yUrdtArDVG0m+KV6622a4p2tenEqB3C/g==}
 
   '@types/node@18.19.50':
     resolution: {integrity: sha512-xonK+NRrMBRtkL1hVCc3G+uXtjh1Al4opBLjqVmipe5ZAaBYWW6cNAiBVZ1BvmkBhep698rP3UM3aRAdSALuhg==}
@@ -5410,6 +5407,7 @@ packages:
 
   rimraf@2.6.3:
     resolution: {integrity: sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@3.0.2:
@@ -7819,7 +7817,7 @@ snapshots:
 
   '@konghayao/harfbuzzjs@9.0.5': {}
 
-  '@konghayao/i18n-cli@1.30.0(ignore@5.3.1)(ink@4.4.1(react@18.3.1))(openai@4.56.0(zod@3.23.8))(react@18.3.1)(ws@8.18.0)':
+  '@konghayao/i18n-cli@1.40.0(ignore@5.3.1)(ink@4.4.1(react@18.3.1))(openai@4.56.0(zod@3.23.8))(react@18.3.1)(ws@8.18.0)':
     dependencies:
       '@deno/kv': 0.7.0
       '@inkjs/ui': 1.0.0(ink@4.4.1(react@18.3.1))
@@ -8474,14 +8472,10 @@ snapshots:
 
   '@types/node-fetch@2.6.11':
     dependencies:
-      '@types/node': 22.1.0
+      '@types/node': 22.5.5
       form-data: 4.0.0
 
   '@types/node@17.0.45': {}
-
-  '@types/node@18.19.43':
-    dependencies:
-      undici-types: 5.26.5
 
   '@types/node@18.19.50':
     dependencies:
@@ -11762,7 +11756,7 @@ snapshots:
   micromark@3.2.0:
     dependencies:
       '@types/debug': 4.1.12
-      debug: 4.3.6
+      debug: 4.3.7
       decode-named-character-reference: 1.0.2
       micromark-core-commonmark: 1.1.0
       micromark-factory-space: 1.1.0
@@ -11998,7 +11992,7 @@ snapshots:
 
   openai@4.56.0(zod@3.23.8):
     dependencies:
-      '@types/node': 18.19.43
+      '@types/node': 18.19.50
       '@types/node-fetch': 2.6.11
       abort-controller: 3.0.0
       agentkeepalive: 4.5.0

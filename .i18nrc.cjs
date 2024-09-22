@@ -1,12 +1,18 @@
 module.exports = {
-    translateMap:{
-        en:{
+    "entry": "./src/i18n/zh-cn.json",
+    "entryLocale": "zh",
+    "output": "src/i18n",
+    "outputLocales": ["en"],
+    jsonMode: true,
+    translateMap: {
+        en: {
             "江夏尧": "KonghaYao",
             "中文网字计划": "中文网字计划",
             "使用教程": "How to Use",
             "技术内幕": "Technical Insights",
             "维护日志": "Maintenance Log",
-            "性能优化": "Performance Optimization"
+            "性能优化": "Performance Optimization",
+            "分包": "Subset"
         }
     },
     markdown: {

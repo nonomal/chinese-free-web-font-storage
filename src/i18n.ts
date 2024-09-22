@@ -1,5 +1,7 @@
+// @i18n-disable
 import i18n from 'i18next';
 import zh from './i18n/zh-cn.json'
+import en from './i18n/en.json'
 i18n.init({
   // 设置默认语言
   lng: 'zh',
@@ -7,11 +9,12 @@ i18n.init({
   // 是否启用调试模式
   debug: false,
   resources: {
-    zh: { translation: zh }
+    zh: { translation: zh },
+    en: { translation: en },
   }
 }, function (err, t) {
   if(err) throw err
   // i18n插件初始化完成或异常时的回调函数
-  console.log('国际化插件初始化完毕!')
+  console.info('初始化完成')
 });
 export * from 'i18next'
