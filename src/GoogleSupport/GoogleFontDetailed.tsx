@@ -50,6 +50,7 @@ const _GoogleFontDetailed = (props: { meta: FontMetaData }) => {
                 target="_blank"
             >
                 <div> 仓库文件夹</div>
+                {/* @i18n-ignore */}
                 <div>{`@fontsource/${FontStore.id}`}</div>
             </a>
             <nav class="mt-2 flex h-full flex-col overflow-auto pt-2">
