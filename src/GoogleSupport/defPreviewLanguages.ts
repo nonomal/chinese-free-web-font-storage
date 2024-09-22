@@ -1,3 +1,4 @@
+// @i18n-disable
 /** 选中不同语言的测试代码 */
 export const selectDefPreviewText = (id: string, subset: string): string => {
     switch (id) {

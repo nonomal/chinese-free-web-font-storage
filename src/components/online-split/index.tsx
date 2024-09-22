@@ -254,10 +254,12 @@ export const ConsolePrint = (item: string) => {
     return item
         .replace(
             /\[97m\[1m(.*?)\[22m\[39m\[0m\[0m/g,
+            // @i18n-ignore
             '<span style="color: green;font-weight: bold;" >$1</span>'
         )
         .replace(
             /\[34m\[1m(.*?)\[22m\[39m\[0m\[0m/g,
+            // @i18n-ignore
             '<span style="color: blue;font-weight: bold;" >$1</span>'
         );
 };
