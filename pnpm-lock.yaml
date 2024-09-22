@@ -160,8 +160,8 @@ importers:
         specifier: ^11.2.0
         version: 11.2.0
       i18nation:
-        specifier: ^1.3.1
-        version: 1.3.1
+        specifier: ^1.4.1
+        version: 1.4.1
       lenis:
         specifier: ^1.1.9
         version: 1.1.9(react@18.3.1)
@@ -3474,8 +3474,8 @@ packages:
     resolution: {integrity: sha512-s3Fq41ZVh7vbbe2PN3nrW7yC7U7MFVc5c98/iTl9c2GawNMKx/J648KQRW6WKkuU8GIbbh2IXfIRQjOZnXcTnw==}
     engines: {node: '>=18'}
 
-  go-better-code@1.1.0:
-    resolution: {integrity: sha512-wIvrGxqcymUZqqeQunV04recgO7LaEkTYl1MBGDFOWtXQ13L16zOASBl8bQnmYLtQF7Nu14DzkY5EHzt2+xy2g==}
+  go-better-code@1.1.1:
+    resolution: {integrity: sha512-YVcTges1CuiPXUGpBnGm5wMcry1qc6MLDTqTd1bh3nYiVO1cbIj1jWjJ2HmZcTkthVCGg6WysizAJIB/1/6+fA==}
 
   gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
@@ -3618,8 +3618,8 @@ packages:
   hyphenate-style-name@1.0.4:
     resolution: {integrity: sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==}
 
-  i18nation@1.3.1:
-    resolution: {integrity: sha512-b3QUPEY3ZhnKJZ72oFxpgTlS498sroW+0dNoAGcIGwiQPmYwlrjAuFy/WZB67HnC+RsffzRIb/W5iCICdRZRXg==}
+  i18nation@1.4.1:
+    resolution: {integrity: sha512-b6qQtck/1f2CNkXd+08prNZtqHLQiRTzq+WMykge1lxY8sSukHTMdo+571+sf/XltsKVo72ecw+nVmuucr9M5g==}
     hasBin: true
 
   i18next@23.14.0:
@@ -8327,7 +8327,7 @@ snapshots:
 
   '@swc/helpers@0.4.14':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@swc/helpers@0.4.36':
     dependencies:
@@ -8399,11 +8399,11 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 18.19.50
+      '@types/node': 22.5.5
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 18.19.50
+      '@types/node': 22.5.5
 
   '@types/cookie@0.6.0': {}
 
@@ -8429,7 +8429,7 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.5':
     dependencies:
-      '@types/node': 18.19.50
+      '@types/node': 22.5.5
       '@types/qs': 6.9.16
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -8529,12 +8529,12 @@ snapshots:
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 18.19.50
+      '@types/node': 22.5.5
 
   '@types/serve-static@1.15.7':
     dependencies:
       '@types/http-errors': 2.0.4
-      '@types/node': 18.19.50
+      '@types/node': 22.5.5
       '@types/send': 0.17.4
 
   '@types/unist@2.0.11': {}
@@ -10447,7 +10447,7 @@ snapshots:
       slash: 5.1.0
       unicorn-magic: 0.1.0
 
-  go-better-code@1.1.0:
+  go-better-code@1.1.1:
     dependencies:
       '@babel/parser': 7.25.6
       '@vue/compiler-sfc': 3.5.6
@@ -10653,12 +10653,12 @@ snapshots:
 
   hyphenate-style-name@1.0.4: {}
 
-  i18nation@1.3.1:
+  i18nation@1.4.1:
     dependencies:
       c12: 1.11.2
       fs-extra: 11.2.0
       glob: 11.0.0
-      go-better-code: 1.1.0
+      go-better-code: 1.1.1
       md5: 2.3.0
       safe-flat: 2.1.0
     transitivePeerDependencies:

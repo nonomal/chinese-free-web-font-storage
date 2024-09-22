@@ -39,6 +39,7 @@ function renderGlyphItem(
     if (glyphIndex >= font.numGlyphs) return;
 
     ctx.fillStyle = '#606060';
+    // @i18n-ignore
     ctx.font = '9px sans-serif';
     ctx.fillText(glyphIndex.toString(), 1, height - 1);
     const glyph = font.glyphs.get(glyphIndex);

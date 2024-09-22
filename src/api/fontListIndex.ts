@@ -1,3 +1,4 @@
+// @i18n-disable
 import { fetchEventSource } from '@microsoft/fetch-event-source';
 import Index from '../../index.json';
 

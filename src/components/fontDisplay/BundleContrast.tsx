@@ -20,12 +20,12 @@ export const BundleContrast = AsyncReporterLoader((props) => {
                 <li>
                     打包后总大小
                     <span class="float-right text-green-600">
-                        {prettyBytes(bundleMessage.bundledTotalLength)} 「
+                        {prettyBytes(bundleMessage.bundledTotalLength)} | 
                         {(
                             (bundleMessage.bundledTotalLength * 100) /
                             bundleMessage.originLength
                         ).toFixed(2)}
-                        %」
+                        %
                     </span>
                 </li>
                 {'os' in env && (

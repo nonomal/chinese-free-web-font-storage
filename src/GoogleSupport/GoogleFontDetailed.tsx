@@ -38,7 +38,11 @@ const _GoogleFontDetailed = (props: { meta: FontMetaData }) => {
                 target="_blank"
             >
                 <div>NPM 仓库</div>
-                <div>{`@fontsource/${FontStore.id}`}</div>
+                <div>
+                {
+                    // @i18n-ignore
+                    `@fontsource/${FontStore.id}`
+                }</div>
             </a>
             <a
                 href={`https://cdn.jsdelivr.net/npm/@fontsource/${FontStore.id}/`}

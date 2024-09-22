@@ -11,6 +11,7 @@ const { font, font_name } = Astro.props;
 const css = Index[font as keyof typeof Index].remotePath.find((i) =>
     i.path.includes(font_name)
 )?.css;
+// @i18n-ignore
 const style = `font-family:'${css?.family}';font-weight:'${css?.weight}'`;
 
 const root = `/fonts/${font}/${font_name}/`;
