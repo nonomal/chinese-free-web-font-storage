@@ -1,6 +1,6 @@
 ---
 import { getSections } from '../../utils/getPostSections';
-const lang = Astro.params.slug.split('/')[0] ?? 'zh-cn'
+const lang = Astro.params.lang
 const sections = getSections(lang)
 ---
 

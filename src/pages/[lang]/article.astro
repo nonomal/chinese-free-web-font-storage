@@ -28,7 +28,7 @@ const sections = getSections(lang)
                                     .map((post) => {
                                         return (
                                             <li>
-                                                <a class=" " href={`/post/${post.slug}.html`}>
+                                                <a class=" " href={`/${Astro.params.lang}/post/${post.slug.split('/').slice(1).join('/')}.html`}>
                                                     <h3>{post.data.title}</h3>
 
                                                     <p class="my-2 line-clamp-1 text-xs text-gray-500">

@@ -21,6 +21,7 @@ export interface Props {
         tags?: string[] | undefined;
         image?: string;
     };
+    lang: string
 }
 const {
     title = '文章',
@@ -28,11 +29,12 @@ const {
     keywords,
     defaultFontCSS = __CDN__ + '/packages/lxgwwenkai/dist/LXGWWenKai-Light/result.css',
     article,
+    lang
 } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="zh">
+<html lang={lang}>
     <head>
         <!-- Global Metadata -->
         <meta charset="utf-8" />

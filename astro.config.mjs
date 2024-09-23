@@ -59,7 +59,7 @@ export default defineConfig({
                 scanFiles: {
                     // ?subsets will match default
                     home: [
-                        'src/pages/index.astro',
+                        'src/pages/[lang]/index.astro',
                         'src/components/AllFooter.astro',
                         'src/components/TechSupport.astro',
                         'src/components/GlobalHeader.astro',

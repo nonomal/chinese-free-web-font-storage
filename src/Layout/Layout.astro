@@ -6,6 +6,7 @@ import GlobalHeader from '../components/GlobalHeader.astro';
 import { SEO } from 'astro-seo';
 import Sentry from '../components/SentryScript.astro';
 import { __CDN__ } from '../global';
+import { changeLanguage } from '../i18n'
 export interface Props {
     title?: string;
     description?: string;
@@ -31,8 +32,9 @@ const {
     defaultFontCSS = __CDN__ + '/packages/jxzk/dist/江西拙楷/result.css',
     class: className,
     htmlClass,
-    lang = 'zh',
+    lang = Astro.params.lang,
 } = Astro.props;
+await changeLanguage(lang);
 ---
 
 <!DOCTYPE html>

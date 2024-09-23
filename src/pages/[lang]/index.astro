@@ -1,0 +1,103 @@
+---
+import Layout from '../../Layout/HomeLayout.astro';
+import AllFooter from '../../components/AllFooter.astro';
+import FontList from '../../components/Home/FontsList.astro';
+import { FriendLinks } from '../../components/Home/FriendLinks';
+import PerformanceOfTool from '../../components/Home/PerformanceOfTool.astro';
+import '../../style/animate.css';
+
+if(!['zh-cn','en'].includes(Astro.params.lang!)){
+    return Astro.rewrite('/zh-cn' + Astro.url.pathname)
+}
+
+---
+
+<Layout class="flex flex-col items-center">
+    <section
+        class="relative an-scroll-list z-10 flex snap-start w-screen flex-col items-center my-36"
+    >
+
+        <a href="/cdn" class=" py-2 px-1 pr-4 mb-14 text-sm text-gray-700 bg-gray-100/80 rounded-full dark:bg-gray-800 transition-all dark:text-white hover:bg-gray-300/80 dark:hover:bg-gray-700" role="alert">
+            <span class="bg-rose-600 rounded-full text-white px-4 py-1.5 mr-3">字图</span>
+            <span class="font-medium">可以免费使用的前端字体 CDN  {">"} </span>
+        </a>
+        <div class="xs:text-xl text-xs font-thin italic leading-[3em] text-gray-600 sm:text-4xl">
+           The Chinese Web Fonts Plan
+        </div>
+        <h2
+            class="home-title xs:text-[8vh] whitespace-nowrap text-[6vh] leading-[1.1em] sm:text-[11vw] lg:text-[17vh]"
+            style="letter-spacing: 0.5rem;"
+        >
+            中文网字计划
+        </h2>
+        <h3
+            class="max-w-[30em] px-4 mt-12 text-xs font-thin text-gray-500 sm:max-w-[30em] sm:text-lg lg:max-w-none lg:text-2xl"
+            style="letter-spacing: 0.25rem;"
+        >
+            中文网字计划是收录众多中文字体并通过 Web Font 的形式为
+            <b class="px-2 inline-block bg-cyan-700 rounded-md text-white">网站开发者</b>
+            提供美丽字体的项目。
+        </h3>
+        <div class="flex gap-4 mt-24 bg-white rounded-lg ring-rose-600 py-4 px-6">
+            <a href="/cdn">
+                <button
+                    class=" px-2 py-1 rounded-md text-gray-500  hover:bg-gray-200 hover:text-gray-500 "
+                    style="letter-spacing: 0.25rem;"
+                    >
+                    免费 CDN
+                </button>
+            </a>
+            <a href="/article">
+                <button
+                    class=" px-2 py-1 rounded-md text-gray-500  hover:bg-gray-200 hover:text-gray-500 "
+                    style="letter-spacing: 0.25rem;"
+                    >
+                    教程列表
+                </button>
+            </a>
+            <a href="/online-split">
+                <button
+                    class=" px-2 py-1 rounded-md text-gray-500  hover:bg-gray-200 hover:text-gray-500 "
+                    style="letter-spacing: 0.25rem;"
+                    >
+                    私人部署
+                </button>
+            </a>
+            <a href="https://github.com/KonghaYao/chinese-free-web-font-storage" target="_blank">
+                <button
+                    class=" px-2 py-1 rounded-md  text-gray-500  hover:bg-gray-200 hover:text-gray-500 "
+                    style="letter-spacing: 0.25rem;"
+                    >
+                    开源仓库
+                </button>
+            </a>
+            <a href="#font-list">
+                <button
+                    class=" px-2 py-1 rounded-md bg-rose-50 text-rose-600 hover:text-rose-600 hover:bg-rose-200 "
+                    style="letter-spacing: 0.25rem;"
+                    >
+                    开始探索字体之美
+                </button>
+            </a>
+        </div>
+    </section>
+
+    <div class="pointer-events-none opacity-70">
+        <div class="absolute top-52 -left-16 text-gray-300 opacity-50" style="font-size:50vh">
+            江
+        </div>
+        <div class="absolute top-36 -right-24 text-gray-300 opacity-50" style="font-size:30vh">
+            夏
+        </div>
+        <div class="absolute -top-16 left-8 text-gray-300 opacity-50" style="font-size:25vh">
+            尧
+        </div>
+    </div>
+    <PerformanceOfTool />
+    <FontList />
+    <FriendLinks />
+    <!-- <TechSupport /> -->
+
+    <!-- TimeLine 一个开发时间线 -->
+    <AllFooter />
+</Layout>

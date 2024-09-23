@@ -160,8 +160,8 @@ importers:
         specifier: ^11.2.0
         version: 11.2.0
       i18nation:
-        specifier: ^1.4.3
-        version: 1.4.3
+        specifier: ^1.5.0
+        version: 1.5.0
       lenis:
         specifier: ^1.1.9
         version: 1.1.9(react@18.3.1)
@@ -3607,8 +3607,8 @@ packages:
   hyphenate-style-name@1.0.4:
     resolution: {integrity: sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==}
 
-  i18nation@1.4.3:
-    resolution: {integrity: sha512-nHBMx/fkBYWEFdOLtvwz9WlAtFluJVXE/0YITKsXoMTL1DP5STSJ842H3yemkaBqYC3yvXTQ4LeiudY4cEeEwQ==}
+  i18nation@1.5.0:
+    resolution: {integrity: sha512-bLLQX1fQR4bLpHor4VDwHaCFRo7jr6ad/yDBEU5WbVak5ashuStnx8tLaD+0A26O4sMkBxQWLgN7/gPIBGoZWg==}
     hasBin: true
 
   i18next@23.14.0:
@@ -5070,9 +5070,6 @@ packages:
   pkg-dir@4.2.0:
     resolution: {integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==}
     engines: {node: '>=8'}
-
-  pkg-types@1.1.3:
-    resolution: {integrity: sha512-+JrgthZG6m3ckicaOB74TwQ+tBWsFl3qVQg7mN8ulwSOElJ7gBhKzj2VkCPnZ4NlF6kEquYU+RIYNVAvzd54UA==}
 
   pkg-types@1.2.0:
     resolution: {integrity: sha512-+ifYuSSqOQ8CqP4MbZA5hDpb97n3E8SVWdJe+Wms9kj745lmd3b7EZJiqvmLwAlmRfjrI7Hi5z3kdBJ93lFNPA==}
@@ -8090,7 +8087,7 @@ snapshots:
       knitwork: 1.1.0
       mlly: 1.7.1
       pathe: 1.1.2
-      pkg-types: 1.1.3
+      pkg-types: 1.2.0
       scule: 1.3.0
       semver: 7.6.3
       ufo: 1.5.4
@@ -8110,7 +8107,7 @@ snapshots:
       defu: 6.1.4
       hookable: 5.5.3
       pathe: 1.1.2
-      pkg-types: 1.1.3
+      pkg-types: 1.2.0
       scule: 1.3.0
       std-env: 3.7.0
       ufo: 1.5.4
@@ -10620,9 +10617,10 @@ snapshots:
 
   hyphenate-style-name@1.0.4: {}
 
-  i18nation@1.4.3:
+  i18nation@1.5.0:
     dependencies:
       c12: 1.11.2
+      citty: 0.1.6
       fs-extra: 11.2.0
       glob: 11.0.0
       go-better-code: 1.1.1
@@ -12194,13 +12192,6 @@ snapshots:
     dependencies:
       find-up: 4.1.0
 
-  pkg-types@1.1.3:
-    dependencies:
-      confbox: 0.1.7
-      mlly: 1.7.1
-      pathe: 1.1.2
-    optional: true
-
   pkg-types@1.2.0:
     dependencies:
       confbox: 0.1.7
@@ -13323,7 +13314,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.25.2
       '@babel/standalone': 7.25.3
-      '@babel/types': 7.25.2
+      '@babel/types': 7.25.6
       defu: 6.1.4
       jiti: 1.21.6
       mri: 1.2.0

@@ -1,7 +1,7 @@
 import { defineConfig } from 'i18nation'
 export default defineConfig({
     src: 'src/**/*.{jsx,tsx,ts,astro}',
-    exclude: ['**/utils/**/*', '**/*.d.ts',"**/heti.astro"],
+    exclude: ['**/utils/**/*', '**/*.d.ts', "**/heti.astro"],
     createTranslateCode(hash, params) {
         return `$t("${hash}"${params ? `, ${params}` : ''})`
     },
@@ -14,4 +14,7 @@ export default defineConfig({
         mode: "flat",
         indent: 4,
     },
+    prune: {
+        json: "./src/i18n/*.json"
+    }
 })

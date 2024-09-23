@@ -1,0 +1,20 @@
+---
+const prefer = Astro.preferredLocale
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500</title>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen text-center">
+    <div class="max-w-lg p-6 bg-white rounded-lg shadow-lg">
+        <h1 class="text-9xl font-bold text-red-500 mb-8">500 Server Side Error</h1>
+        <a href={"/"+ (prefer ?? 'en')} class="inline-block px-6 py-3 bg-blue-500 hover:bg-blue-700 text-white text-xl font-semibold rounded-lg transition duration-300">
+            Home / 首页
+        </a>
+    </div>
+</body>
+</html>

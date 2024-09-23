@@ -1,7 +1,10 @@
 // @i18n-disable
 import i18n from 'i18next';
+// @ts-ignore
 import zh from './i18n/zh-cn.json'
+// @ts-ignore
 import en from './i18n/en.json'
+
 i18n.init({
   // 设置默认语言
   lng: 'zh',
