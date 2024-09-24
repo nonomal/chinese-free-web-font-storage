@@ -88,13 +88,13 @@ import Picture from './Picture.astro';
             </a>
         </li>
         <li class="bg-white rounded-lg p-4">
-            <a href="/online-split" target="_blank">
+            <a href={"/"+Astro.params.lang+"/online-split"} target="_blank">
                 <div class="text-sm text-neutral-500">online-font-split</div>
                 <h3 class="text-2xl">🍕 在线字体分包器</h3>
                 <nav>
                     <button> 开源仓库 ✨</button>
 
-                    <a href="/online-split" target="_blank">
+                    <a href={"/"+Astro.params.lang+"/online-split"} target="_blank">
                         <button> 进入 ➡️</button>
                     </a>
                 </nav>
@@ -107,7 +107,7 @@ import Picture from './Picture.astro';
                 <nav>
                     <button> 开源仓库 ✨</button>
 
-                    <a href="/analyze" target="_blank">
+                    <a href={"/"+Astro.params.lang+"/analyze"} target="_blank">
                         <button> 进入 ➡️</button>
                     </a>
                 </nav>

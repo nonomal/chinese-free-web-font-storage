@@ -8,10 +8,6 @@ const sections = getSections(lang)
     {
         [
             ...sections.entries(),
-            // 测试用途
-            // ...sections.entries(),
-            // ...sections.entries(),
-            // ...sections.entries(),
         ].map(([sectionName, posts]) => {
             return (
                 <li id={sectionName} class="mb-4">
@@ -26,7 +22,7 @@ const sections = getSections(lang)
                                         class="line-clamp-1 border-l border-blue-200 py-1 pl-4 text-neutral-700 transition-all hover:border-blue-600  hover:text-cyan-700"
                                         title={post.data.title}
                                     >
-                                        <a href={`/post/${post.slug}`}>{post.data.title}</a>
+                                        <a href={`./${post.slug.split('/').slice(1).join('/')}`}>{post.data.title}</a>
                                     </li>
                                 );
                             })}

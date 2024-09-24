@@ -16,7 +16,7 @@ const list = await getFileListIndex();
         <nav class="float-right flex gap-4 text-sm text-emerald-600">
             <button id="open-font-list">字体列表</button>
             <button>
-                <a href="/feature/test" class="text-center">字体特性</a>
+                <a href={"/"+Astro.params.lang+"/feature/test"} class="text-center">字体特性</a>
             </button>
             <!-- <AddFont client:load /> -->
             <button class="text-cyan-800">{list.length}份</button>

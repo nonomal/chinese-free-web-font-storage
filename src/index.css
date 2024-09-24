@@ -14,7 +14,7 @@ body {
     font-family: var(--defaultFont), 'jiangxizhuokai', 'PingFangSC-Semibold fallback',
         'PingFangSC-Regular fallback', 'Microsoft YaHei fallback', 'Source Han Sans fallback';
 }
-.dynamic-font{
+.dynamic-font {
     font-family: var(--defaultFont);
 }
 .poetry {
@@ -89,4 +89,8 @@ a > button:hover {
 }
 .text-input {
     @apply block w-full appearance-none rounded-md border border-transparent bg-white p-2 leading-5 text-slate-900 shadow ring-1 ring-slate-900/5 transition-colors placeholder:text-slate-400 focus:outline-none focus:ring-2  dark:bg-slate-700/20 dark:text-white dark:ring-slate-200/20  sm:text-sm;
+}
+.popover-hidden {
+    pointer-events: none;
+    opacity: 0;
 }

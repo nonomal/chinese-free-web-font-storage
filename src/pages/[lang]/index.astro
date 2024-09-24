@@ -7,7 +7,7 @@ import PerformanceOfTool from '../../components/Home/PerformanceOfTool.astro';
 import '../../style/animate.css';
 
 if(!['zh-cn','en'].includes(Astro.params.lang!)){
-    return Astro.rewrite('/zh-cn' + Astro.url.pathname)
+    return Astro.redirect('/zh-cn' + Astro.url.pathname)
 }
 
 ---
@@ -17,7 +17,7 @@ if(!['zh-cn','en'].includes(Astro.params.lang!)){
         class="relative an-scroll-list z-10 flex snap-start w-screen flex-col items-center my-36"
     >
 
-        <a href="/cdn" class=" py-2 px-1 pr-4 mb-14 text-sm text-gray-700 bg-gray-100/80 rounded-full dark:bg-gray-800 transition-all dark:text-white hover:bg-gray-300/80 dark:hover:bg-gray-700" role="alert">
+        <a href={"/"+Astro.params.lang+"/cdn"} class=" py-2 px-1 pr-4 mb-14 text-sm text-gray-700 bg-gray-100/80 rounded-full dark:bg-gray-800 transition-all dark:text-white hover:bg-gray-300/80 dark:hover:bg-gray-700" role="alert">
             <span class="bg-rose-600 rounded-full text-white px-4 py-1.5 mr-3">字图</span>
             <span class="font-medium">可以免费使用的前端字体 CDN  {">"} </span>
         </a>
@@ -39,7 +39,7 @@ if(!['zh-cn','en'].includes(Astro.params.lang!)){
             提供美丽字体的项目。
         </h3>
         <div class="flex gap-4 mt-24 bg-white rounded-lg ring-rose-600 py-4 px-6">
-            <a href="/cdn">
+            <a href="./cdn">
                 <button
                     class=" px-2 py-1 rounded-md text-gray-500  hover:bg-gray-200 hover:text-gray-500 "
                     style="letter-spacing: 0.25rem;"
@@ -47,7 +47,7 @@ if(!['zh-cn','en'].includes(Astro.params.lang!)){
                     免费 CDN
                 </button>
             </a>
-            <a href="/article">
+            <a href="./article">
                 <button
                     class=" px-2 py-1 rounded-md text-gray-500  hover:bg-gray-200 hover:text-gray-500 "
                     style="letter-spacing: 0.25rem;"
@@ -55,7 +55,7 @@ if(!['zh-cn','en'].includes(Astro.params.lang!)){
                     教程列表
                 </button>
             </a>
-            <a href="/online-split">
+            <a href="./online-split">
                 <button
                     class=" px-2 py-1 rounded-md text-gray-500  hover:bg-gray-200 hover:text-gray-500 "
                     style="letter-spacing: 0.25rem;"

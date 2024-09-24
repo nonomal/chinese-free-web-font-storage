@@ -1,39 +1,44 @@
 ---
----
+import { LanguageSwitcher } from "./Home/LanguageSwitcher";
+import { MdiGithub }from './icons/MdiGithub'
+--- 
 
 <header
     class="print:hidden sticky z-20 w-full top-0 left-0 flex items-center bg-white/70 gap-2 py-2 backdrop-blur-lg px-12 flex-wrap"
 >
-    <a href="/">
+    <a href={"/"+Astro.params.lang+"/"}>
         <h1 class="text-black text-2xl">中文网字计划</h1>
     </a>
     <span class="flex-1"></span>
-    <nav class="text-sky-700 flex gap-4">
-        <a href="/cdn">免费 CDN</a>
-        <a href="/online-split" class="hidden sm:block">在线分包</a>
-        <a href="/article">文章</a>
-        <a href="/showcase" class="hidden sm:block">灵感</a>
-        <a href="/issues" class="hidden sm:block">反馈</a>
+    <nav class="text-sky-700 flex gap-4 md:gap-6 ">
+        <a href={"/"+Astro.params.lang+"/cdn"}>免费 CDN</a>
+        <a href={"/"+Astro.params.lang+"/online-split"} class="hidden sm:block">在线分包</a>
+        <a href={"/"+Astro.params.lang+"/article"}>文章</a>
+        <a href={"/"+Astro.params.lang+"/showcase"} class="hidden sm:block">灵感</a>
+        <a href={"/"+Astro.params.lang+"/issues"} class="hidden sm:block">反馈</a>
+     
         <span>
             <span class="relative overflow-visible more-button">
                 <button>更多</button>
                 <ul
-                    class="w-64 absolute right-0 hidden bg-gray-50 border border-gray-300 rounded-md"
+                    class="w-64 absolute right-0 popover-hidden transition-all bg-gray-50 border border-gray-300 rounded-md"
                 >
-                    <li class="p-2 hover:bg-gray-100"><a href="/analyze">字体分析</a></li>
+                    <li class="p-2 hover:bg-gray-100"><a href={"/"+Astro.params.lang+"/analyze"}>字体分析</a></li>
                     <li class="p-2 hover:bg-gray-100">
-                        <a href="/google" class="hidden sm:block">Google Fonts</a>
+                        <a href={"/"+Astro.params.lang+"/google"} class="hidden sm:block">Google Fonts</a>
                     </li>
                 </ul>
             </span>
         </span>
 
+        <span class='w-px bg-gray-300'></span>
         <!-- Github 相关地址 -->
         <span class="relative overflow-visible more-button">
-            <button>Github</button>
-
+            <button title="Github">
+                <MdiGithub></MdiGithub>
+            </button>
             <!-- popover -->
-            <ul class="w-64 absolute right-0 hidden bg-gray-50 border border-gray-300 rounded-md">
+            <ul class="w-64 absolute right-0 popover-hidden transition-all bg-gray-50 border border-gray-300 rounded-md">
                 <li class="p-2 hover:bg-gray-100">
                     <a
                         href="https://github.com/KonghaYao/chinese-free-web-font-storage"
@@ -88,13 +93,14 @@
                 const items = document.querySelectorAll('.more-button');
                 [...items].map((item) => {
                     item.addEventListener('mouseenter', () => {
-                        item.children[1]!.classList.remove('hidden');
+                        item.children[1]!.classList.remove('popover-hidden');
                     });
                     item.addEventListener('mouseleave', () => {
-                        item.children[1]!.classList.add('hidden');
+                        item.children[1]!.classList.add('popover-hidden');
                     });
                 });
             });
         </script>
+        <LanguageSwitcher client:load location={Astro.url}/>
     </nav>
 </header>

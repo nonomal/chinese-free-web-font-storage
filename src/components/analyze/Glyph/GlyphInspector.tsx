@@ -5,7 +5,6 @@ import { RenderGlyph } from './RenderGlyph';
 import { For, Show } from 'solid-js';
 import { RenderGlyphDetail } from './RenderGlyphDetail';
 import { VModel } from '../../../utils/VModel';
-
 export interface GlyphConfig {
     fontScale: number;
     fontSize: number;
@@ -105,7 +104,7 @@ const GlyphInspectorUI = ({ font }: { font: Atom<Font> }) => {
                 </label>
                 <div class="flex-1"></div>
 
-                <a href="/analyze" class="text-xl">
+                <a href={"/zh-cn/analyze"} class="text-xl">
                     字符查看器
                 </a>
             </div>
