@@ -5,6 +5,7 @@ import GlobalHeader from '../components/GlobalHeader.astro';
 import { SEO } from 'astro-seo';
 import Sentry from '../components/SentryScript.astro';
 import { __CDN__ } from '../global';
+import { changeLanguage } from 'i18next';
 export interface Props {
     title?: string;
     description?: string;
@@ -19,8 +20,8 @@ export interface Props {
     htmlClass?: string;
 }
 const {
-    title = '✨中文网字计划-提供便捷实用的全字符集中文渲染方案',
-    description = '中文网字计划致力于在互联网中提供更加便捷实用的全字符集中文渲染方案。我们通过精巧设计的字体分包方式，将庞大的字体文件切割为多个小型静态分包部署于云端，在全网领域内都可快捷、稳定地进行加载，提高中文字体在网络中的流通体验！',
+    title = $t("049945050aa7435651ba3e2129a14e93"),
+    description = $t("62ad0ae253a6017d313347e67f1a0c01"),
     canonicalURL,
     image = '',
     type: ogType,
@@ -30,18 +31,18 @@ const {
     class: className,
     htmlClass,
 } = Astro.props;
+globalThis.lang = Astro.params.lang
 ---
-
 <!DOCTYPE html>
 <html lang={Astro.params.lang} class={htmlClass}>
     <head>
-        <!-- Global Metadata -->
+        <!--           Global Metadata           -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
         <meta name="generator" content={Astro.generator} />
         <slot name="meta" />
-        <!-- Primary Meta Tags -->
+        <!--           Primary Meta Tags           -->
         <SEO
             title={title}
             description={description}
@@ -60,7 +61,7 @@ const {
         />
         <meta
             name="keywords"
-            content={keywords + ',中文网字计划,全字符集中文渲染方案,字体分包,字体部署,web font'}
+            content={keywords + $t("d43b734625429e539fb49080b13065d6")}
         />
         <link rel="preconnect" href="https://chinese-fonts-cdn.netlify.app" crossorigin />
         <link rel="preconnect" href="https://jsdelivr.deno.dev/" crossorigin />

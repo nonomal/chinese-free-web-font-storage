@@ -3,9 +3,8 @@ import Layout from '../../Layout/Layout.astro';
 import { FontAnalyzeUI } from '../../components/analyze/index';
 import { __CDN__ } from '../../global';
 ---
-
 <Layout
-    title="在线字体分析器"
+    title={$t("24dba98555da92ea160aa6a2107bb8c3")}
     defaultFontCSS={__CDN__ + '/packages/lxgwwenkai/dist/LXGWWenKai-Light/result.css'}
 >
     <FontAnalyzeUI client:only />

@@ -25,13 +25,13 @@ export const ShowCaseLinks = () => {
             title: '中华诗词大典',
             image: 'https://ik.imagekit.io/chinesefonts1/showcase/chinese_poetry.png?updatedAt=1704519777120&tr=w-1200%2Ch-630%2Cfo-auto',
             url: 'https://chinese-poetry.netlify.app/',
-            categories: ['诗词'],
+            categories: [$t("8e964d494f3985b3f8c61ac27d2f0e7b")],
         },
         {
             title: '魔导绪论',
             image: 'https://ik.imagekit.io/chinesefonts1/showcase/magic_tag.png?updatedAt=1704519777120&tr=w-1200%2Ch-630%2Cfo-auto',
             url: 'https://magic-tag.netlify.app/',
-            categories: ['AI绘画'],
+            categories: [$t("ddcd9b9d106dcb0f3f5690c76ec7bece")],
         },
     ];
 };

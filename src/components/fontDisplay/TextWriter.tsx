@@ -32,7 +32,7 @@ export const TextWriter = (props: { font_subsets: { name: string, size: number, 
     });
     const usedSize = reflect(() => usedPackages().reduce((col, cur) => col + cur.size, 0));
     return (
-        <aside class="flex flex-1 flex-col p-4">
+        (<aside class="flex flex-1 flex-col p-4">
             <div class="flex justify-between">
                 <div>{fontSize()}px</div>
                 <input
@@ -48,7 +48,7 @@ export const TextWriter = (props: { font_subsets: { name: string, size: number, 
             </div>
             <textarea
                 {...VModel(text)}
-                placeholder="中文测试器，你可以在这里写任何字来测试字体！"
+                placeholder={$t("682c2bf39c9a96b15cdf8ea05ff9b753")}
                 class="mt-4 h-64 w-full rounded-md p-2 outline-none ring-2 ring-green-600"
                 style={{
                     'font-size': fontSize() + 'px',
@@ -56,10 +56,10 @@ export const TextWriter = (props: { font_subsets: { name: string, size: number, 
                 }}
             ></textarea>
             <div class="flex gap-3">
-                <span>加载这些文字大致需要 {usedPackages().length} 个分包</span>
-                <span>耗费 {prettyBytes(usedSize())}</span>
-                <span>字符使用率 {usedRate()}%</span>
+                <span>{$t("0c4974d3bd951c05a319754a6efc7fba")}{usedPackages().length}{$t("f56e4d4494c6a4561b958c87476acd7e")}</span>
+                <span>{$t("8fec16a5b9a07d1364bfc1138373ffa6")}{prettyBytes(usedSize())}</span>
+                <span>{$t("a4d3459d430df1d101b88e46e2f96499")}{usedRate()}%</span>
             </div>
-        </aside>
+        </aside>)
     );
 }

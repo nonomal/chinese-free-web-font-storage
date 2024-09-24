@@ -76,17 +76,13 @@ const GlyphInspectorUI = ({ font }: { font: Atom<Font> }) => {
         multiSelect: false,
     });
     return (
-        <section class="m-auto grid h-[60vh] w-[90%] grid-cols-2  rounded-2xl p-8  xl:w-[80%]">
+        (<section class="m-auto grid h-[60vh] w-[90%] grid-cols-2  rounded-2xl p-8  xl:w-[80%]">
             <div class="col-span-2 flex gap-4">
-                <button class="cursor-pointer" onclick={() => displayingGlyphIndex((i) => [i[0]])}>
-                    归一
-                </button>
+                <button class="cursor-pointer" onclick={() => displayingGlyphIndex((i) => [i[0]])}>{$t("89d643c9445306c73f2423be851c067b")}</button>
                 <button
                     class="cursor-pointer"
                     onclick={() => displayingGlyphIndex(() => glyphIndexList().map((i) => i.index))}
-                >
-                    全选
-                </button>
+                >{$t("885c56c8bbc4ca4e64c4b4524b96bcec")}</button>
                 <label class="cursor-pointer">
                     <input
                         type="checkbox"
@@ -95,18 +91,13 @@ const GlyphInspectorUI = ({ font }: { font: Atom<Font> }) => {
                             if (!e.target.checked) displayingGlyphIndex((i) => [i[0]]);
                         }}
                         checked={setting.multiSelect()}
-                    />
-                    多选字符
-                </label>
+                    />{$t("7fff8e1998982c72e146a6df48e75704")}</label>
                 <label>
-                    <input type="range" max={10000} min={0} {...VModel(setting.opacity)} />
-                    透明度：{setting.opacity() / 100}
+                    <input type="range" max={10000} min={0} {...VModel(setting.opacity)} />{$t("c19d0c54f20b04c2cc2f7570115846ce")}{setting.opacity() / 100}
                 </label>
                 <div class="flex-1"></div>
 
-                <a href={"/zh-cn/analyze"} class="text-xl">
-                    字符查看器
-                </a>
+                <a href={"/zh-cn/analyze"} class="text-xl">{$t("fa7a67f17a30b4a5b20eb330f452a53d")}</a>
             </div>
             <div
                 class="h-full overflow-auto rounded-l-2xl border-2  bg-gray-100"
@@ -181,6 +172,6 @@ const GlyphInspectorUI = ({ font }: { font: Atom<Font> }) => {
                     </ul>
                 </Show>
             </div>
-        </section>
+        </section>)
     );
 };

@@ -44,30 +44,26 @@ export const FontAnalyzeUI = () => {
         { immediately: false, deps: [f] }
     );
     return (
-        <Switch
+        (<Switch
             fallback={
                 <main>
                     <section class="flex w-full flex-col items-center justify-center p-12">
-                        <h2 class="text-xl">在线字体分析器</h2>
+                        <h2 class="text-xl">{$t("24dba98555da92ea160aa6a2107bb8c3")}</h2>
                         <DragDropButton
                             accept=".ttf,.otf,.woff2"
                             onGetFile={(file) => {
                                 if (file) f(() => file);
                             }}
                         >
-                            <button class="m-4 bg-rose-700 p-2 text-2xl text-white ">
-                                上传字体文件
-                            </button>
-                            <aside class="text-neutral-600">
-                                中文网字计划将会分析您的字体文件，并提供一份详尽的分析报告
-                            </aside>
-                            <aside class="text-neutral-600">支持 .ttf、.otf、.woff2</aside>
+                            <button class="m-4 bg-rose-700 p-2 text-2xl text-white ">{$t("7167cecd055aa815f86ebc04d349571b")}</button>
+                            <aside class="text-neutral-600">{$t("b746a20501858a626c6ccf0833833b4e")}</aside>
+                            <aside class="text-neutral-600">{$t("e6e2f7182101494f9e67ee09b393bd82")}</aside>
                         </DragDropButton>
                     </section>
                 </main>
             }
         >
-            <Match when={analyzeResult.loading()}>🔔正在积极导入数据中，请稍等。。。</Match>
+            <Match when={analyzeResult.loading()}>{$t("74f3b2d4157f050f53d782a030806102")}</Match>
             <Match when={analyzeResult.isReady() && analyzeResult()}>
                 <AnalyzeResult
                     filename={analyzeResult().filename}
@@ -76,7 +72,7 @@ export const FontAnalyzeUI = () => {
                 ></AnalyzeResult>
                 {/* <GlyphInspector file={f()}></GlyphInspector> */}
             </Match>
-        </Switch>
+        </Switch>)
     );
 };
 const AnalyzeResult = ({
@@ -89,39 +85,35 @@ const AnalyzeResult = ({
     fontURL: string;
 }) => {
     return (
-        <article class="mx-auto my-8 min-h-[80vh]  max-w-3xl bg-white p-8 lg:max-w-6xl">
-            <h2 class="py-2 text-center text-2xl">字体检测报告</h2>
+        (<article class="mx-auto my-8 min-h-[80vh]  max-w-3xl bg-white p-8 lg:max-w-6xl">
+            <h2 class="py-2 text-center text-2xl">{$t("1734bbc74042351fda86df55ddb4688c")}</h2>
             <h3 class="flex justify-between py-2 text-center">
                 <span>📖{filename}</span>
                 <span>
-                    <button class="px-2 text-blue-500 print:hidden " onclick={() => window.print()}>
-                        打印
-                    </button>
-                    ✨中文网字计划提供
-                </span>
+                    <button class="px-2 text-blue-500 print:hidden " onclick={() => window.print()}>{$t("8d74a519d1ee64454898c09c2b00522b")}</button>{$t("79088d97d72c2fea46a7d990b60c33f4")}</span>
             </h3>
             <details open>
-                <summary>字体首部信息表</summary>
+                <summary>{$t("8a88fa369a9f19cfb66e5c52f4cf64ce")}</summary>
                 <StringObjectToTable
                     data={result.headers.windows ?? result.headers}
                 ></StringObjectToTable>
             </details>
             <details open>
-                <summary>字体字符标准检测</summary>
+                <summary>{$t("e7d4722d4073e1957aef3dd889bef049")}</summary>
                 <StandardAnalyzeTable data={result.standard}></StandardAnalyzeTable>
             </details>
             <details open>
-                <summary>Unicode 统一码全字符检测</summary>
+                <summary>{$t("af70ff198e3be489d401ef3ccf54d50f")}</summary>
                 <UnicodeTable data={result.unicode}></UnicodeTable>
             </details>
             <details open>
-                <summary>OpenType Features</summary>
+                <summary>{$t("278c92d8c61f92a19acf04e26c98c7b3")}</summary>
                 <FeatureTable
                     data={result.features}
                     getSVG={result.drawTextToSVG}
                     fontURL={fontURL}
                 ></FeatureTable>
             </details>
-        </article>
+        </article>)
     );
 };

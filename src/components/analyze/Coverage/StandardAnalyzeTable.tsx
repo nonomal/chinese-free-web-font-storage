@@ -3,12 +3,12 @@ import { type Result } from '..';
 
 export const StandardAnalyzeTable = (props: { data: Result['standard'] }) => {
     return (
-        <table>
+        (<table>
             <thead>
                 <tr>
-                    <th>字符标准名称</th>
-                    <th>覆盖率 (%)</th>
-                    <th>字体占有率 (%)</th>
+                    <th>{$t("70aae6cb03fe10aa8fd41f869a323a94")}</th>
+                    <th>{$t("c6cd9aa65ceab264484e67885193d243")}</th>
+                    <th>{$t("dd433a8e879202f8bb74aa962c230082")}</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +26,6 @@ export const StandardAnalyzeTable = (props: { data: Result['standard'] }) => {
                     );
                 })}
             </tbody>
-        </table>
+        </table>)
     );
 };

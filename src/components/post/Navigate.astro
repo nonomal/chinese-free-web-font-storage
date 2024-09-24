@@ -3,7 +3,6 @@ import { getPostSection, sections } from '../../utils/getPostSections';
 const name = Astro.params.slug;
 const { prev, next } = getPostSection(name!);
 ---
-
 <nav class="w-full pt-8 pb-12 my-4 flex gap-8">
     {
         prev && (
@@ -11,7 +10,7 @@ const { prev, next } = getPostSection(name!);
                 href={`./${prev.slug.split('/').slice(1).join('/')}`}
                 class="flex-1 rounded-md bg-cyan-500 px-4 py-2 text-white"
             >
-                <span>上一篇</span>
+                <span>{$t("3b1c7363d4285e7d128bc546432d1142")}</span>
                 <span class="header-text float-right text-lg">{prev.data.title}</span>
             </a>
         )
@@ -22,7 +21,7 @@ const { prev, next } = getPostSection(name!);
                 href={`./${next.slug.split('/').slice(1).join('/')}`}
                 class="flex-1 rounded-md bg-cyan-500 px-4 py-2 text-white"
             >
-                <span class="float-right">下一篇</span>
+                <span class="float-right">{$t("41a6b5c7928a3e9bfb943686f243e714")}</span>
                 <span class="header-text float-left text-lg">{next.data.title}</span>
             </a>
         )

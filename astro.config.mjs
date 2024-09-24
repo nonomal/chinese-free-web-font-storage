@@ -25,7 +25,7 @@ export default defineConfig({
                 {
                     [path.resolve('./src/i18n')]: [
                         // default imports
-                        ['t', '$t'], // import { default as axios } from 'axios',
+                        ['$t'], // import { default as axios } from 'axios',
                     ],
                 },
             ],

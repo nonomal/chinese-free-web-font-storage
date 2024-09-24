@@ -40,32 +40,26 @@ export const DemoOfFontSplit = () => {
         },
     ];
     return (
-        <nav class="col-span-6 grid w-full max-w-7xl grid-cols-6 items-center gap-4 bg-cyan-50/60 px-8 py-12 transition-colors md:grid-cols-12">
+        (<nav class="col-span-6 grid w-full max-w-7xl grid-cols-6 items-center gap-4 bg-cyan-50/60 px-8 py-12 transition-colors md:grid-cols-12">
             <div class="col-span-4 whitespace-nowrap">
                 <span class="text-xl font-bold transition-colors hover:text-green-600">
-                    <a href="https://www.npmjs.com/package/vite-plugin-font" target="_blank">
-                        ⚡ vite-plugin-font ⚡
-                    </a>
+                    <a href="https://www.npmjs.com/package/vite-plugin-font" target="_blank">{$t("948029bdee6242d67f8796cc7454bc94")}</a>
                 </span>
                 <br />
-                <span class="text-md mt-4 text-gray-600">
-                    直接加入你的前端项目里，提供一等一的字体优化支持
-                    <br />
-                    <span>✅ 智能分包 | ✅ 自动压缩 | ✅ 构建缓存 | ✅ 首屏优化</span>
+                <span class="text-md mt-4 text-gray-600">{$t("9949948d7b5fbcf9be875e1e0cd80669")}<br />
+                    <span>{$t("884ad49489a5cacd264331e8275dedfe")}</span>
                 </span>
                 <br />
                 <a
                     href="https://www.npmjs.com/package/vite-plugin-font"
                     class="text-rose-700"
                     target="_blank"
-                >
-                    NPM 文档
-                    <img
+                >{$t("fe7f7a4756a9aa11ba355bbfb932fc65")}<img
                         height={20}
                         width={138}
                         src="https://img.shields.io/npm/dw/vite-plugin-font"
                         loading="lazy"
-                        alt="download count in npm"
+                        alt={$t("a239e70392e274efd0d2ee44ccff38de")}
                         fetchpriority="low"
                     ></img>
                 </a>
@@ -91,6 +85,6 @@ export const DemoOfFontSplit = () => {
                     </a>
                 );
             })}
-        </nav>
+        </nav>)
     );
 };

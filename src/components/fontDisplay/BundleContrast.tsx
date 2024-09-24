@@ -6,20 +6,14 @@ export const BundleContrast = AsyncReporterLoader((props) => {
     const bundleMessage = props.reporter.bundleMessage;
     const env = props.reporter.env;
     return (
-        <div class="rounded-lg bg-white p-4 ">
-            <h2 class="pb-4 text-lg">原始信息</h2>
+        (<div class="rounded-lg bg-white p-4 ">
+            <h2 class="pb-4 text-lg">{$t("1e0ec07b9dc50393b26d2cc2ff30ff61")}</h2>
             <ul class="select-text text-gray-600">
-                <li>
-                    原始文件大小
-                    <span class="float-right">{prettyBytes(bundleMessage.originLength)}</span>
+                <li>{$t("5ca007f62f1722774b4a702fc4a41f99")}<span class="float-right">{prettyBytes(bundleMessage.originLength)}</span>
                 </li>
-                <li>
-                    TTF状态文件大小
-                    <span class="float-right">{prettyBytes(bundleMessage.ttfLength)}</span>
+                <li>{$t("1af317c41270cc6bc01d6645fd7ef596")}<span class="float-right">{prettyBytes(bundleMessage.ttfLength)}</span>
                 </li>
-                <li>
-                    打包后总大小
-                    <span class="float-right text-green-600">
+                <li>{$t("768b24856a32ff199b6f65225626991c")}<span class="float-right text-green-600">
                         {prettyBytes(bundleMessage.bundledTotalLength)} | 
                         {(
                             (bundleMessage.bundledTotalLength * 100) /
@@ -30,13 +24,11 @@ export const BundleContrast = AsyncReporterLoader((props) => {
                 </li>
                 {'os' in env && (
                     <>
-                        <li class="text-green-600">
-                            设备信息
-                            {[
+                        <li class="text-green-600">{$t("4bfb440cdd085adfa63cc5597ac7317c")}{[
                                 env.os.version,
                                 env.device.architecture,
                                 env.device.cpus,
-                                '核心CPU',
+                                $t("5c68e384dba58c6440c24cd460d9039f"),
                             ].join(' ')}
                         </li>
                         <li>
@@ -48,7 +40,7 @@ export const BundleContrast = AsyncReporterLoader((props) => {
                     </>
                 )}
             </ul>
-        </div>
+        </div>)
     );
 });
 export const ShowTimeFormat = (date: Date) => {

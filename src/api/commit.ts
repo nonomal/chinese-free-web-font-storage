@@ -9,10 +9,10 @@ export const addFontRequest = (props: {
 }) => {
     const head = [props.nickName, props.fontName].join(' | ')
     return DataNotify({
-        title: "【添加字体】" + props.fontName,
-        body: `${head} \n${props.detail}`,
-        labels: ['添加字体']
-    }, github)
+        title: $t("41b1b235c9136d68808875995ff3fb1c") + props.fontName,
+        body: /** @i18n-ignore */`${head} \n${props.detail}`,
+        labels: [$t("a771d162e324da353ea1191205a8b2cd")]
+    }, github);
 }
 export const addShowCaseRequest = (props: {
     nickName: string,
@@ -22,8 +22,8 @@ export const addShowCaseRequest = (props: {
 }) => {
     const head = [props.nickName, props.showCaseName].join(' | ')
     return DataNotify({
-        title: "【添加灵感网站】" + props.showCaseName,
-        body: `${head} \n${props.detail}`,
-        labels: ['添加灵感网站']
-    }, github)
+        title: $t("57bce51f549734203bf627cda3ed6325") + props.showCaseName,
+        body: /** @i18n-ignore */`${head} \n${props.detail}`,
+        labels: [$t("7af1be9f649757ba50ca7033c6765e0e")]
+    }, github);
 }

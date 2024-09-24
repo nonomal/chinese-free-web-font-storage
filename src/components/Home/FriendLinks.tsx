@@ -54,15 +54,13 @@ const links = [
 ] as FriendLink[];
 export const FriendLinks = () => {
     return (
-        <section class='dynamic-font' id="friend-links">
-            <h2 class=" mb-6 mt-24 text-center text-4xl">网站推荐</h2>
-            <h3 class=" mb-12 text-center text-xl text-neutral-400">
-                中文网字计划的诞生与发展皆离不开这些同行者
-            </h3>
+        (<section class='dynamic-font' id="friend-links">
+            <h2 class=" mb-6 mt-24 text-center text-4xl">{$t("92e183477d73ec3bd4581391912caa23")}</h2>
+            <h3 class=" mb-12 text-center text-xl text-neutral-400">{$t("f20b0f551d6b23ff4d3865dee5d5fd6c")}</h3>
             <ul class="m-auto mb-24 grid max-w-6xl grid-cols-4 gap-4">
                 {links.map((item) => {
                     return (
-                        <div
+                        (<div
                             class=" flex flex-col items-center rounded-md bg-white p-4"
                             title={item.description}
                         >
@@ -70,16 +68,16 @@ export const FriendLinks = () => {
                             <img
                                 class="h-16 object-contain"
                                 src={item.avatar}
-                                alt={item.name + ' 的 icon'}
+                                alt={item.name + $t("378b28892f45ed3caa0bd0ff0e67d26d")}
                                 loading="lazy"
                             />
                             <div class="mt-2 line-clamp-3 text-xs text-neutral-500">
                                 {item.description}
                             </div>
-                        </div>
+                        </div>)
                     );
                 })}
             </ul>
-        </section>
+        </section>)
     );
 };

@@ -3,16 +3,11 @@ import Layout from '../../Layout/Layout.astro';
 import { AddShowCase } from '../../components/Feedback/AddShowCase';
 import { ShowCaseLinks } from '../../configs';
 ---
-
-<Layout title='中文网字计划展示页'>
+<Layout title={$t("87cdbf937e8ba000f52f13aac09717a5")}>
     <section class="max-w-6xl m-auto">
         <header class="h-[80vh] flex flex-col w-full justify-center items-center gap-4 pb-8">
-            <aside class="bg-rose-600 text-white rounded-md p-2 text-2xl">将想象注入你的网站</aside>
-            <h2 class="text-7xl">
-                追寻
-                <span class="text-blue-600"> 中文字体</span>
-                的无限可能
-            </h2>
+            <aside class="bg-rose-600 text-white rounded-md p-2 text-2xl">{$t("c26febed146956b50a743a2fcabbc3b3")}</aside>
+            <h2 class="text-7xl">{$t("34b1e92fb11165d7b276639193fd58e3")}<span class="text-blue-600">{$t("fb0c8b10747b8b7891d727e164244782")}</span>{$t("967cf7426422dac1cc625f4a4c1836be")}</h2>
         </header>
         <div class="flex py-2">
             <AddShowCase client:load />
@@ -24,9 +19,7 @@ import { ShowCaseLinks } from '../../configs';
                 ShowCaseLinks().map((site, i) => (
                     <>
                         {i === 4 && (
-                            <li class="flex h-24 items-center justify-center md:col-span-2 lg:col-span-3">
-                                添加网站
-                            </li>
+                            <li class="flex h-24 items-center justify-center md:col-span-2 lg:col-span-3">{$t("39d2219a5cddf8d3a2cc79e98cd33034")}</li>
                         )}
                         <li
                             class:list={{

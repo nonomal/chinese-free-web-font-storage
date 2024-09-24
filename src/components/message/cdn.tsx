@@ -223,45 +223,43 @@ export const CDNAnalyze = () => {
         const info =  [...mapper.values()].sort((a, b) => b.count - a.count);
         return info
     });
-    return (
-        <>
-            <h2 class=" my-12 text-center text-3xl leading-9">中文网字计划 CDN 分析</h2>
-            <Show when={data()}>
-                <section class="m-auto grid max-w-7xl grid-cols-2 gap-4">
-                    <PieChart data={data()} key="request" title="请求数"></PieChart>
-                    <PieChart
-                        data={data()}
-                        key="bandwidth"
-                        title="请求带宽"
-                        format={(q) => {
-                            return prettyBytes(q);
+    return (<>
+        <h2 class=" my-12 text-center text-3xl leading-9">{$t("12da9c5dc389b884598c9ad6ab5d804d")}</h2>
+        <Show when={data()}>
+            <section class="m-auto grid max-w-7xl grid-cols-2 gap-4">
+                <PieChart data={data()} key="request" title={$t("0f81e359240e3d725a2de9ee41788e2c")}></PieChart>
+                <PieChart
+                    data={data()}
+                    key="bandwidth"
+                    title={$t("209fdacc9f0fa24009762de6a0f76055")}
+                    format={(q) => {
+                        return prettyBytes(q);
+                    }}
+                ></PieChart>
+                <LineChart data={data()} key={'bandwidth'} title={$t("ee6e01fbaa894c152c6c37e4dc4ccf78")}></LineChart>
+                <ErrorChart data={data()}></ErrorChart>
+                <section class="max-h-96 overflow-scroll bg-white p-4">
+                    <Table
+                        data={combineReferer()}
+                        render={{
+                            name: (value) => (
+                                <a href={'https://' + value} target="_blank">
+                                    {value}
+                                </a>
+                            ),
+                            count: (value) => <>{value}</>,
+                            bandwidth: (value) => <>{prettyBytes(value)}</>,
                         }}
-                    ></PieChart>
-                    <LineChart data={data()} key={'bandwidth'} title="请求曲线图"></LineChart>
-                    <ErrorChart data={data()}></ErrorChart>
-                    <section class="max-h-96 overflow-scroll bg-white p-4">
-                        <Table
-                            data={combineReferer()}
-                            render={{
-                                name: (value) => (
-                                    <a href={'https://' + value} target="_blank">
-                                        {value}
-                                    </a>
-                                ),
-                                count: (value) => <>{value}</>,
-                                bandwidth: (value) => <>{prettyBytes(value)}</>,
-                            }}
-                        ></Table>
-                    </section>
-                    <CacheRate data={data()}></CacheRate>
-                    <section class="col-span-2 row-span-2">
-                        <GlobalMap data={data()}></GlobalMap>
-                    </section>
+                    ></Table>
                 </section>
-                <div class="h-24"></div>
-            </Show>
-        </>
-    );
+                <CacheRate data={data()}></CacheRate>
+                <section class="col-span-2 row-span-2">
+                    <GlobalMap data={data()}></GlobalMap>
+                </section>
+            </section>
+            <div class="h-24"></div>
+        </Show>
+    </>);
 };
 
 // 一个 table 表格，自动解析 props.data 的属性并渲染
@@ -277,7 +275,7 @@ function Table<T>(props: {
         return render?.(value) ?? value;
     };
     return (
-        <table class="font-sans">
+        (<table class="font-sans">
             <thead>
                 <tr>
                     {columnNames().map((columnName) => (
@@ -290,12 +288,12 @@ function Table<T>(props: {
                     <tr>
                         {columnNames().map((columnName) => (
                             // @ts-ignore
-                            <td>{renderToDom(item[columnName], props.render?.[columnName])}</td>
+                            (<td>{renderToDom(item[columnName], props.render?.[columnName])}</td>)
                         ))}
                     </tr>
                 ))}
             </tbody>
-        </table>
+        </table>)
     );
 }
 

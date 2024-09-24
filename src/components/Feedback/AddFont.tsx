@@ -11,51 +11,49 @@ export const AddFont = () => {
         detail: '',
         url: '',
     });
-    return (
-        <>
-            <button onclick={() => panelVisible(true)}>添加字体</button>
-            <Dialog
-                title="添加字体"
-                onSubmit={() => {
-                    if (a.fontName() && a.nickName() && a.detail() && a.url()) {
-                        panelVisible(false);
-                        Notice.success('您的请求已记录, 我们将会在一周内处理');
-                        addFontRequest(a()).then((res) => {
-                            console.log(res);
-                        });
-                    } else {
-                        Notice.error('请填写完整信息');
-                    }
-                }}
-                visible={panelVisible}
-            >
-                <form action="" class="flex flex-col gap-4 p-4">
-                    <input
-                        type="text"
-                        class="text-input"
-                        placeholder="需要添加字体的名称"
-                        {...VModel(a.fontName)}
-                    ></input>
-                    <input
-                        type="text"
-                        class="text-input"
-                        placeholder="你的名字"
-                        {...VModel(a.nickName)}
-                    ></input>
-                    <textarea
-                        class="text-input"
-                        style={{ resize: 'none' }}
-                        placeholder="请你描述一下字体"
-                        {...VModel(a.detail)}
-                    ></textarea>
-                    <input
-                        type="text"
-                        class="text-input"
-                        placeholder="提供一个 URL 地址或者来源"
-                        {...VModel(a.url)}
-                    ></input>
-                </form>
-            </Dialog>
-        </>
-    );
+    return (<>
+        <button onclick={() => panelVisible(true)}>{$t("a771d162e324da353ea1191205a8b2cd")}</button>
+        <Dialog
+            title={$t("a771d162e324da353ea1191205a8b2cd")}
+            onSubmit={() => {
+                if (a.fontName() && a.nickName() && a.detail() && a.url()) {
+                    panelVisible(false);
+                    Notice.success('您的请求已记录, 我们将会在一周内处理');
+                    addFontRequest(a()).then((res) => {
+                        console.log(res);
+                    });
+                } else {
+                    Notice.error('请填写完整信息');
+                }
+            }}
+            visible={panelVisible}
+        >
+            <form action="" class="flex flex-col gap-4 p-4">
+                <input
+                    type="text"
+                    class="text-input"
+                    placeholder={$t("5f86f91a26cad71087045e5db9ef3ec4")}
+                    {...VModel(a.fontName)}
+                ></input>
+                <input
+                    type="text"
+                    class="text-input"
+                    placeholder={$t("aa6061e1fbe38e6136ce2d60885e239c")}
+                    {...VModel(a.nickName)}
+                ></input>
+                <textarea
+                    class="text-input"
+                    style={{ resize: 'none' }}
+                    placeholder={$t("8e17f9475579af372821f388d73689e8")}
+                    {...VModel(a.detail)}
+                ></textarea>
+                <input
+                    type="text"
+                    class="text-input"
+                    placeholder={$t("aafa3ee925b0497d4fa4f2548cc8751f")}
+                    {...VModel(a.url)}
+                ></input>
+            </form>
+        </Dialog>
+    </>);
 };

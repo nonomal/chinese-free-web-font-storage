@@ -15,7 +15,7 @@ export function useZip(getFileName: () => string, resultList: Atom<{ name: strin
             });
 
             return zip.generateAsync({ type: 'blob' }).then(function (content: Blob) {
-                Notice.success('压缩文件下载中');
+                Notice.success($t("ebb8008060a34442e4752ddba60dfc49"));
                 saveAs(content, name + '.zip');
             });
         },

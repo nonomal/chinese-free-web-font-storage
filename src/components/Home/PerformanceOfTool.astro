@@ -33,7 +33,6 @@ const config = [
     },
 ];
 ---
-
 <section
     class="dynamic-font w-full select-auto lg:w-[80%] snap-center font-serif max-w-7xl border-gray-200 text-gray-600 p-8 lg:rounded-2xl my-12 grid grid-cols-6 gap-4 bg-white/70"
 >
@@ -42,24 +41,19 @@ const config = [
         target="_blank"
         class="text-center rounded-md bg-yellow-50/60 text-xl font-bold flex justify-center items-center flex-col col-span-2"
     >
-        <img class="h-20 w-20" src={ChromeImage.src} alt="chrome image" />
-        <span style="letter-spacing: 0.3rem;">部署自己的字体！</span>
-        <span class="text-sm text-gray-500">
-            就在你的浏览器上 😊<br />
-            准备好你的字体，<br />
-            只需要一两分钟，<br />
-            加入到你的前端 ！！！🚀
-        </span>
+        <img class="h-20 w-20" src={ChromeImage.src} alt={$t("1e1e470d9ec20254fc235dfb4d1a264d")} />
+        <span style="letter-spacing: 0.3rem;">{$t("253251b7b358bf884bcaeba812f845b5")}</span>
+        <span class="text-sm text-gray-500">{$t("e543ac4979bbb726775103ed3e4527fe")}<br />{$t("c0cda06f8745801c686435fecae32d5c")}<br />{$t("7ed7b80a0ceae92ab11f4070ad37cd9c")}<br />{$t("479fea1f4817edb6a479c86ce564544b")}</span>
     </a>
     <h2 class="col-span-2 bg-yellow-50/60 text-left p-8 flex flex-col justify-center items-center">
-        <div class="text-2xl mb-4 font-black">中文网字计划——开源工具</div>
-        <div class="w-full">❤️ 我们喜爱开源，全身心投入其中</div>
-        <div class="w-full">💻 几乎所有的技术都是开源的</div>
-        <div class="w-full">🤝 分享是我们的信条</div>
+        <div class="text-2xl mb-4 font-black">{$t("e60bb41a55b66deedee8a74e9d89ff3b")}</div>
+        <div class="w-full">{$t("d3810e43b2111ad7efe4814e1b5f5ce3")}</div>
+        <div class="w-full">{$t("18634e0b6dc70c5cd954af1c68ca6363")}</div>
+        <div class="w-full">{$t("27828b792a13ef3b56c4badc7c418b4a")}</div>
     </h2>
 
     <ul class="grid grid-cols-3 gap-4 rounded-2xl col-span-2 p-4 bg-green-50/60">
-        <li class="col-span-3">cn-font-split 可以运行在</li>
+        <li class="col-span-3">{$t("9424ce5acd6b49be9193da3e6cede204")}</li>
         {
             config.map((i) => {
                 return (
@@ -86,11 +80,9 @@ const config = [
         class="rounded-xl p-4 text-center w-full gap-2 font-serif font-thin col-span-3 bg-rose-50/60 text-2xl"
     >
         <a href="https://www.npmjs.com/package/cn-font-replacer" target="_blank">
-            <div class="text-2xl xl:text-lg col-span-8 w-full">⚡️ cn-font-replacer</div>
-            <div class="my-4">一个超简单的字体替换工具！🔧</div>
-            <div class="text-sm text-gray-500 my-2">
-                你可以简单几行代码，就让你的网站用上下面所有的中文字体！！！
-            </div>
+            <div class="text-2xl xl:text-lg col-span-8 w-full">{$t("450c1033d84d6e622b7e5e2627b6a4c0")}</div>
+            <div class="my-4">{$t("4632fb328a4e1eb59340daa8e9480d63")}</div>
+            <div class="text-sm text-gray-500 my-2">{$t("cb92b206b880acede549b811d9295564")}</div>
         </a>
     </div>
     <header
@@ -99,19 +91,19 @@ const config = [
         <a href="https://www.npmjs.com/package/cn-font-split" target="_blank" class="w-full">
             <div class="font-black pr-8">cn-font-split</div>
 
-            <div class="my-4">一款超厉害的字体分包引擎 🔗</div>
+            <div class="my-4">{$t("5a085260520abef90b02d940ea4c881f")}</div>
             <div class="text-sm text-neutral-400 w-full flex justify-between flex-wrap">
-                <span>整包构建时间 820 ms</span>
+                <span>{$t("96c8724fc94176ed7f535fc8e3247d0f")}</span>
                 <img
                     class="inline-block"
                     height={20}
                     width={138}
                     src="https://img.shields.io/npm/dw/cn-font-split"
                     loading="lazy"
-                    alt="download count in npm"
+                    alt={$t("a239e70392e274efd0d2ee44ccff38de")}
                     fetchpriority="low"
                 />
-                <span>Opentype Feature | 95 / 124</span>
+                <span>{$t("c017b66ead371f45453451201540c5d1")}</span>
             </div>
         </a>
     </header>

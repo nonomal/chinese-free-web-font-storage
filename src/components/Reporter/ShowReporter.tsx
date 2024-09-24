@@ -8,7 +8,7 @@ import { TextWriter } from '../fontDisplay/TextWriter';
 export const ShowReporter = () => {
     const reporter = atom<FontReporter | undefined>(undefined);
     return (
-        <section class="grid h-full grid-cols-12 gap-8 ">
+        (<section class="grid h-full grid-cols-12 gap-8 ">
             <Show
                 when={reporter()}
                 fallback={
@@ -20,7 +20,7 @@ export const ShowReporter = () => {
                             reporter(() => JSON.parse(json));
                         }}
                     >
-                        <div class="bg-white pb-2 text-xl ">请上传字体打包的 reporter 文件</div>
+                        <div class="bg-white pb-2 text-xl ">{$t("f2eee1696527c6bfe6c251b02145e1f5")}</div>
                     </DragDropButton>
                 }
             >
@@ -46,6 +46,6 @@ export const ShowReporter = () => {
                     <TextWriter font="" fontName="" reporter={reporter()}></TextWriter>
                 </section>
             </Show>
-        </section>
+        </section>)
     );
 };

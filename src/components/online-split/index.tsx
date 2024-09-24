@@ -13,20 +13,20 @@ export const OnlineSplit = () => {
 
     createEffect(() => {
         fontSplitStatus() &&
-            logMessage((i) => [...i, `cn-font-split ${PluginVersion()} 准备完毕 `]);
+            logMessage((i) => [...i, $t("aeb45ab7295e7ff65ae9e6a2f5830dae", [PluginVersion()])]);
     });
 
     /** 监控 zip 压缩 */
     const createZip = useZip(() => {
-        if (!file()) throw new Error('请添加文件');
+        if (!file()) throw new Error($t("5987551a24989911faa849b2d2dae36d"));
         return file()!.name.replace(/\..*/, '');
     }, resultList);
     /** 启动字体分包进程 */
     const startSplit = resource(
         async () => {
             const cnFontSplit = fontSplitStatus();
-            if (!file()) throw new Error('请添加文件');
-            if (!cnFontSplit) throw new Error('请等待 cn-font-split 加载完成');
+            if (!file()) throw new Error($t("5987551a24989911faa849b2d2dae36d"));
+            if (!cnFontSplit) throw new Error($t("1b3ade018797f859ab9130150ecc7837"));
             logMessage([]);
             resultList([]);
             const arrayBuffer = await file()!.arrayBuffer();
@@ -46,7 +46,7 @@ export const OnlineSplit = () => {
                     resultList((i) => [...i, { name: path, buffer }]);
                 },
             }).then((res) => {
-                Notice.success('全部打包任务完成');
+                Notice.success($t("c6e54d3220f071c30f4369084b2d44d9"));
                 return res;
             });
         },
@@ -55,7 +55,7 @@ export const OnlineSplit = () => {
         }
     );
     return (
-        <section
+        (<section
             class={classHelper.base(
                 'mx-auto my-8 grid aspect-video h-[80vh] w-full max-w-[96rem] grid-cols-2 gap-4 overflow-hidden rounded-xl border-2 bg-white transition-all'
             )(
@@ -71,9 +71,7 @@ export const OnlineSplit = () => {
                         onclick={() => {
                             getTestingFile().then((f) => file(() => f));
                         }}
-                    >
-                        尝试使用测试字体文件
-                    </button>
+                    >{$t("1c539263dccc10f30ca442ebc4fb2a21")}</button>
                 </header>
                 <Show
                     when={file()}
@@ -86,19 +84,15 @@ export const OnlineSplit = () => {
                                 logMessage((i) => [...i, '请点击开始按钮']);
                             }}
                         >
-                            <header class="pb-2 text-xl text-black">
-                                在线字体分包器 <br></br>
-                                <aside class="text-md py-4 text-gray-400">
-                                    .otf .ttf ====》 .css + .woff2
-                                </aside>
+                            <header class="pb-2 text-xl text-black">{$t("00f458b17a23f0378a6ae15ec5ee507e")}<br></br>
+                                <aside class="text-md py-4 text-gray-400">{$t("fef64dd5baf2763e09dbc12bf1934419")}</aside>
                                 <aside class="flex justify-center gap-4 py-4">
-                                    <span class="rounded-md bg-green-600 px-2 text-sm text-white">
-                                        cn-font-split v{PluginVersion()}
+                                    <span class="rounded-md bg-green-600 px-2 text-sm text-white">{$t("996cc32dc263344d05e5ac887f3a9f7d")}{PluginVersion()}
                                     </span>
                                     <a href="https://github.com/KonghaYao/cn-font-split">
                                         <img
                                             src="https://data.jsdelivr.com/v1/package/npm/cn-font-split/badge"
-                                            alt="JSDeliver Badge"
+                                            alt={$t("5a88808ce6ff3ec470d1ee9cc3b896e1")}
                                         />
                                     </a>
                                 </aside>
@@ -107,7 +101,7 @@ export const OnlineSplit = () => {
                     }
                 >
                     <div class="flex h-full flex-col items-center justify-center gap-4">
-                        <h2 class="pb-2 text-xl">在线字体分包器 {PluginVersion()}</h2>
+                        <h2 class="pb-2 text-xl">{$t("0ab6a1f6452292c35e648ffcdfb3a0b9")}{PluginVersion()}</h2>
                         <div>
                             {file()!.name} | {prettyBytes(file()!.size)}
                         </div>
@@ -115,78 +109,59 @@ export const OnlineSplit = () => {
                             <Show
                                 when={startSplit.isReady()}
                                 fallback={
-                                    <div class="text-red-600 ">
-                                        正在处理文件中，请稍等，这个文本消失之后即为完成
-                                    </div>
+                                    <div class="text-red-600 ">{$t("47b95c8ae09a984890c99dcd41c307f5")}</div>
                                 }
                             >
                                 <button
                                     onclick={() => startSplit.refetch()}
                                     class="rounded-lg bg-green-600 p-1 text-white"
-                                >
-                                    点击开始进行字体分包
-                                </button>
+                                >{$t("97228acfdf267218e0903d557635d38c")}</button>
                                 <button
                                     onclick={() => file(null)}
                                     class="rounded-lg bg-yellow-500 p-1 text-white"
-                                >
-                                    更换字体
-                                </button>
+                                >{$t("41cfa99edafb170e2208bd63a1c067f9")}</button>
                             </Show>
                         </div>
                     </div>
                 </Show>
                 <div class="px-4 text-xs text-rose-600">
                     <Show when={fontSplitStatus.isReady()}>
-                        <a href="https://github.com/KonghaYao/cn-font-split">
-                            在线分包由于特殊原因不支持某些特性，如需支持可使用代码分包➡️。
-                        </a>
+                        <a href="https://github.com/KonghaYao/cn-font-split">{$t("d9d371a818a7ee85a223ade0fbd03465")}</a>
                     </Show>
-                    <Show when={fontSplitStatus.error()}>
-                        加载 cn-font-split 失败：{fontSplitStatus.error().message}
-                        <br />
-                        可能是您的浏览器版本过低，试试更新版本的浏览器吧
-                    </Show>
-                    <Show when={fontSplitStatus.loading()}>加载 cn-font-split 中</Show>
+                    <Show when={fontSplitStatus.error()}>{$t("ba0ece066a5653092c673c0c27b67ecf")}{fontSplitStatus.error().message}
+                        <br />{$t("d6b6c2dee20c75a850a094e2473b7137")}</Show>
+                    <Show when={fontSplitStatus.loading()}>{$t("94699956675393e2c4a3f14fc1cb21c2")}</Show>
                 </div>
             </div>
-
             <section class="flex h-full flex-col gap-4 overflow-hidden bg-gray-200 p-4 noise">
                 <header class="flex justify-between ">
-                    <span class="text-xl">Logger 日志</span>
+                    <span class="text-xl">{$t("6ba31a17e5537cd3d54b98cd426a050c")}</span>
                     <div class="flex-1"></div>
-                    <a href="https://github.com/KonghaYao/cn-font-split/issues" target="_blank">
-                        反馈
-                    </a>
+                    <a href="https://github.com/KonghaYao/cn-font-split/issues" target="_blank">{$t("7274697def092e53a4818e0aa63a29d2")}</a>
                     <a href="https://github.com/KonghaYao/cn-font-split" target="_blank">
                         Github
                     </a>
                 </header>
                 <Show when={startSplit.error()}>
-                    <div class="text-red-600">
-                        发生错误：{startSplit.error().message}{' '}
-                        <button onclick={() => startSplit.refetch()}>点击此处刷新</button>
+                    <div class="text-red-600">{$t("45e37669b96a47a4be2dc27ee85a5982")}{startSplit.error().message}{' '}
+                        <button onclick={() => startSplit.refetch()}>{$t("21f2346a0958dee441903e53fd55b692")}</button>
                     </div>
                 </Show>
                 <LogMessage logMessage={logMessage()}></LogMessage>
-                <header class="text-xl">Output 输出文件</header>
+                <header class="text-xl">{$t("20e8a429657407cb252421edc8a98ed5")}</header>
                 <section class="flex h-full  max-h-[100%] select-text overflow-hidden rounded-xl bg-gray-800 font-sans text-sm text-gray-100 ">
                     <FileList resultList={resultList()}></FileList>
                     <Show when={startSplit()}>
                         <div class="flex flex-col rounded-xl bg-gray-700 p-2">
-                            <span>
-                                字体名称：
-                                {startSplit().css.family}
+                            <span>{$t("e80b3422926906e494c9357d6946993d")}{startSplit().css.family}
                             </span>
-                            <span>
-                                字重：
-                                {startSplit().css.weight}
+                            <span>{$t("ca59f4e09960ee273dfd339877f74e34")}{startSplit().css.weight}
                             </span>
                         </div>
                     </Show>
                 </section>
                 <span class="flex justify-end gap-4 text-xs text-green-600">
-                    <span> 在您的代码里面直接引用 result.css 文件就好啦</span>
+                    <span>{$t("b3231109cf631b1b4b8462d0b2ca0b99")}</span>
                     <div class="flex-1"></div>
                     <span>{resultList().length}</span>
                     <span>
@@ -196,12 +171,10 @@ export const OnlineSplit = () => {
                     <button
                         class="rounded-lg bg-green-600 p-1 text-center  text-gray-100"
                         onclick={() => createZip.refetch()}
-                    >
-                        压缩下载 zip
-                    </button>
+                    >{$t("544fff8525a3f89dc42eb1911e7d5f05")}</button>
                 </span>
             </section>
-        </section>
+        </section>)
     );
 };
 import { createAutoAnimate } from '@formkit/auto-animate/solid';

@@ -9,11 +9,10 @@ const fileName = font_name!
     .replace(/(?<=\/.*)\.(?=.*\/)/g, '_');
 const reporter = await getFontReporter(font!, fileName);
 ---
-
 <FontLayout font={font!} font_name={font_name!}>
     <section class="col-span-6">
         <header>
-            <span class="rounded-md p-2 bg-blue-600 text-white text-lg"> 📄 字体详情</span>
+            <span class="rounded-md p-2 bg-blue-600 text-white text-lg">{$t("289fd0d6ffaf86171d9d0ea8f4c9ca3a")}</span>
         </header>
         <table class="my-4">
             <tbody>
@@ -44,14 +43,12 @@ const reporter = await getFontReporter(font!, fileName);
                 class="rounded-md bg-neutral-200 px-2 text-green-600"
                 href={'https://www.maoken.com/?s=' + font_name}
                 target="_black"
-            >
-                字体授权查询
-            </a>
+            >{$t("8288cee1ce129d76faf22cc15d5ea90b")}</a>
         </div>
     </section>
     <section class="col-span-6">
         <header class="pb-4">
-            <span class="rounded-md p-2 bg-purple-600 text-white text-lg"> 🤖 中文完整度分析</span>
+            <span class="rounded-md p-2 bg-purple-600 text-white text-lg">{$t("d58fac49d3e14821880af36d7eb2f836")}</span>
         </header>
         <FontCoverage reporter={reporter} />
     </section>

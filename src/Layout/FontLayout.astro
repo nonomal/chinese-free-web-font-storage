@@ -17,12 +17,11 @@ const style = `font-family:'${css?.family}';font-weight:'${css?.weight}'`;
 const root = `/fonts/${font}/${font_name}/`;
 const font_name_cn = (Index as Record<string, { name: string }>)[font]?.name;
 ---
-
 <Layout
     defaultFontCSS={__CDN__ + `/packages/${font}/dist/${font_name}/result.css`}
-    title={font_name_cn + ' 免费前端开发在线使用部署字体 | ' + font_name_cn + ' | 中文网字计划'}
+    title={font_name_cn + $t("4582341887d2c0e274461cede41b2fe9") + font_name_cn + $t("99a671fbea26e1ab89e409ffa3ff1532")}
     description={font_name_cn +
-        '是一款精美的在线字体，可通过CSS Web引用直接使用。提供多种字体样式和设计，让您的网站更加独特和吸引人。快来体验AAA在线字体，为您的网站增添无限魅力。'}
+        $t("e3fe6f736f5368d1688b04d184d6076a")}
     style={style}
     keywords={font_name_cn}
     image={__CDN__ + `/packages/${font}/dist/${font_name}/preview.svg`}

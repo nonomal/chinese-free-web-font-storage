@@ -4,22 +4,19 @@ import { __CDN__ } from '../../global';
 import { getFileListIndex } from '../../api/fontListIndex';
 const list = await getFileListIndex();
 ---
-
 <section
     class="dynamic-font w-screen max-w-7xl flex flex-col my-6 overflow-hidden h-screen gap-2 pt-16 z-0 snap-start relative"
     id="font-list"
 >
     <h2
         class="px-8 pb-4 text-xl flex flex-wrap justify-between md:text-2xl text-rose-700 border-b border-rose-700"
-    >
-        字体列表
-        <nav class="float-right flex gap-4 text-sm text-emerald-600">
-            <button id="open-font-list">字体列表</button>
+    >{$t("11035eaf9b3d2bac260f72fa3eaf3c97")}<nav class="float-right flex gap-4 text-sm text-emerald-600">
+            <button id="open-font-list">{$t("f43bf5dec4eccf2bc9d44af37247e0d5")}</button>
             <button>
-                <a href={"/"+Astro.params.lang+"/feature/test"} class="text-center">字体特性</a>
+                <a href={"/"+Astro.params.lang+"/feature/test"} class="text-center">{$t("ed0967e39e5011cb6b5354ff6415c939")}</a>
             </button>
-            <!-- <AddFont client:load /> -->
-            <button class="text-cyan-800">{list.length}份</button>
+            <!--          <AddFont client:load />          -->
+            <button class="text-cyan-800">{list.length}{$t("2a5da6a04b01473f96468e6f75b83db6")}</button>
         </nav>
     </h2>
     <ul
@@ -109,7 +106,7 @@ const list = await getFileListIndex();
     >
         <FontShow client:load />
 
-        <!-- 不要将下面这段写进 solidjs astro 的处理会将 json 传过去 -->
+        <!--          不要将下面这段写进 solidjs astro 的处理会将 json 传过去          -->
         <nav
             class="flex-1 md:flex-[2] xl:flex-[4] h-full overflow-scroll rounded-lg overflow-x-hidden py-4"
         >
@@ -122,7 +119,7 @@ const list = await getFileListIndex();
                         return item.remotePath.map(({ url: remote, style }) => {
                             const [_, name] = remote.match(/dist\/(.*?)\/result/)!;
                             return (
-                                <li
+                                (<li
                                     class="relative flex-wrap overflow-hidden rounded-md border bg-white p-2 transition-colors hover:bg-neutral-100"
                                     id={'fonts-' + item.name}
                                     data-id={item.id}>
@@ -142,13 +139,12 @@ const list = await getFileListIndex();
                                                 '/' +
                                                 remote.replace('result.css', 'preview.svg')
                                             }
-                                            alt={name + '字体展示'}
+                                            alt={name + $t("802be3b9811992af6a28615609ebdced")}
                                         />
                                     </a>
                                     <span class="text-xm absolute bottom-2 right-2 text-gray-400">
-                                        {item.name} ➡️
-                                    </span>
-                                </li>
+                                        {item.name}{$t("7461df0fdc259411190cdf4fd058525c")}</span>
+                                </li>)
                             );
                         });
                     })

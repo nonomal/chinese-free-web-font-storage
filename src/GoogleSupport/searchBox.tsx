@@ -74,11 +74,11 @@ export const AlgoliaSearchBox = () => {
         !search.started && search.start();
     });
     return (
-        <div class="flex h-screen w-screen flex-col gap-2  overflow-hidden rounded-lg px-8 pt-8 shadow-md">
-            <header class="text-center text-2xl">Google Font 搜索</header>
+        (<div class="flex h-screen w-screen flex-col gap-2  overflow-hidden rounded-lg px-8 pt-8 shadow-md">
+            <header class="text-center text-2xl">{$t("401e1d3ce2ac4e52b30e2ab8ab027ea8")}</header>
             <div ref={Container!}></div>
             <div ref={RefinementList!}></div>
             <div ref={Hits!} class="h-full flex-1 overflow-auto"></div>
-        </div>
+        </div>)
     );
 };
