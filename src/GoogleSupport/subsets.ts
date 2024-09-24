@@ -1,3 +1,6 @@
+/* @i18n-disable */
+
+
 export const subsets = [
     ['all', '所有'],
     ['chinese-simplified', '简体中文'],
