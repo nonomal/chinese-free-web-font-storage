@@ -125,7 +125,7 @@ const list = await getFileListIndex();
                                     data-id={item.id}>
                                     <a
                                         class="display-font-show-hover"
-                                        href={`/fonts/${item.id}/${name}`}
+                                        href={`/${Astro.params.lang}/fonts/${item.id}/${name}`}
                                         data-src={__CDN__ + '/' + remote}
                                         data-style={style}>
                                         <img

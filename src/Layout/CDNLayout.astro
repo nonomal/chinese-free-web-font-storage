@@ -2,6 +2,8 @@
 import '../index.css';
 import { CDNHeader } from '../components/CDNHeader';
 import { SEO } from 'astro-seo';
+
+import GlobalHeader from '../components/GlobalHeader.astro';
 import Sentry from '../components/SentryScript.astro';
 import { __CDN__ } from '../global';
 import { changeLanguage } from 'i18next';
@@ -66,7 +68,7 @@ globalThis.lang = Astro.params.lang
         <link rel="preconnect" href="https://chinese-fonts-cdn.netlify.app" crossorigin />
     </head>
     <body style={style} class={className}>
-        <CDNHeader />
+        <GlobalHeader />
         <slot />
         <Sentry />
     </body>

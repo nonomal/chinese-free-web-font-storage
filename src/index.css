@@ -94,3 +94,9 @@ a > button:hover {
     pointer-events: none;
     opacity: 0;
 }
+
+.huge-letter-space {
+    &:lang(zh-cn){
+        letter-spacing: 0.25rem;
+    }
+}

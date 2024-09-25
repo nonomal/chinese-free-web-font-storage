@@ -6,8 +6,6 @@ import astroLogo from '../../assets/astroLogo.svg';
 import svelteLogo from '../../assets/svelteLogo.svg';
 export const DemoOfFontSplit = () => {
     const linker = [
-        null,
-        null,
         {
             name: 'Vite',
             href: 'https://github.com/KonghaYao/cn-font-bundler-demo/tree/vite',
@@ -40,26 +38,37 @@ export const DemoOfFontSplit = () => {
         },
     ];
     return (
-        (<nav class="col-span-6 grid w-full max-w-7xl grid-cols-6 items-center gap-4 bg-cyan-50/60 px-8 py-12 transition-colors md:grid-cols-12">
-            <div class="col-span-4 whitespace-nowrap">
+        <nav class="col-span-6 grid w-full max-w-7xl grid-cols-6 items-center gap-4 bg-cyan-50/60 px-8 py-12 transition-colors md:grid-cols-12">
+            <div class="col-span-6 whitespace-nowrap">
                 <span class="text-xl font-bold transition-colors hover:text-green-600">
-                    <a href="https://www.npmjs.com/package/vite-plugin-font" target="_blank">{$t("948029bdee6242d67f8796cc7454bc94")}</a>
+                    <a href="https://www.npmjs.com/package/vite-plugin-font" target="_blank">
+                        {$t('948029bdee6242d67f8796cc7454bc94')}
+                    </a>
                 </span>
                 <br />
-                <span class="text-md mt-4 text-gray-600">{$t("9949948d7b5fbcf9be875e1e0cd80669")}<br />
-                    <span>{$t("884ad49489a5cacd264331e8275dedfe")}</span>
+                <span class="text-md mt-4 text-gray-600 ">
+                    <span class="text-wrap">{$t('9949948d7b5fbcf9be875e1e0cd80669')}</span>
+                    <div class="grid grid-cols-2">
+                        {$t('884ad49489a5cacd264331e8275dedfe')
+                            .split('|')
+                            .map((item) => {
+                                return <span>{item}</span>;
+                            })}
+                    </div>
                 </span>
                 <br />
                 <a
                     href="https://www.npmjs.com/package/vite-plugin-font"
-                    class="text-rose-700"
+                    class="text-rose-700 flex justify-between"
                     target="_blank"
-                >{$t("fe7f7a4756a9aa11ba355bbfb932fc65")}<img
+                >
+                    {$t('fe7f7a4756a9aa11ba355bbfb932fc65')}
+                    <img
                         height={20}
                         width={138}
                         src="https://img.shields.io/npm/dw/vite-plugin-font"
                         loading="lazy"
-                        alt={$t("a239e70392e274efd0d2ee44ccff38de")}
+                        alt={$t('a239e70392e274efd0d2ee44ccff38de')}
                         fetchpriority="low"
                     ></img>
                 </a>
@@ -75,8 +84,8 @@ export const DemoOfFontSplit = () => {
                         <img
                             src={item.pic.src}
                             alt={item.name}
-                            height='45px'
-                            width='45px'
+                            height="45px"
+                            width="45px"
                             fetchpriority="low"
                             loading="lazy"
                         />
@@ -85,6 +94,6 @@ export const DemoOfFontSplit = () => {
                     </a>
                 );
             })}
-        </nav>)
+        </nav>
     );
 };
