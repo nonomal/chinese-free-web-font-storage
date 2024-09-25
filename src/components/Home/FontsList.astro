@@ -15,7 +15,7 @@ const list = await getFileListIndex();
             <button>
                 <a href={"/"+Astro.params.lang+"/feature/test"} class="text-center">{$t("ed0967e39e5011cb6b5354ff6415c939")}</a>
             </button>
-            <!--          <AddFont client:load />          -->
+            <!--            <AddFont client:load />            -->
             <button class="text-cyan-800">{list.length}{$t("2a5da6a04b01473f96468e6f75b83db6")}</button>
         </nav>
     </h2>
@@ -106,7 +106,7 @@ const list = await getFileListIndex();
     >
         <FontShow client:load />
 
-        <!--          不要将下面这段写进 solidjs astro 的处理会将 json 传过去          -->
+        <!--            不要将下面这段写进 solidjs astro 的处理会将 json 传过去            -->
         <nav
             class="flex-1 md:flex-[2] xl:flex-[4] h-full overflow-scroll rounded-lg overflow-x-hidden py-4"
         >

@@ -36,13 +36,13 @@ globalThis.lang = Astro.params.lang
 <!DOCTYPE html>
 <html lang={Astro.params.lang} class={htmlClass}>
     <head>
-        <!--           Global Metadata           -->
+        <!--             Global Metadata             -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
         <meta name="generator" content={Astro.generator} />
         <slot name="meta" />
-        <!--           Primary Meta Tags           -->
+        <!--             Primary Meta Tags             -->
         <SEO
             title={title}
             description={description}

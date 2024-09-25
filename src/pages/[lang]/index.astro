@@ -9,98 +9,81 @@ import '../../style/animate.css';
 if(!['zh-cn','en'].includes(Astro.params.lang!)){
     return Astro.redirect('/zh-cn' + Astro.url.pathname)
 }
-
 ---
-
 <Layout class="flex flex-col items-center">
     <section
         class="relative an-scroll-list z-10 flex snap-start w-screen flex-col items-center my-36"
     >
 
         <a href={"/"+Astro.params.lang+"/cdn"} class=" py-2 px-1 pr-4 mb-14 text-sm text-gray-700 bg-gray-100/80 rounded-full dark:bg-gray-800 transition-all dark:text-white hover:bg-gray-300/80 dark:hover:bg-gray-700" role="alert">
-            <span class="bg-rose-600 rounded-full text-white px-4 py-1.5 mr-3">字图</span>
-            <span class="font-medium">可以免费使用的前端字体 CDN  {">"} </span>
+            <span class="bg-rose-600 rounded-full text-white px-4 py-1.5 mr-3">{$t("e06fc4f6942fd83dd96552f7a4ee101d")}</span>
+            <span class="font-medium">{$t("d0e0ce4d3fccf0e1ad8933907b4d6e81")}{">"} </span>
         </a>
-        <div class="xs:text-xl text-xs font-thin italic leading-[3em] text-gray-600 sm:text-4xl">
-           The Chinese Web Fonts Plan
-        </div>
+        <div class="xs:text-xl text-xs font-thin italic leading-[3em] text-gray-600 sm:text-4xl">{$t("aacd2adddf70507acb41cca2fd79c32a")}</div>
         <h2
             class="home-title xs:text-[8vh] whitespace-nowrap text-[6vh] leading-[1.1em] sm:text-[11vw] lg:text-[17vh]"
             style="letter-spacing: 0.5rem;"
         >
+            <!--  @i18n-ignore  -->
             中文网字计划
         </h2>
         <h3
             class="max-w-[30em] px-4 mt-12 text-xs font-thin text-gray-500 sm:max-w-[30em] sm:text-lg lg:max-w-none lg:text-2xl"
             style="letter-spacing: 0.25rem;"
-        >
-            中文网字计划是收录众多中文字体并通过 Web Font 的形式为
-            <b class="px-2 inline-block bg-cyan-700 rounded-md text-white">网站开发者</b>
-            提供美丽字体的项目。
-        </h3>
+        >{$t("6c51bef3afaf064d46257916aeab7a34")}<b class="px-2 inline-block bg-cyan-700 rounded-md text-white">{$t("8f3edfcdac7a4a12a2dd593da3b20a28")}</b>{$t("e932096019cf3b0e14592fa307fcdb15")}</h3>
         <div class="flex gap-4 mt-24 bg-white rounded-lg ring-rose-600 py-4 px-6">
             <a href="./cdn">
                 <button
                     class=" px-2 py-1 rounded-md text-gray-500  hover:bg-gray-200 hover:text-gray-500 "
                     style="letter-spacing: 0.25rem;"
-                    >
-                    免费 CDN
-                </button>
+                    >{$t("740702fdd79e9aaa5ee8e491a1aa5d9c")}</button>
             </a>
             <a href="./article">
                 <button
                     class=" px-2 py-1 rounded-md text-gray-500  hover:bg-gray-200 hover:text-gray-500 "
                     style="letter-spacing: 0.25rem;"
-                    >
-                    教程列表
-                </button>
+                    >{$t("e08752d7ba2a6fe8a069d84e88f04cad")}</button>
             </a>
             <a href="./online-split">
                 <button
                     class=" px-2 py-1 rounded-md text-gray-500  hover:bg-gray-200 hover:text-gray-500 "
                     style="letter-spacing: 0.25rem;"
-                    >
-                    私人部署
-                </button>
+                    >{$t("711eae53dabedaceedcdb1e5a3d0daa1")}</button>
             </a>
             <a href="https://github.com/KonghaYao/chinese-free-web-font-storage" target="_blank">
                 <button
                     class=" px-2 py-1 rounded-md  text-gray-500  hover:bg-gray-200 hover:text-gray-500 "
                     style="letter-spacing: 0.25rem;"
-                    >
-                    开源仓库
-                </button>
+                    >{$t("d1d57cd7aace1887ff4fff86bac21096")}</button>
             </a>
             <a href="#font-list">
                 <button
                     class=" px-2 py-1 rounded-md bg-rose-50 text-rose-600 hover:text-rose-600 hover:bg-rose-200 "
                     style="letter-spacing: 0.25rem;"
-                    >
-                    开始探索字体之美
-                </button>
+                    >{$t("03f38cc52663018783a287cf072db12a")}</button>
             </a>
         </div>
     </section>
 
     <div class="pointer-events-none opacity-70">
         <div class="absolute top-52 -left-16 text-gray-300 opacity-50" style="font-size:50vh">
-            <!-- @i18n-ignore -->
+            <!--   @i18n-ignore   -->
             江
         </div>
         <div class="absolute top-36 -right-24 text-gray-300 opacity-50" style="font-size:30vh">
-            <!-- @i18n-ignore -->
+            <!--   @i18n-ignore   -->
             夏
         </div>
         <div class="absolute -top-16 left-8 text-gray-300 opacity-50" style="font-size:25vh">
-            <!-- @i18n-ignore -->
+            <!--   @i18n-ignore   -->
             尧
         </div>
     </div>
     <PerformanceOfTool />
     <FontList />
     <FriendLinks />
-    <!-- <TechSupport /> -->
+    <!--   <TechSupport />   -->
 
-    <!-- TimeLine 一个开发时间线 -->
+    <!--   TimeLine 一个开发时间线   -->
     <AllFooter />
 </Layout>

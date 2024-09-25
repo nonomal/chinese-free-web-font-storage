@@ -65,6 +65,7 @@ export default defineConfig({
                         'src/components/GlobalHeader.astro',
                         'src/components/Home/*.tsx',
                         'src/components/Home/*.astro',
+                        'src/i18n/*.json',
                         'index.json',
                     ],
                     fontExample: [
