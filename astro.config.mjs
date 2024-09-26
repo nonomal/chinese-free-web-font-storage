@@ -33,7 +33,6 @@ export default defineConfig({
         }), sitemap(), solidJs(), tailwind(), robotsTxt(), compress()],
     output: 'server',
     adapter: netlify({
-        edgeMiddleware: true
     }),
     i18n: {
         defaultLocale: "zh-cn",
