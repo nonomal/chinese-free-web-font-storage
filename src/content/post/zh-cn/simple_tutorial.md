@@ -28,7 +28,7 @@ article:
 
 > 🔔 很多情况下，我们需要自己部署字体分包到 CDN 中，这样可以使用更好的服务。
 >
-> 在这里推荐您使用 [在线字体分包器](https://chinese-font.netlify.app/online-split) 分包并下载成果文件，最后手动上传到 CDN 中获取链接，[推荐查看教程](https://chinese-font.netlify.app/post/deploy_to_cdn/)。
+> 在这里推荐您使用 [在线字体分包器](/zh-cn/online-split) 分包并下载成果文件，最后手动上传到 CDN 中获取链接，[推荐查看教程](/zh-cn/post/deploy_to_cdn/)。
 
 ### 在网页中加入样式
 

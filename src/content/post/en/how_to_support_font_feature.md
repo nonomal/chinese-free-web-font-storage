@@ -15,7 +15,7 @@ article:
 # [Font Splitting] cn-font-split 4.5.0: A Font Splitting Algorithm Supporting Complex Glyph Rendering
 
 After version 4.5.0, cn-font-split supports rendering special glyphs through a special splitting algorithm. We created a relatively simple example webpage focused on glyph features, 
-[Feature Rendering Page](/feature/test).
+[Feature Rendering Page](/en/feature/test).
 
 ## Challenges of Web Fonts in Complex Glyph Rendering
 

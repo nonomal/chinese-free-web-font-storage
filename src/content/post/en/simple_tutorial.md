@@ -28,7 +28,7 @@ These Chinese fonts must be served from a remote server so that your website can
 
 > 🔔 In many cases, you may need to deploy font packages to a CDN yourself for better service.
 >
-> Here, we recommend using the [Online Font Splitter](https://chinese-font.netlify.app/online-split) to split and download the result files, and then manually upload them to the CDN to get the link. [Check the tutorial](https://chinese-font.netlify.app/post/deploy_to_cdn/) for more details.
+> Here, we recommend using the [Online Font Splitter](/en/online-split) to split and download the result files, and then manually upload them to the CDN to get the link. [Check the tutorial](/en/post/deploy_to_cdn/) for more details.
 
 ### Adding Styles to Your Webpage
 
