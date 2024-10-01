@@ -1,0 +1,4 @@
+---
+if(['/zh-cn','/en'].some(i=>Astro.params.slug.startsWith(i))) return Astro.redirect("/404")
+return Astro.redirect('/zh-cn/'+Astro.params.slug)
+---
