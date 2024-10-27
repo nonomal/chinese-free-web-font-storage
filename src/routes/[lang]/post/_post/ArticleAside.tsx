@@ -1,5 +1,6 @@
 import { getAllSections } from '~/routes/[lang]/post/_post/getAllSections';
 import { createAsync } from '@solidjs/router';
+import { originLink } from '../../../../utils/originLink';
 
 export default () => {
     const { lang } = useParams();
@@ -23,10 +24,7 @@ export default () => {
                                             <A
                                                 href={path}
                                                 activeClass="text-cyan-700"
-                                                onclick={(e) => {
-                                                    e.preventDefault();
-                                                    window.location.href = e.currentTarget.href;
-                                                }}
+                                                onclick={originLink}
                                             >
                                                 {frontmatter.title}
                                             </A>
