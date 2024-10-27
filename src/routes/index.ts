@@ -1,3 +1,5 @@
 import { redirect } from '@solidjs/router';
 
-export const GET = () => redirect('/zh-cn/');
+export const GET = () => {
+    return redirect('/zh-cn/');
+};

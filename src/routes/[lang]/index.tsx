@@ -4,14 +4,20 @@ import FontList from './_index/FontsList';
 import { FriendLinks } from './_index/FriendLinks';
 import PerformanceOfTool from './_index/PerformanceOfTool';
 import svg from './_index/website_title.svg?raw';
+import { languageConfig } from '~/i18n';
+import { redirect, useLocation, useNavigate } from '@solidjs/router';
 export default () => {
+    const { lang } = useParams();
+    if (!languageConfig.languages.find((i) => i.lang === lang)) {
+        const location = useLocation();
+        const nav = useNavigate();
+        return nav('/zh-cn' + location.pathname);
+    }
     return (
-        (<Layout
-            title={$t("049945050aa7435651ba3e2129a14e93")}
-            description={
-                $t("62ad0ae253a6017d313347e67f1a0c01")
-            }
-            keywords={$t("1abfbf30be4ae4f7805135234c6e81af")}
+        <Layout
+            title={$t('049945050aa7435651ba3e2129a14e93')}
+            description={$t('62ad0ae253a6017d313347e67f1a0c01')}
+            keywords={$t('1abfbf30be4ae4f7805135234c6e81af')}
         >
             <section class="relative overflow-hidden z-10 flex flex-col items-center my-12 ">
                 <A
@@ -42,7 +48,9 @@ export default () => {
                     The Chinese Web Fonts Plan
                 </div>
 
-                <h3 class="huge-letter-space max-w-[30em] px-4 mt-12  font-thin text-gray-500 sm:max-w-[30em] lg:max-w-none lg:text-2xl">{$t("1214315c84ace8d1b83c5fdadbf8495a")}</h3>
+                <h3 class="huge-letter-space max-w-[30em] px-4 mt-12  font-thin text-gray-500 sm:max-w-[30em] lg:max-w-none lg:text-2xl">
+                    {$t('1214315c84ace8d1b83c5fdadbf8495a')}
+                </h3>
                 <div class="flex gap-4 mt-8 border rounded-lg ring-rose-600 py-4 px-6">
                     <A href="cdn">
                         <button class="huge-letter-space transition-colors px-2 py-1 rounded-md text-gray-500  hover:text-gray-700 ">
@@ -91,10 +99,12 @@ export default () => {
                 style={{
                     'letter-spacing': '2rem',
                 }}
-            >{$t("6823387557f44cb9b26695fb1933dabe")}</div>
+            >
+                {$t('6823387557f44cb9b26695fb1933dabe')}
+            </div>
             <PerformanceOfTool />
             <FriendLinks />
             <AllFooter />
-        </Layout>)
+        </Layout>
     );
 };
