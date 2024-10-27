@@ -73,6 +73,7 @@ export const DemoOfFontSplit = () => {
                     {$t('fe7f7a4756a9aa11ba355bbfb932fc65')}
                 </a>
             </div>
+
             {linker.map((item) => {
                 return (
                     <a
@@ -87,7 +88,7 @@ export const DemoOfFontSplit = () => {
                             width="45px"
                             fetchpriority="low"
                             loading="lazy"
-                        />
+                        ></img>
                         <div>{item.name}</div>
                         <div>Demo</div>
                     </a>
