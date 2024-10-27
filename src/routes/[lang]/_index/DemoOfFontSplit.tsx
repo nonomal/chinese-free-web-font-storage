@@ -74,7 +74,6 @@ export const DemoOfFontSplit = () => {
                 </a>
             </div>
             {linker.map((item) => {
-                if (!item) return <div></div>;
                 return (
                     <a
                         href={item.href}
