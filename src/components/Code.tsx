@@ -12,3 +12,4 @@ export const Code = (props: { class?: string; code: string; lang: string; theme?
     });
     return <div class={classHelper.base('overflow-auto')(props.class)} innerHTML={code()}></div>;
 };
+export default Code;

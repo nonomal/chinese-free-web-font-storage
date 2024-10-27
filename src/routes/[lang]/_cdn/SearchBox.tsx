@@ -6,8 +6,9 @@ import copy from 'copy-to-clipboard';
 import { Notice } from '../../../Notice';
 import { createAsync } from '@solidjs/router';
 import { getFontList } from '../_index/getFontList';
-import { Code } from '~/components/Code';
+import { clientOnly } from '@solidjs/start';
 
+export const ClientCode = clientOnly(() => import('~/components/Code'));
 export const SearchBox = () => {
     const search = atom('');
     const ListContainer = NullAtom(null);
@@ -104,17 +105,11 @@ export const SearchBox = () => {
                                     <Show when={copied()}>
                                         <div class="flex-1 overflow-hidden flex flex-col text-xs text-left gap-1 text-neutral-600 px-2 bg-gray-100">
                                             <h4>{$t('a5eb7686aca0662121e7c4f32c2f5bee')}</h4>
-                                            <Code
-                                                class="p-4 bg-white rounded-md"
-                                                lang="html"
-                                                code={`<link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/${remote.url}' />`}
-                                            ></Code>
+                                            <LinkCode
+                                                href={`https://chinese-fonts-cdn.deno.dev/${remote.url}`}
+                                            ></LinkCode>
                                             <h4>{$t('e780454184b9e6853e444d6f372e7272')}</h4>
-                                            <Code
-                                                class="p-4 bg-white rounded-md"
-                                                lang="css"
-                                                code={`body {\n    ${remote.style}\n};`}
-                                            ></Code>
+                                            <FontCode style={remote.style}></FontCode>
                                         </div>
                                     </Show>
                                 </li>
@@ -124,5 +119,61 @@ export const SearchBox = () => {
                 })}
             </ul>
         </>
+    );
+};
+
+// 优化渲染
+
+export const LinkCode = (prop: { href: string }) => {
+    return (
+        <div class="overflow-auto p-4 bg-white rounded-md">
+            <pre
+                class="shiki vitesse-light"
+                style="background-color:#ffffff;color:#393a34"
+                tabindex="0"
+            >
+                <code>
+                    <span class="line">
+                        <span style="color:#999999">&lt;</span>
+                        <span style="color:#1E754F">link</span>
+                        <span style="color:#B07D48"> rel</span>
+                        <span style="color:#999999">=</span>
+                        <span style="color:#B5695977">'</span>
+                        <span style="color:#B56959">stylesheet</span>
+                        <span style="color:#B5695977">'</span>
+                        <span style="color:#B07D48"> href</span>
+                        <span style="color:#999999">=</span>
+                        <span style="color:#B5695977">'</span>
+                        <span style="color:#B56959">{prop.href}</span>
+                        <span style="color:#B5695977">'</span>
+                        <span style="color:#999999"> /&gt;</span>
+                    </span>
+                </code>
+            </pre>
+        </div>
+    );
+};
+
+export const FontCode = (props: { style: string | number }) => {
+    return (
+        <div class="overflow-auto p-4 bg-white rounded-md">
+            <pre
+                class="shiki vitesse-light"
+                style="background-color:#ffffff;color:#393a34"
+                tabindex="0"
+            >
+                <code>
+                    <span class="line">
+                        <span style="color:#1E754F">body</span>
+                        <span style="color:#999999"> {'{'}</span>
+                    </span>
+                    <span class="line">{props.style}</span>
+                    <span class="line">
+                        <span style="color:#999999">{'}'}</span>
+                        <span style="color:#393A34">;</span>
+                    </span>
+                </code>
+            </pre>
+        </div>
     );
 };

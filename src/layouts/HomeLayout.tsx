@@ -18,9 +18,6 @@ const fontStyle = {
 };
 
 export default (props: LayoutType) => {
-    onMount(() => {
-        BingScript();
-    });
     return (
         <MetaProvider>
             <Title>{props.title}</Title>
@@ -45,6 +42,7 @@ export default (props: LayoutType) => {
             <Base href={'/' + useContext(i18nContext).lang + '/'}></Base>
             <GlobalHeader></GlobalHeader>
             <section style={fontStyle}>{props.children}</section>
+            <BingScript></BingScript>
         </MetaProvider>
     );
 };

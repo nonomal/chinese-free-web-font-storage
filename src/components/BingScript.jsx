@@ -1,17 +1,8 @@
-import { isServer } from 'solid-js/web';
-
 export const BingScript = () => {
-    if (isServer) return;
-    return (function (c, l, a, r, i, t, y) {
-        c[a] =
-            c[a] ||
-            function () {
-                (c[a].q = c[a].q || []).push(arguments);
-            };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = 'https://www.clarity.ms/tag/' + i + '?ref=bwt';
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-    })(window, document, 'clarity', 'script', 'ljjz1d0vy0');
+    return (
+        <>
+            <script async src="https://www.clarity.ms/s/0.7.49/clarity.js"></script>
+            <script async src="https://www.clarity.ms/tag/ljjz1d0vy0?ref=bwt"></script>
+        </>
+    );
 };
