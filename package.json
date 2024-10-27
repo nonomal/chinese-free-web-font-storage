@@ -22,6 +22,7 @@
         "fs-extra": "^11.2.0",
         "i18nation": "^1.5.1",
         "lenis": "^1.1.14",
+        "less": "^4.2.0",
         "node-fetch": "^3.3.2",
         "prettier": "^3.3.3",
         "remark-anchor-link": "^0.1.11",
