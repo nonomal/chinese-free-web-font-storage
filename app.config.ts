@@ -15,6 +15,7 @@ const { default: mdx } = pkg;
 export default defineConfig({
     extensions: ['mdx', 'md', 'tsx', 'ts'],
     server: {
+        preset: 'netlify',
         esbuild: {
             options: {
                 target: 'esnext',
