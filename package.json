@@ -6,13 +6,10 @@
     "type": "module",
     "scripts": {
         "dev": "vinxi dev",
-        "build": "vinxi build",
+        "build": "pnpm index && vinxi build",
         "start": "vinxi start",
         "index": "curl https://chinese-fonts-cdn.netlify.app/index.json -o index.json"
     },
-    "workspaces": [
-        "./packages/*"
-    ],
     "license": "MIT",
     "devDependencies": {
         "@jongwooo/prism-theme-github": "^1.14.0",

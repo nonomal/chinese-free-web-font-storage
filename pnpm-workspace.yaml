@@ -1,3 +1,0 @@
-packages:
-    # 指定工作区的位置
-    - 'packages/*'
