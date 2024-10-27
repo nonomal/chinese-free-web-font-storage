@@ -178,8 +178,8 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1(mime-types@2.1.35)(vite@5.4.10(@types/node@22.8.1)(less@4.2.0)(terser@5.36.0))
       vite-plugin-font:
-        specifier: ^3.0.0
-        version: 3.0.0
+        specifier: ^3.0.1
+        version: 3.0.1
 
 packages:
 
@@ -5114,8 +5114,8 @@ packages:
       mime-types: ^2.1.35
       vite: '>=2.9.6'
 
-  vite-plugin-font@3.0.0:
-    resolution: {integrity: sha512-whWFe74DzvLi12DMDaLYAa0FqNRJnO0nciKo00JRj3urRjgUPFPTvnGjwBWogZIewVu/QZVIXDTSLnX9+WWyVA==}
+  vite-plugin-font@3.0.1:
+    resolution: {integrity: sha512-ahLwkxkSNX0vIcesdKyWDZUHpBYmxcJDPE5qT6F/W2rrCUQfoLBoHhma47c6mCW07W/LUnoemWswvEDGs7uA4A==}
 
   vite-plugin-solid@2.10.2:
     resolution: {integrity: sha512-AOEtwMe2baBSXMXdo+BUwECC8IFHcKS6WQV/1NEd+Q7vHPap5fmIhLcAzr+DUJ04/KHx/1UBU0l1/GWP+rMAPQ==}
@@ -11242,7 +11242,7 @@ snapshots:
       mime-types: 2.1.35
       vite: 5.4.10(@types/node@22.8.1)(less@4.2.0)(terser@5.36.0)
 
-  vite-plugin-font@3.0.0:
+  vite-plugin-font@3.0.1:
     dependencies:
       cn-font-metrics: 2.1.6
       cn-font-split: 5.2.2

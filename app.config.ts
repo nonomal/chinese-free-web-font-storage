@@ -15,7 +15,7 @@ const { default: mdx } = pkg;
 export default defineConfig({
     extensions: ['mdx', 'md', 'tsx', 'ts'],
     server: {
-        preset: 'netlify',
+        preset: 'netlify_builder',
         esbuild: {
             options: {
                 target: 'esnext',
@@ -50,7 +50,17 @@ export default defineConfig({
                     Prism,
                 ],
             }),
-            font.vite({}),
+            font.vite({
+                scanFiles: {
+                    hot: ['./src/i18n/**/*.{md,mdx,ts,tsx,json}'],
+                    post: ['./src/content/**/*.{md,mdx,ts,tsx}'],
+                },
+                css: {
+                    comment: {
+                        unicodes: true,
+                    },
+                },
+            }),
             DynamicPublicDirectory(['public/**', '{\x01,assets}/**'], {
                 ssr: true,
             }),

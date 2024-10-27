@@ -1,9 +1,10 @@
-import { JSXElement, Show, useContext } from 'solid-js';
+import { JSXElement, onMount, Show, useContext } from 'solid-js';
 import { Meta, Link, MetaProvider, Base, Title } from '@solidjs/meta';
 /** @ts-ignore */
 // import { css, fontFamilyFallback } from '~/assets/jxzk.ttf';
 import { i18nContext } from '~/i18n';
 import GlobalHeader from './GlobalHeader';
+import { BingScript } from '~/components/BingScript';
 export interface LayoutType {
     children: JSXElement;
     keywords: string;
@@ -17,11 +18,14 @@ const fontStyle = {
 };
 
 export default (props: LayoutType) => {
+    onMount(() => {
+        BingScript();
+    });
     return (
-        (<MetaProvider>
+        <MetaProvider>
             <Title>{props.title}</Title>
             <Show when={props.noFollow}>
-                <Meta name="robots" content={$t("d420d9103588bf78dada339bb9b3660c")}></Meta>
+                <Meta name="robots" content={$t('d420d9103588bf78dada339bb9b3660c')}></Meta>
             </Show>
             <Meta name="description" content={props.description}></Meta>
             <Meta
@@ -36,11 +40,11 @@ export default (props: LayoutType) => {
             <Link rel="preconnect" href="https://jsdelivr.deno.dev/" crossOrigin="anonymous" />
             <link
                 rel="stylesheet"
-                href="https://chinese-fonts-cdn.deno.dev/packages/jhlst/dist/%E4%BA%AC%E8%8F%AF%E8%80%81%E5%AE%8B%E4%BD%93v1_007/result.css"
+                href="https://chinese-fonts-cdn.netlify.app/packages/jhlst/dist/%E4%BA%AC%E8%8F%AF%E8%80%81%E5%AE%8B%E4%BD%93v1_007/result.css"
             />
             <Base href={'/' + useContext(i18nContext).lang + '/'}></Base>
             <GlobalHeader></GlobalHeader>
             <section style={fontStyle}>{props.children}</section>
-        </MetaProvider>)
+        </MetaProvider>
     );
 };
