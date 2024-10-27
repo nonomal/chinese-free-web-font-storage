@@ -1,0 +1,3 @@
+.border-card {
+    @apply transition-colors border rounded-2xl;
+}

@@ -1,0 +1,31 @@
+{
+    "name": "remark-head-id",
+    "version": "1.0.0",
+    "description": "Add id to Headings",
+    "type": "module",
+    "types": "dist/index.d.ts",
+    "main": "dist/index.js",
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org"
+    },
+    "keywords": [
+        "remark",
+        "plugin"
+    ],
+    "author": "Konghayao <dongzhongzhidong@qq.com>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/KonghaYao/awesome-deno-deploy-script.git",
+        "directory": "packages/remark-head-id"
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {},
+    "dependencies": {
+        "github-slugger": "^2.0.0",
+        "unist-util-visit": "^5.0.0",
+        "unified": "^11.0.5"
+    }
+}

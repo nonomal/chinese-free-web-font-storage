@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.poetry {
+    -ms-writing-mode: tb-rl;
+    writing-mode: tb-rl;
+}
+
+.poetry.fix > * {
+    letter-spacing: 1.1em;
+}
+
+.gradient-line {
+    position: relative;
+    background-image: linear-gradient(90deg, #51d63300, #51d633, #33c0d6, #33c0d600);
+}
+.gradient-line::after {
+    content: '';
+    position: absolute;
+    height: 600%;
+    width: 100%;
+    z-index: -1;
+    top: 5px;
+    left: 0;
+    opacity: 0.3;
+    background-image: linear-gradient(90deg, #51d63300, #51d633, #33c0d6, #33c0d600);
+    filter: blur(16px);
+}
+
+.bg-gradient-circle {
+    background-image: url('~/assets/blur-bg.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.bg-line {
+    background-image: url('~/assets/bg-line.svg');
+    background-size: 100% 178%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.glass-card {
+    box-shadow: 0 6px 20px 0 rgba(135, 142, 248, 0.37);
+    backdrop-filter: blur(12.5px);
+    -webkit-backdrop-filter: blur(12.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}

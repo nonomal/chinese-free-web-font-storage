@@ -1,0 +1,39 @@
+.font-list-hidden {
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(0, -30%);
+}
+
+/** 热门和新品的 CSS */
+.font-list-ul {
+    .hot {
+        position: relative;
+        border-color: #e8b9b9;
+    }
+    .hot::before {
+        content: '热门';
+        position: absolute;
+        top: -0.5rem;
+        left: -0.5rem;
+        font-weight: 800;
+        background-color: #d31746;
+        color: white;
+        border-radius: 4px;
+        padding: 0 2px;
+    }
+    .new {
+        position: relative;
+        border-color: #a3d0ca;
+    }
+    .new::before {
+        content: '新品';
+        position: absolute;
+        top: -0.5rem;
+        left: -0.5rem;
+        font-weight: 800;
+        background-color: #13b4a1;
+        color: white;
+        border-radius: 4px;
+        padding: 0 2px;
+    }
+}

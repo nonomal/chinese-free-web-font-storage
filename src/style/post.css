@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'post-header';
+    font-weight: 600;
+    src: local('Noto Serif SC Bold'), local('Noto Serif SC');
+}
+.markdown-body {
+    --markdown-font-family: 'KingHwa_OldSong';
+    --markdown-title-font-family: 'KingHwa_OldSong';
+    --markdown-code-font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
+        Liberation Mono, monospace;
+}
+html {
+    height: 100%;
+}
+.post-body {
+    font-family: 'KingHwa_OldSong';
+    height: 100%;
+}
+
+.header-text {
+    font-family: 'post-header', 'Noto Serif SC';
+    font-weight: bolder;
+}
+
+.article-level-1 {
+}
+.article-level-2 {
+    margin-left: 0.5rem;
+}
+.article-level-3 {
+    margin-left: 1rem;
+}
+.article-level-4 {
+    margin-left: 1.5 rem;
+}
+.toc-item {
+    padding-left: 0.5rem;
+}
+details > summary {
+    list-style-type: '📘';
+}
+
+details[open] > summary {
+    list-style-type: '📖';
+}
