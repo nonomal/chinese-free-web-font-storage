@@ -197,6 +197,11 @@ export type ImageKitAnalyzeData = {
         dateWise: Array<any>;
     };
 };
+export type WatchTowerData = {
+    result: {
+        topHost: [string, [string, number][]][];
+    };
+};
 
 export default () => {
     const data = resource<ImageKitAnalyzeData[]>(() => {
@@ -205,6 +210,11 @@ export default () => {
         )
             .then((res) => res.json())
             .then((res) => res.filter(Boolean));
+    });
+    const watchTower = resource<WatchTowerData>(() => {
+        return fetch('https://cache-api.deno.dev/index.js?url=https://font-wt.deno.dev', {
+            method: 'post',
+        }).then((res) => res.json());
     });
     const combineReferer = computed(() => {
         if (!data()) return [];
@@ -230,19 +240,24 @@ export default () => {
             </h2>
             <Show when={data()}>
                 <section class="m-auto grid max-w-7xl grid-cols-2 gap-4">
-                    <PieChart
+                    <BarChart
                         data={data()}
                         key="request"
                         title={$t('0f81e359240e3d725a2de9ee41788e2c')}
-                    ></PieChart>
-                    <PieChart
+                        format={(q) => {
+                            return q / 1000 + 'k';
+                        }}
+                        hintCount={150 * 1000}
+                    ></BarChart>
+                    <BarChart
                         data={data()}
                         key="bandwidth"
                         title={$t('209fdacc9f0fa24009762de6a0f76055')}
                         format={(q) => {
                             return prettyBytes(q);
                         }}
-                    ></PieChart>
+                        hintCount={25 * 1024 * 1024 * 1024}
+                    ></BarChart>
                     <LineChart
                         data={data()}
                         key={'bandwidth'}
@@ -267,6 +282,39 @@ export default () => {
                     <section class="col-span-2 row-span-2">
                         <GlobalMap data={data()}></GlobalMap>
                     </section>
+                    <section class="col-span-2 row-span-2">
+                        <Show when={watchTower.isReady()}>
+                            <TimeChart
+                                data={watchTower()}
+                                title="访问时间图"
+                                hintCount={1000}
+                            ></TimeChart>
+                            <Table
+                                class="w-full"
+                                data={watchTower().result.topHost.reduce(
+                                    (acc, cur) => {
+                                        acc.push({
+                                            name: cur[0],
+                                            count: cur[1].reduce(
+                                                (total, cur) => total + cur[1] * 100,
+                                                0
+                                            ),
+                                        });
+                                        return acc;
+                                    },
+                                    [] as { name: string; count: number }[]
+                                )}
+                                render={{
+                                    name: (value) => (
+                                        <a href={'https://' + value} target="_blank">
+                                            {value}
+                                        </a>
+                                    ),
+                                    count: (value) => <>{value}</>,
+                                }}
+                            ></Table>
+                        </Show>
+                    </section>
                 </section>
                 <div class="h-24"></div>
             </Show>
@@ -276,6 +324,7 @@ export default () => {
 
 // 一个 table 表格，自动解析 props.data 的属性并渲染
 function Table<T>(props: {
+    class?: string;
     data: T[];
     render?: Partial<{
         [key in keyof T]: (value: T[key]) => JSX.Element;
@@ -287,7 +336,7 @@ function Table<T>(props: {
         return render?.(value) ?? value;
     };
     return (
-        (<table class="font-sans">
+        <table class={'font-sans ' + props.class}>
             <thead>
                 <tr>
                     {columnNames().map((columnName) => (
@@ -300,12 +349,12 @@ function Table<T>(props: {
                     <tr>
                         {columnNames().map((columnName) => (
                             // @ts-ignore
-                            (<td>{renderToDom(item[columnName], props.render?.[columnName])}</td>)
+                            <td>{renderToDom(item[columnName], props.render?.[columnName])}</td>
                         ))}
                     </tr>
                 ))}
             </tbody>
-        </table>)
+        </table>
     );
 }
 
@@ -523,11 +572,70 @@ function LineChart(props: {
         ></ECharts>
     );
 }
-function PieChart(props: {
+
+function TimeChart(props: {
+    data: WatchTowerData;
+    title: string;
+    format?: (a: number) => string;
+    hintCount?: number;
+}) {
+    return (
+        <ECharts
+            options={{
+                gWidth: 600,
+                title: {
+                    text: props.title,
+                },
+                legend: {
+                    top: 'bottom',
+                },
+                xAxis: {
+                    type: 'time',
+                },
+                yAxis: {
+                    type: 'value',
+                },
+                tooltip: {
+                    trigger: 'axis',
+                },
+                series: props.data.result.topHost.map(([name, v]) => {
+                    return {
+                        name,
+                        type: 'line',
+                        data: v.map(([k, v]) => {
+                            return [k, v * 100];
+                        }),
+                        markLine: {
+                            data: [
+                                // 定义预警线的位置和样式
+                                props.hintCount && {
+                                    yAxis: props.hintCount,
+                                    lineStyle: {
+                                        color: '#f00',
+                                        width: 2,
+                                        type: 'dashed',
+                                    },
+                                    label: {
+                                        show: true,
+                                        position: 'end',
+                                        formatter: '预警线',
+                                    },
+                                    symbol: ['none', 'none'], // 隐藏线段两端的符号
+                                },
+                            ],
+                        },
+                    };
+                }),
+            }}
+        ></ECharts>
+    );
+}
+function BarChart(props: {
     data: ImageKitAnalyzeData[];
     key: keyof ImageKitAnalyzeData;
     title: string;
     format?: (a: number) => string;
+    hintCount?: number;
 }) {
     const format = props.format ?? ((i: number) => new Intl.NumberFormat().format(i));
     const getItem = (a: any) => a[props.key] as ImageKitAnalyzeData['request'];
@@ -547,18 +655,50 @@ function PieChart(props: {
                     top: '15%',
                     left: 'center',
                 },
+                xAxis: {
+                    type: 'category',
+                    data: props.data.map((i, index) => {
+                        return i.name;
+                    }),
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: {
+                        formatter(value: number) {
+                            // 在这里可以写你的格式化逻辑
+                            // 比如将数字转换为千位分隔的形式
+                            return format(value);
+                        },
+                    },
+                },
                 series: [
                     {
                         name: props.title,
-                        type: 'pie',
+                        type: 'bar',
                         radius: ['40%', '60%'],
                         center: ['50%', '70%'],
                         data: props.data.map((i, index) => {
-                            return {
-                                value: getItem(i).total,
-                                name: [i.name, '-', format(getItem(i).total)].join(' '),
-                            };
+                            return getItem(i).total;
                         }),
+                        markLine: {
+                            data: [
+                                // 定义预警线的位置和样式
+                                props.hintCount && {
+                                    yAxis: props.hintCount,
+                                    lineStyle: {
+                                        color: '#f00',
+                                        width: 2,
+                                        type: 'dashed',
+                                    },
+                                    label: {
+                                        show: true,
+                                        position: 'end',
+                                        formatter: '预警线',
+                                    },
+                                    symbol: ['none', 'none'], // 隐藏线段两端的符号
+                                },
+                            ],
+                        },
                     },
                 ],
             }}
