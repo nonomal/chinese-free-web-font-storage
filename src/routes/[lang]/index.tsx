@@ -5,7 +5,11 @@ import { FriendLinks } from './_index/FriendLinks';
 import PerformanceOfTool from './_index/PerformanceOfTool';
 import svg from './_index/website_title.svg?raw';
 import { languageConfig } from '~/i18n';
-import { redirect, useLocation, useNavigate } from '@solidjs/router';
+import { useLocation, useNavigate } from '@solidjs/router';
+import { getFontList } from './_index/getFontList';
+export const route = {
+    preload: () => getFontList(),
+};
 export default () => {
     const { lang } = useParams();
     if (!languageConfig.languages.find((i) => i.lang === lang)) {
@@ -93,7 +97,9 @@ export default () => {
                     </div>
                 </aside>
             </section>
-            <FontList />
+            <Suspense>
+                <FontList />
+            </Suspense>
             <div
                 class="text-center text-6xl py-48  bg-line translate-y-24"
                 style={{

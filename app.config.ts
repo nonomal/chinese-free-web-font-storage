@@ -21,7 +21,12 @@ export default defineConfig({
                 target: 'esnext',
             },
         },
+        prerender: {
+            crawlLinks: true,
+            routes: ['/', '/cdn'].flatMap((i) => ['zh-cn', 'en'].map((lang) => `/${lang}${i}`)),
+        },
     },
+    ssr: true,
     vite: {
         build: {
             target: 'esnext',

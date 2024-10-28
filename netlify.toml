@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/"
+  to = "/zh-cn/"
+  status = 301

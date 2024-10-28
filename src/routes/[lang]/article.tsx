@@ -4,6 +4,7 @@ import { i18nContext } from '~/i18n';
 import { createAsync } from '@solidjs/router';
 import { getAllSections } from './post/_post/getAllSections';
 
+
 export default () => {
     const { lang } = useContext(i18nContext) ?? {};
     const sections = createAsync(() => getAllSections(lang), {
@@ -12,7 +13,7 @@ export default () => {
     return (
         <Layout
             title={$t('b8337dd9789e8259fd6543cbd43ac8c4')}
-            description={''}
+            description={'中文网字计划文档列表'}
             keywords={$t('d607ec3c4aeb920414eb174e960e4b02')}
         >
             <main class="py-4 px-12">
