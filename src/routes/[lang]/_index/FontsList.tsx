@@ -15,9 +15,9 @@ export default () => {
     return (
         <section
             id="font-list"
-            class="dynamic-font w-screen max-w-7xl flex flex-col my-12 overflow-hidden h-screen gap-2 pt-16 z-0 snap-start relative  mx-auto"
+            class="dynamic-font max-w-7xl flex flex-col my-12 overflow-hidden m-auto gap-2 pt-16 z-0 snap-start relative"
         >
-            <nav class="overflow-hidden flex-1 flex flex-col items-center md:mx-4 p-2 px-4 2xl:px-8 my-4 relative ">
+            <nav class="overflow-hidden flex-1 flex flex-col items-center p-2 px-4 2xl:px-8 my-4 relative ">
                 <FontShow />
                 <h2 class="px-8 pb-2 text-center">
                     <span class="text-xl md:text-4xl pb-2">
@@ -25,7 +25,7 @@ export default () => {
                     </span>
                 </h2>
                 <div class="gradient-line w-full flex-none h-px my-8"></div>
-                <nav class="overflow-x-hidden p-4">
+                <nav class="overflow-x-hidden p-4 h-screen">
                     <ul class="font-list-ul grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
                         {list()?.map((item) => {
                             return item.remotePath.map(({ url: remote, style, name, href }) => {
