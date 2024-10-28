@@ -101,6 +101,7 @@ import { A as OriginA, useLocation } from '@solidjs/router';
 import { isServer } from 'solid-js/web';
 export const A: typeof OriginA = (props) => {
     const lang = useContext(i18nContext)?.lang ?? 'zh-cn';
+    if (!props.href) props.href = '';
     if (props.href?.startsWith('/')) {
         return OriginA(mergeProps(props, { href: `/${lang}` + props.href }));
     } else {
