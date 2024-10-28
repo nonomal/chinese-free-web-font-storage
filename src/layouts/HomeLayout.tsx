@@ -4,7 +4,6 @@ import { Meta, Link, MetaProvider, Base, Title } from '@solidjs/meta';
 // import { css, fontFamilyFallback } from '~/assets/jxzk.ttf';
 import { i18nContext } from '~/i18n';
 import GlobalHeader from './GlobalHeader';
-import { BingScript } from '~/components/BingScript';
 export interface LayoutType {
     children: JSXElement;
     keywords: string;
@@ -42,7 +41,6 @@ export default (props: LayoutType) => {
             <Base href={'/' + useContext(i18nContext).lang + '/'}></Base>
             <GlobalHeader></GlobalHeader>
             <section style={fontStyle}>{props.children}</section>
-            <BingScript></BingScript>
         </MetaProvider>
     );
 };

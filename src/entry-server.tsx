@@ -19,6 +19,7 @@ export default createHandler(() => (
                     <body style={{ 'font-family': 'KingHwa_OldSong' }}>
                         <div id="app">{children}</div>
                         {scripts}
+                        <script async src="/bing_script.js"></script>
                     </body>
                 </html>
             );
