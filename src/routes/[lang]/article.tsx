@@ -3,7 +3,7 @@ import { useContext } from 'solid-js';
 import { i18nContext } from '~/i18n';
 import { createAsync } from '@solidjs/router';
 import { getAllSections } from './post/_post/getAllSections';
-
+import { originLink } from '~/utils/originLink';
 
 export default () => {
     const { lang } = useContext(i18nContext) ?? {};
@@ -32,7 +32,7 @@ export default () => {
                                     {posts.map(({ frontmatter: post, path }) => {
                                         return (
                                             <li>
-                                                <A href={path} preload={false}>
+                                                <A href={path} preload={false} onclick={originLink}>
                                                     <h3>{post.title}</h3>
 
                                                     <p class="my-2 line-clamp-1 text-xs text-gray-500">
