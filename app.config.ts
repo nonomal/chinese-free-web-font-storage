@@ -22,8 +22,7 @@ export default defineConfig({
             },
         },
         prerender: {
-            crawlLinks: true,
-            routes: ['/', '/cdn'].flatMap((i) => ['zh-cn', 'en'].map((lang) => `/${lang}${i}`)),
+            routes: ['/', '/cdn', '/article'].flatMap((i) => ['zh-cn', 'en'].map((lang) => `/${lang}${i}`)),
         },
     },
     ssr: true,

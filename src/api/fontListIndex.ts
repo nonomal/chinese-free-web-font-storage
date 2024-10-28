@@ -1,4 +1,5 @@
 // @i18n-disable
+import { asyncCache } from '~/utils/asyncCache';
 import Index from '../../index.json';
 
 export const getFileListIndex = async () => {
@@ -20,6 +21,7 @@ export const getFileListIndex = async () => {
             })
     );
     try {
+        // return allFiles;
         return sortFontListByRemoteCount(allFiles);
     } catch (e) {
         console.error('远程链接获取失败：');
@@ -28,11 +30,9 @@ export const getFileListIndex = async () => {
     }
 };
 import { stream } from 'fetch-event-stream';
-export const sortFontListByRemoteCount = async <
-    T extends { id: string; name: string; hot: boolean },
->(
-    files: T[]
-): Promise<T[]> => {
+
+/** 异步接口导致效果不佳，使用强缓存减少影响 */
+export const getHotLink = asyncCache(async () => {
     let events = await stream(
         'https://cache-api.deno.dev?url=https://chinese-fonts-cdn.deno.dev/v1/deno-kv?get=["records","path"]',
         {
@@ -47,6 +47,15 @@ export const sortFontListByRemoteCount = async <
         const data = JSON.parse(event.data!);
         hotLink.push(data);
     }
+    return hotLink;
+});
+
+export const sortFontListByRemoteCount = async <
+    T extends { id: string; name: string; hot: boolean },
+>(
+    files: T[]
+): Promise<T[]> => {
+    const hotLink = await getHotLink();
     const hot = hotLink
         .sort((a, b) => b.value - a.value)
         .slice(0, 6)

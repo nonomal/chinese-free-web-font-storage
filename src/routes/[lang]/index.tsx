@@ -6,11 +6,8 @@ import PerformanceOfTool from './_index/PerformanceOfTool';
 import svg from './_index/website_title.svg?raw';
 import { languageConfig } from '~/i18n';
 import { useLocation, useNavigate } from '@solidjs/router';
-import { getFontList } from './_index/getFontList';
 import { Suspense } from 'solid-js';
-export const route = {
-    preload: () => getFontList(),
-};
+
 export default () => {
     const { lang } = useParams();
     if (!languageConfig.languages.find((i) => i.lang === lang)) {

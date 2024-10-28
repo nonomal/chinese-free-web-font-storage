@@ -10,13 +10,13 @@ export default () => {
             </A>
             <span class="flex-1"></span>
             <nav class="text-sky-700 flex gap-4 md:gap-6">
-                <A href={'/cdn'} onclick={originLink}>
+                <A href={'/cdn/'} onclick={originLink}>
                     {$t('370b1608e64632e166a6cd16ef472560')}
                 </A>
-                <A href={'/online-split'} class="hidden sm:block">
+                <A href={'/online-split/'} class="hidden sm:block">
                     {$t('a90f69ca6f4dc557d780fac6904591ea')}
                 </A>
-                <A href={'/article'} preload={false} onclick={originLink}>
+                <A href={'/article/'} preload={false} onclick={originLink}>
                     {$t('c75625dccf148721245b46b1e3e6c79f')}
                 </A>
                 <A
@@ -25,7 +25,7 @@ export default () => {
                 >
                     {$t('4e770040c7cf35fb587b2d0b99df2a32')}
                 </A>
-                <A href={'/showcase'} class="hidden sm:block">
+                <A href={'/showcase/'} class="hidden sm:block">
                     {$t('1b467083c31ee80696dd477f7bd7530c')}
                 </A>
 
@@ -34,7 +34,7 @@ export default () => {
                     content={
                         <ul class="w-64 bg-gray-50 border">
                             <li class="p-2 hover:bg-gray-100">
-                                <A href={'/analyze'}>{$t('0a5741d8beeabccf7c7cc829f61eaf84')}</A>
+                                <A href={'/analyze/'}>{$t('0a5741d8beeabccf7c7cc829f61eaf84')}</A>
                             </li>
                         </ul>
                     }
