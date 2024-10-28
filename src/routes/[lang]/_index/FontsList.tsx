@@ -1,16 +1,10 @@
 import { FontShow } from './FontShow';
 import { __CDN__ } from '~/global';
-import { atom } from '@cn-ui/reactive';
 import './FontList.css';
 import { createAsync } from '@solidjs/router';
 import { getFontList } from './getFontList';
 
-export const route = {
-    preload: () => getFontList(),
-};
-
 export default () => {
-    const openFontList = atom(true);
     const list = createAsync(() => getFontList());
     return (
         <section

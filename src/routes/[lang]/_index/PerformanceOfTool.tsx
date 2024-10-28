@@ -33,14 +33,16 @@ const config = [
 ];
 export default () => {
     return (
-        (<section class="dynamic-font w-full select-auto lg:w-[80%] snap-center font-serif max-w-7xl border-gray-200 text-gray-600 p-8 my-12 flex flex-col gap-4 mx-auto bg-white/70">
+        <section class="dynamic-font w-full select-auto lg:w-[80%] snap-center font-serif max-w-7xl border-gray-200 text-gray-600 p-8 my-12 flex flex-col gap-4 mx-auto bg-white/70">
             <div class="py-12 px-8 text-center w-full gap-2 font-serif font-thin col-span-3 bg-rose-50/60 text-2xl hover:bg-rose-50 transition-colors">
                 <a href="https://www.npmjs.com/package/cn-font-replacer" target="_blank">
                     <div class="text-2xl font-bold col-span-8 w-full">
                         {$t('450c1033d84d6e622b7e5e2627b6a4c0')}
                     </div>
                     <div class="my-4">{$t('4632fb328a4e1eb59340daa8e9480d63')}</div>
-                    <div class="text-sm text-gray-500 my-2">{$t("1d9171047b2121e89c6ea9a574540c4a")}</div>
+                    <div class="text-sm text-gray-500 my-2">
+                        {$t('1d9171047b2121e89c6ea9a574540c4a')}
+                    </div>
                 </a>
             </div>
             <header class="grid grid-cols-2 bg-green-50/60  py-12 px-8 hover:bg-green-50 transition-colors">
@@ -70,7 +72,7 @@ export default () => {
                     class="w-full text-right text-2xl"
                 >
                     <div class="font-black pr-8">cn-font-split</div>
-                    <div class="my-4">{$t("9864c6709d117be727f9a0de1eed4892")}</div>
+                    <div class="my-4">{$t('9864c6709d117be727f9a0de1eed4892')}</div>
                 </a>
                 <div class=" text-neutral-400 w-full flex flex-row-reverse gap-4 flex-wrap col-span-2">
                     <span>{$t('96c8724fc94176ed7f535fc8e3247d0f')}</span>
@@ -85,10 +87,12 @@ export default () => {
                         fetchpriority="low"
                     />
 
-                    <A class="text-rose-700" href="https://www.npmjs.com/packages/cn-font-split">{$t("8bdd4aa63ca4d3027b29199d226df808")}</A>
+                    <A class="text-rose-700" href="https://www.npmjs.com/packages/cn-font-split">
+                        {$t('8bdd4aa63ca4d3027b29199d226df808')}
+                    </A>
                 </div>
             </header>
-            <DemoOfFontSplit />
-        </section>)
+            <DemoOfFontSplit></DemoOfFontSplit>
+        </section>
     );
 };

@@ -22,7 +22,9 @@ export default defineConfig({
             },
         },
         prerender: {
-            routes: ['/', '/cdn', '/article'].flatMap((i) => ['zh-cn', 'en'].map((lang) => `/${lang}${i}`)),
+            routes: ['/', '/cdn/', '/article/'].flatMap((i) =>
+                ['zh-cn', 'en'].map((lang) => `/${lang}${i}`)
+            ),
         },
     },
     ssr: true,

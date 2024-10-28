@@ -1,11 +1,10 @@
 /** 强力缓存异步函数数据 */
-export const asyncCache = <T, B extends []>(
-    fn: (...args: B) => Promise<T>,
-    outDateTime = 1000 * 60 * 60 * 24
-) => {
+export const asyncCache = <T, B>(fn: B, outDateTime = 1000 * 60 * 60 * 24): B => {
     let cache: T | null = null;
-    return async (...args: B) => {
+    // @ts-ignore
+    return async (...args: any[]) => {
         if (cache) return cache;
+        // @ts-ignore
         const res = await fn(...args);
         cache = res;
         setTimeout(() => {

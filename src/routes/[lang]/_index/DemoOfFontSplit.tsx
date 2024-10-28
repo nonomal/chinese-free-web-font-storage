@@ -4,39 +4,40 @@ import nuxtLogo from '~/assets/nuxtLogo.svg';
 import rspackLogo from '~/assets/rspackLogo.svg';
 import astroLogo from '~/assets/astroLogo.svg';
 import svelteLogo from '~/assets/svelteLogo.svg';
+import { For } from 'solid-js';
+const linker = [
+    {
+        name: 'Vite',
+        href: 'https://github.com/KonghaYao/cn-font-bundler-demo/tree/vite',
+        pic: viteLogo,
+    },
+    {
+        name: 'Next.js',
+        href: 'https://github.com/KonghaYao/cn-font-bundler-demo/tree/nest',
+        pic: nextLogo,
+    },
+    {
+        name: 'Nuxt',
+        href: 'https://github.com/KonghaYao/cn-font-bundler-demo/tree/nuxt',
+        pic: nuxtLogo,
+    },
+    {
+        name: 'Astro',
+        href: 'https://github.com/KonghaYao/cn-font-bundler-demo/tree/astro',
+        pic: astroLogo,
+    },
+    {
+        name: 'SvelteKit',
+        href: 'https://github.com/KonghaYao/cn-font-bundler-demo/tree/svelte-kit',
+        pic: svelteLogo,
+    },
+    {
+        name: 'Rspack',
+        href: 'https://github.com/KonghaYao/cn-font-bundler-demo/tree/rspack',
+        pic: rspackLogo,
+    },
+];
 export const DemoOfFontSplit = () => {
-    const linker = [
-        {
-            name: 'Vite',
-            href: 'https://github.com/KonghaYao/cn-font-bundler-demo/tree/vite',
-            pic: viteLogo,
-        },
-        {
-            name: 'Next.js',
-            href: 'https://github.com/KonghaYao/cn-font-bundler-demo/tree/nest',
-            pic: nextLogo,
-        },
-        {
-            name: 'Nuxt',
-            href: 'https://github.com/KonghaYao/cn-font-bundler-demo/tree/nuxt',
-            pic: nuxtLogo,
-        },
-        {
-            name: 'Astro',
-            href: 'https://github.com/KonghaYao/cn-font-bundler-demo/tree/astro',
-            pic: astroLogo,
-        },
-        {
-            name: 'SvelteKit',
-            href: 'https://github.com/KonghaYao/cn-font-bundler-demo/tree/svelte-kit',
-            pic: svelteLogo,
-        },
-        {
-            name: 'Rspack',
-            href: 'https://github.com/KonghaYao/cn-font-bundler-demo/tree/rspack',
-            pic: rspackLogo,
-        },
-    ];
     return (
         <nav class="grid w-full max-w-7xl grid-cols-6 items-center gap-4 bg-cyan-50/60 hover:bg-cyan-50 px-8 py-12 transition-colors md:grid-cols-12">
             <div class="col-span-6 whitespace-nowrap">
@@ -73,27 +74,28 @@ export const DemoOfFontSplit = () => {
                     {$t('fe7f7a4756a9aa11ba355bbfb932fc65')}
                 </a>
             </div>
-
-            {linker.map((item) => {
-                return (
-                    <a
-                        href={item.href}
-                        target="_blank"
-                        class="flex cursor-pointer flex-col items-center p-2 transition-colors  bg-transparent hover:bg-gray-100/70"
-                    >
-                        <img
-                            src={item.pic}
-                            alt={item.name}
-                            height="45px"
-                            width="45px"
-                            fetchpriority="low"
-                            loading="lazy"
-                        ></img>
-                        <div>{item.name}</div>
-                        <div>Demo</div>
-                    </a>
-                );
-            })}
+            <For each={linker}>
+                {(item) => {
+                    return (
+                        <a
+                            href={item.href}
+                            target="_blank"
+                            class="flex cursor-pointer flex-col items-center p-2 transition-colors  bg-transparent hover:bg-gray-100/70"
+                        >
+                            <img
+                                src={item.pic}
+                                alt={item.name}
+                                height="45px"
+                                width="45px"
+                                fetchpriority="low"
+                                loading="lazy"
+                            ></img>
+                            <span>{item.name}</span>
+                            <span>Demo</span>
+                        </a>
+                    );
+                }}
+            </For>
         </nav>
     );
 };
