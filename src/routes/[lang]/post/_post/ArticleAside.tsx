@@ -21,14 +21,14 @@ export default () => {
                                         return (
                                             <li
                                                 class="line-clamp-2 border-l border-blue-200 py-1 pl-4 text-neutral-700 transition-all hover:border-blue-600  hover:text-cyan-700"
-                                                title={frontmatter.title}
+                                                title={frontmatter?.title}
                                             >
                                                 <A
                                                     href={path}
                                                     activeClass="text-cyan-700"
                                                     onclick={originLink}
                                                 >
-                                                    {frontmatter.title}
+                                                    {frontmatter?.title}
                                                 </A>
                                             </li>
                                         );
