@@ -22,6 +22,10 @@ export async function GET() {
             /** CDN 路径的资源前缀*/
             cdn_prefix: AllCDN,
             list: json,
-        })
+        }), {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
     );
 }

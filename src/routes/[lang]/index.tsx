@@ -13,6 +13,7 @@ export default () => {
     if (!languageConfig.languages.find((i) => i.lang === lang)) {
         const location = useLocation();
         const nav = useNavigate();
+        console.log(location.pathname)
         return nav('/zh-cn' + location.pathname);
     }
     return (
