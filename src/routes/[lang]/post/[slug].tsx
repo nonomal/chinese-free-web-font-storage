@@ -13,8 +13,9 @@ const getPostMeta = cache((lang: string, slug: string) => {
 
 export default () => {
     const { lang, slug } = useParams();
-    const Meta = createAsync(() => getPostMeta(lang, slug));
-    const Content = lazy(() => getArticleComponent(lang, slug));
+    const pureSlug = slug.replace(/\.html?/, '');
+    const Meta = createAsync(() => getPostMeta(lang, pureSlug));
+    const Content = lazy(() => getArticleComponent(lang, pureSlug));
     return (
         <PostLayout
             title={Meta()?.frontmatter?.title}
