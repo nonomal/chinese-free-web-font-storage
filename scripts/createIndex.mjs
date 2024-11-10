@@ -20,7 +20,7 @@ const data = Object.fromEntries(
                 css: fs.readJSONSync("./" + basePath + "/reporter.json").css,
             };
         });
-        console.log(path);
+        // console.log(path);
         return [
             en,
             {

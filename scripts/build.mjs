@@ -6,6 +6,7 @@ import semver from "semver";
 import mri from "mri";
 import { useRustWoff2Server } from "./woff2_builder.mjs";
 import { RemoteConvertManager } from '../woff2/RemoteConvertManager.mjs'
+import { exit } from 'node:process';
 const rustServer = await useRustWoff2Server()
 const argv = process.argv.slice(2);
 
@@ -76,7 +77,7 @@ for (const iterator of packages) {
             },
             logger: {
                 settings: {
-                    // minLevel: 4,
+                    minLevel: 4,
                 },
             },
         });
@@ -121,5 +122,6 @@ for (const iterator of packages) {
         fontsName.map((i) => path.basename(i).replace(/\.\w+$/, ""))
     );
 }
-rustServer.kill();
+await rustServer.kill();
 console.log("主流程结束")
+exit(0)
