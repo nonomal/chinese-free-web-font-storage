@@ -72,7 +72,7 @@ for (const iterator of packages) {
             testHTML: true,
             previewImage: {},
             threads: {
-                service: new RemoteConvertManager(() => 'http://0.0.0.0:8000/woff2')
+                service: new RemoteConvertManager(() => 'http://127.0.0.0:8000/woff2')
             },
             logger: {
                 settings: {
@@ -81,6 +81,7 @@ for (const iterator of packages) {
             },
         });
     }
+    console.log(`${iterator} 打包完成`);
 
     if (
         input.mode !== "rebuild" ||
@@ -121,3 +122,4 @@ for (const iterator of packages) {
     );
 }
 rustServer.kill();
+console.log("主流程结束")
