@@ -72,11 +72,11 @@ for (const iterator of packages) {
             testHTML: true,
             previewImage: {},
             threads: {
-                service: new RemoteConvertManager(() => 'http://127.0.0.0:8000/woff2')
+                service: new RemoteConvertManager(() => 'http://0.0.0.0:8000/woff2')
             },
             logger: {
                 settings: {
-                    minLevel: 4,
+                    // minLevel: 4,
                 },
             },
         });
