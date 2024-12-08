@@ -97,6 +97,8 @@ importers:
 
   packages/lywkpmydb: {}
 
+  packages/maple-mono-cn: {}
+
   packages/mksjh: {}
 
   packages/mkwtyt: {}
