@@ -1,13 +1,9 @@
-import { fontSplit } from "cn-font-split";
 import fse from "fs-extra";
 import md5 from "md5";
 import path from "path";
 import semver from "semver";
 import mri from "mri";
-import { useRustWoff2Server } from "./woff2_builder.mjs";
-import { RemoteConvertManager } from '../woff2/RemoteConvertManager.mjs'
-import { exit } from 'node:process';
-const rustServer = await useRustWoff2Server()
+import { fontSplit } from "cn-font-split";
 const argv = process.argv.slice(2);
 
 const input = mri(argv);
@@ -42,7 +38,7 @@ for (const iterator of packages) {
     if (input.mode != "rebuild") {
         try {
             cacheData = fse.readJSONSync(`./packages/${iterator}/cache.json`);
-        } catch (e) { }
+        } catch (e) {}
 
         if (hash === cacheData.version_tag) {
             console.log(` 跳过 ${iterator}`);
@@ -64,22 +60,10 @@ for (const iterator of packages) {
             // 更换文件夹中的 . 为 _
             .replaceAll(".", "_")}`;
         await fse.emptydir(dest);
-        /** 计算构建时间 */
         await fontSplit({
             input: `./packages/${iterator}/fonts/${name}`,
             outDir: dest,
-            targetType: "woff2",
-            chunkSize: 70 * 1024,
-            testHTML: true,
             previewImage: {},
-            threads: {
-                service: new RemoteConvertManager(() => 'http://0.0.0.0:8000/woff2')
-            },
-            logger: {
-                settings: {
-                    minLevel: 4,
-                },
-            },
         });
     }
     console.log(`${iterator} 打包完成`);
@@ -122,6 +106,3 @@ for (const iterator of packages) {
         fontsName.map((i) => path.basename(i).replace(/\.\w+$/, ""))
     );
 }
-await rustServer.kill();
-console.log("主流程结束")
-exit(0)
