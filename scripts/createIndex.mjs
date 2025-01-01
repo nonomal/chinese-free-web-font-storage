@@ -1,6 +1,7 @@
 import { globSync } from "glob";
 import fs from "fs-extra";
 import p from "path";
+import { decodeReporter } from "cn-font-split";
 const cn = await fs.readJSON("./overrides.json");
 const data = Object.fromEntries(
     Object.entries(cn).map(([en, cn]) => {
@@ -15,9 +16,12 @@ const data = Object.fromEntries(
                     .replaceAll(" ", "_")
                     // 更换文件夹中的 . 为 _
                     .replaceAll(".", "_");
+            const reporter = decodeReporter(
+                fs.readFileSync("./" + basePath + "/reporter.bin")
+            );
             return {
                 path: basePath + "/result.css",
-                css: fs.readJSONSync("./" + basePath + "/reporter.json").css,
+                css: reporter.css.toObject(),
             };
         });
         // console.log(path);

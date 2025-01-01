@@ -1,8 +1,8 @@
 ![](./assets/title.png)
 
-# 中文网字计划 v5
+# 中文网字计划 v6
 
-[Netlify 网页](https://chinese-font.netlify.app/)   
+[Netlify 网页](https://chinese-font.netlify.app/)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/4ab47951-5755-4360-9fe6-236bb5ee95db/deploy-status)](https://app.netlify.com/sites/chinese-font/deploys)
 
@@ -14,7 +14,6 @@
 
 1. [中文字体切割插件 @konghayao/cn-font-split](https://github.com/KonghaYao/cn-font-split)
 2. [支持 Vite、Nest、Nust、Webpack 的 vite-plugin-font](https://www.npmjs.com/package/vite-plugin-font)
-
 
 开发者只需要将字体源文件放置在 packages 文件夹下，项目将自动打包和分组。已发布到 NPM，欢迎广大开发者使用！
 
@@ -63,7 +62,8 @@ Material Icons 和 Google Fonts 提供了非常良好的静态字体相关的服
 > 注意，需要 node 18 以上的版本
 
 1. 准备字体链接和授权信息
-2. fork 该项目 
+2. fork 该项目
+
 ```sh
 npm i # 安装项目
 ```
@@ -81,8 +81,6 @@ pnpm build --single=dyh  # 尝试打包文件
 ```
 
 4. 提交 PR ，我们将会人工审核并上传字体
-
-
 
 ## 注意事项
 

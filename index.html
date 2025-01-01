@@ -1,44 +1,61 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>字图 CDN - 中文网字计划</title>
+        <link
+            rel="stylesheet"
+            href="./packages/cef/dist/CEFFontsCJK-Regular/result.css"
+        />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>字图 CDN - 中文网字计划</title>
-    <link rel="stylesheet" href="./packages/cef/dist/CEFFontsCJK-Regular/result.css">
-</head>
-
-<body style="font-family: 'CEF Fonts CJK'; text-align: center; max-width: 60rem; margin:auto;">
-    <h1>
-        字图 CDN, 一个免费的中文字体公益 CDN 服务, 致力于为国内外全球 CJK 开发者提供高质量网络字体服务，让中文字体在互联网世界起飞。
-    </h1>
-    <h2>
-        这里是字图CDN的索引页面
-    </h2>
-    <ol id="index-list"
-        style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-    </ol>
-    <script>
-        fetch('./index.json').then(res => res.json()).then(res => {
-            console.log(res)
-            return Object.entries(res).flatMap(([key, val]) => {
-                return val.remotePath.map(({ path: i }) => {
-                    return './' + i
+    <body
+        style="
+            font-family: 'CEF Fonts CJK';
+            text-align: center;
+            max-width: 60rem;
+            margin: auto;
+        "
+    >
+        <h1>
+            字图 CDN, 一个免费的中文字体公益 CDN 服务, 致力于为国内外全球 CJK
+            开发者提供高质量网络字体服务，让中文字体在互联网世界起飞。
+        </h1>
+        <h2>这里是字图CDN的索引页面</h2>
+        <ol
+            id="index-list"
+            style="
+                font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+                    'Helvetica Neue', sans-serif;
+            "
+        ></ol>
+        <script>
+            fetch("./index.json")
+                .then((res) => res.json())
+                .then((res) => {
+                    console.log(res);
+                    return Object.entries(res).flatMap(([key, val]) => {
+                        return val.remotePath.map(({ path: i }) => {
+                            return "./" + i;
+                        });
+                    });
                 })
-            })
-        }).then(res => {
-            console.log(res)
-            const ul = document.getElementById('index-list')
-            return res.map(i => {
-                const li = document.createElement('li')
-                li.innerHTML = `<a href="${i}">${i}</a>`
-                return li
-            }).forEach(li => {
-                console.log(li)
-                ul.appendChild(li)
-            })
-        })
-    </script>
-</body>
-
+                .then((res) => {
+                    console.log(res);
+                    const ul = document.getElementById("index-list");
+                    return res
+                        .map((i) => {
+                            const li = document.createElement("li");
+                            li.innerHTML = `<a href="${i}">${i}</a>`;
+                            return li;
+                        })
+                        .forEach((li) => {
+                            console.log(li);
+                            ul.appendChild(li);
+                        });
+                });
+        </script>
+    </body>
 </html>

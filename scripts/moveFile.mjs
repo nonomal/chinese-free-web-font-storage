@@ -2,7 +2,7 @@ import { glob } from "glob";
 import fs from "fs-extra";
 fs.emptyDirSync("./dist");
 const files = await glob(
-    `./packages/*/dist/**/*.{woff,woff2,ttf,json,svg,css}`,
+    `./packages/*/dist/**/*.{woff,woff2,ttf,bin,svg,css,html,proto}`,
     {
         ignore: "node_modules/**",
     }
