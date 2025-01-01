@@ -8,7 +8,7 @@
 publish = "dist"
 
 # Default build command.
-command = "rustup default stable && pnpm build:cdn"
+command = "pnpm build:cdn"
 
 [[headers]]
 for = "/*"
