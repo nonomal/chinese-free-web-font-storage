@@ -13,7 +13,7 @@
 中文网字计划期望在网络中为实现中文字体的繁荣而努力。为此，我们进行了大规模中文字体网络化的研究和实践，实现了许多字体工具和解决方案。
 
 1. [中文字体切割插件 @konghayao/cn-font-split](https://github.com/KonghaYao/cn-font-split)
-2. [支持 Vite、Nest、Nust、Webpack 的 vite-plugin-font](https://www.npmjs.com/package/vite-plugin-font)
+2. [支持 Vite、Next、Nuxt、Webpack 的 vite-plugin-font](https://www.npmjs.com/package/vite-plugin-font)
 
 开发者只需要将字体源文件放置在 packages 文件夹下，项目将自动打包和分组。已发布到 NPM，欢迎广大开发者使用！
 
