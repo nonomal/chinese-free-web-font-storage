@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       cn-font-split:
-        specifier: ^7.0.2
-        version: 7.0.2
+        specifier: ^7.2.2
+        version: 7.2.2
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
@@ -379,8 +379,8 @@ packages:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
 
-  cn-font-split@7.0.2:
-    resolution: {integrity: sha512-CcXMsARuMvq3OBtU91WFqfNStcz6drAtgY/WsXfEJlUcGdgmC/BXECrVDZhbn+xRGhuyw5cz1hDAC1spTpoNLg==}
+  cn-font-split@7.2.2:
+    resolution: {integrity: sha512-o2uPPNjVB8XkWV3SBxg5zdLVtPwtAIATyNMbMAjx3mao6cB2/5NQhngd+lxwrPO0mPFSCBUfmchgLhQzy5MJkQ==}
     hasBin: true
 
   color-convert@2.0.1:
@@ -1318,7 +1318,7 @@ snapshots:
 
   clone@1.0.4: {}
 
-  cn-font-split@7.0.2:
+  cn-font-split@7.2.2:
     dependencies:
       buffer: 6.0.3
       commander: 12.1.0

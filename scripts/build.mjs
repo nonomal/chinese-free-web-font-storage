@@ -63,7 +63,10 @@ for (const iterator of packages) {
         await fontSplit({
             input: `./packages/${iterator}/fonts/${name}`,
             outDir: dest,
-            previewImage: {},
+            previewImage: {
+                text: "中文网字计划\nThe Chinese Web Font Project",
+                name: "preview",
+            },
         });
     }
     console.log(`${iterator} 打包完成`);
